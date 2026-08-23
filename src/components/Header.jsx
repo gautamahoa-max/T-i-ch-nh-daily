@@ -31,12 +31,6 @@ export default function Header() {
           
           {/* Mobile Right Icons */}
           <div className="md:hidden flex items-center gap-4 text-accent">
-            {/* Search Icon */}
-            <button aria-label="Search">
-              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                <circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/>
-              </svg>
-            </button>
             {/* Hamburger Icon */}
             <button 
               aria-label="Menu"
