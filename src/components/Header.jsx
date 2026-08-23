@@ -3,6 +3,7 @@ import GuideModal from './GuideModal';
 
 export default function Header() {
   const [isGuideOpen, setIsGuideOpen] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   return (
     <>
@@ -16,15 +17,67 @@ export default function Header() {
                 className="h-8"
               />
             </a>
-            <nav className="flex items-center gap-3 sm:gap-8 font-body font-semibold text-xs sm:text-base text-ink">
+            {/* Desktop Navigation */}
+            <nav className="hidden md:flex items-center gap-8 font-body font-semibold text-base text-ink">
               <a href="#" className="hover:text-accent transition-colors">Hệ sinh thái thẻ</a>
               <button 
                 onClick={() => setIsGuideOpen(true)}
-                className="hover:text-accent transition-colors cursor-pointer text-left"
+                className="hover:text-accent transition-colors cursor-pointer"
               >
                 Hướng dẫn mở
               </button>
             </nav>
+          </div>
+          
+          {/* Mobile Right Icons */}
+          <div className="md:hidden flex items-center gap-4 text-accent">
+            {/* Search Icon */}
+            <button aria-label="Search">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                <circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/>
+              </svg>
+            </button>
+            {/* Hamburger Icon */}
+            <button 
+              aria-label="Menu"
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            >
+              {isMobileMenuOpen ? (
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M18 6 6 18"/><path d="m6 6 12 12"/>
+                </svg>
+              ) : (
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                  <line x1="3" x2="21" y1="12" y2="12"/><line x1="3" x2="21" y1="6" y2="6"/><line x1="3" x2="21" y1="18" y2="18"/>
+                </svg>
+              )}
+            </button>
+          </div>
+        </div>
+
+        {/* Mobile Dropdown Menu */}
+        <div 
+          className={`md:hidden absolute top-full left-0 right-0 bg-surface border-b border-whisper transition-all duration-300 ease-in-out overflow-hidden shadow-lg ${
+            isMobileMenuOpen ? 'max-h-48 py-4 opacity-100' : 'max-h-0 opacity-0'
+          }`}
+        >
+          <div className="flex flex-col px-6 gap-6 font-body font-semibold text-base text-ink">
+            <a 
+              href="#" 
+              onClick={() => setIsMobileMenuOpen(false)}
+              className="hover:text-accent transition-colors block"
+            >
+              Hệ sinh thái thẻ
+            </a>
+            <button 
+              onClick={() => {
+                setIsMobileMenuOpen(false);
+                setIsGuideOpen(true);
+              }}
+              className="hover:text-accent transition-colors text-left block"
+            >
+              Hướng dẫn mở
+            </button>
           </div>
         </div>
       </header>
