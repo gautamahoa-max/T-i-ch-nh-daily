@@ -1,0 +1,136 @@
+export const cardDetailsData = {
+  1: { // LIFESTYLE
+    sections: [
+      {
+        title: "Phí thường niên",
+        items: [
+          "Thẻ chính: 399.000 VND",
+          "Thẻ phụ: Miễn phí (đối với thẻ phát hành từ 01/01/2025 trở đi)"
+        ]
+      },
+      {
+        title: "Hạn mức giao dịch/ngày",
+        items: [
+          "200 triệu đồng"
+        ]
+      },
+      {
+        title: "Ưu đãi mở thẻ",
+        items: [
+          "Hoàn 100% phí thường niên năm đầu khi chi tiêu tổng doanh số giao dịch hợp lệ đạt 1 triệu đồng trong 45 ngày đầu tiên mở thẻ.",
+          "Tặng 01 vali du lịch trị giá 1.500.000 VND khi khách hàng đạt doanh số từ 8.000.000 VND với tối thiểu 7 giao dịch hợp lệ trong vòng 30 ngày kể từ ngày kích hoạt thẻ thành công."
+        ]
+      },
+      {
+        title: "Ưu đãi hoàn tiền (Tối đa đến 18.000.000 VND/năm)",
+        items: [
+          "Tổng chi tiêu đạt từ 30 triệu/kỳ: Hoàn 15% giải trí (tối đa 1.200.000 VND), Hoàn 7% làm đẹp (tối đa 300.000 VND). Tổng hoàn tối đa 1.500.000 VND/kỳ.",
+          "Tổng chi tiêu đạt dưới 30 triệu/kỳ: Hoàn 7% giải trí (tối đa 600.000 VND), Hoàn 3% làm đẹp (tối đa 150.000 VND). Tổng hoàn tối đa 700.000 VND/kỳ.",
+          "Điều kiện: Chi tiêu hợp lệ từ 7 giao dịch/kỳ xét thưởng để được hoàn tiền."
+        ]
+      }
+    ]
+  },
+  2: { // OCB NATURAL
+    sections: [
+      {
+        title: "Phí thường niên",
+        items: [
+          "Thẻ chính: 200.000 VND. Miễn phí thường niên năm đầu tiên.",
+          "Thẻ phụ: Miễn phí (đối với thẻ phát hành từ 01/01/2025 trở đi).",
+          "Hoàn 100% phí thường niên từ năm thứ 2 nếu doanh số chi tiêu năm liền trước đạt tối thiểu 30.000.000 VND."
+        ]
+      },
+      {
+        title: "Hạn mức giao dịch/ngày",
+        items: [
+          "200 triệu đồng"
+        ]
+      },
+      {
+        title: "Ưu đãi nổi bật",
+        items: [
+          "Từ ngày 17/4/2026 – 30/5/2026: Ưu đãi miễn phí thường niên năm đầu khi mở thẻ trong thời gian chương trình.",
+          "Miễn phí phát hành thẻ.",
+          "Miễn phí rút tiền mặt tại tất cả ATM trên toàn quốc.",
+          "Ưu đãi hoàn tiền, giảm giá tại hệ thống đối tác liên kết với OCB và NAPAS. Chương trình áp dụng theo từng thời kỳ."
+        ]
+      }
+    ]
+  },
+  3: { // JCB PLATINUM
+    sections: [
+      {
+        title: "Phí thường niên",
+        items: [
+          "Thẻ chính: 999.000 VND",
+          "Thẻ phụ: Miễn phí (đối với thẻ phát hành từ 01/01/2025 trở đi)"
+        ]
+      },
+      {
+        title: "Hạn mức giao dịch/ngày",
+        items: [
+          "500 triệu đồng"
+        ]
+      },
+      {
+        title: "Ưu đãi mở thẻ",
+        items: [
+          "Hoàn 100% phí thường niên năm đầu khi chi tiêu tổng doanh số giao dịch hợp lệ đạt 3 triệu đồng trong 45 ngày đầu tiên mở thẻ.",
+          "Tặng 01 vali du lịch trị giá 1.500.000 VND khi khách hàng đạt doanh số từ 8.000.000 VND với tối thiểu 7 giao dịch hợp lệ trong vòng 30 ngày kể từ ngày kích hoạt thẻ thành công."
+        ]
+      },
+      {
+        title: "Ưu đãi hoàn tiền (Tối đa đến 18.000.000 VND/ năm)",
+        items: [
+          "Tổng chi tiêu đạt từ 30 triệu/kỳ: Hoàn 15% y tế/sức khỏe (tối đa 300.000 VND), Hoàn 15% bảo hiểm (tối đa 300.000 VND), Hoàn 0.1% giao dịch khác.",
+          "Tổng chi tiêu đạt dưới 30 triệu/kỳ: Hoàn 7% y tế/sức khỏe (tối đa 150.000 VND), Hoàn 7% bảo hiểm (tối đa 150.000 VND), Hoàn 0.1% giao dịch khác.",
+          "Điều kiện: Chi tiêu hợp lệ từ 7 giao dịch/kỳ xét thưởng để được hoàn tiền."
+        ]
+      }
+    ]
+  },
+  4: { // WORLD 2IN1
+    sections: [
+      {
+        title: "Phí thường niên",
+        items: [
+          "Thẻ chính: 1.999.000 VND/thẻ/năm.",
+          "Thẻ phụ: Miễn phí",
+          "Miễn phí thường niên đối với khách hàng ưu tiên.",
+          "Hoàn 100% phí thường niên khi chi tiêu từ 6 triệu đồng trong vòng 45 ngày với các khách hàng còn lại."
+        ]
+      },
+      {
+        title: "Hạn mức",
+        items: [
+          "Thẻ tín dụng: Hạn mức tín dụng lên đến 2 tỷ đồng. Hạn mức giao dịch/ngày: 500 triệu đồng",
+          "Thẻ ghi nợ: Hạn mức giao dịch/ngày: 200 triệu đồng"
+        ]
+      },
+      {
+        title: "Ưu đãi mở thẻ",
+        items: [
+          "Tặng 01 vali du lịch trị giá 1.900.000 VND khi khách hàng đạt doanh số từ 10.000.000 VND với tối thiểu 7 giao dịch hợp lệ trong vòng 30 ngày kể từ ngày kích hoạt thẻ."
+        ]
+      },
+      {
+        title: "Ưu đãi hoàn tiền",
+        items: [
+          "Thẻ tín dụng (Hoàn đến 5.000.000 VND/kỳ): Hoàn 10% Ẩm thực, Hoàn 5% Du lịch (tối đa 500k), Hoàn 0,3% chi tiêu khác. Điều kiện: Chi tiêu tối thiểu 20.000.000 VNĐ/kỳ.",
+          "Thẻ ghi nợ: Hoàn tiền lên đến 12.000.000 VND/năm dựa trên Số dư tài khoản thanh toán bình quân/tháng (từ 1% đến 5% cho Du lịch và Làm đẹp)."
+        ]
+      },
+      {
+        title: "Tiện ích & Đặc quyền khác",
+        items: [
+          "Tích hợp thẻ tín dụng và thẻ ghi nợ trên cùng một phôi thẻ vật lý.",
+          "Đặc quyền phòng chờ sân bay: Tặng 01 lượt khi kích hoạt, tặng thêm 01 lượt cho mỗi 50 triệu doanh số/kỳ sao kê.",
+          "Miễn lãi thanh toán lên đến 55 ngày.",
+          "Phí chuyển đổi ngoại tệ: 0,9% số tiền giao dịch.",
+          "Bảo hiểm du lịch toàn cầu & mất bóp ví trị giá 20 tỷ VND/năm."
+        ]
+      }
+    ]
+  }
+};

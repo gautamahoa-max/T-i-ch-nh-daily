@@ -1,0 +1,22 @@
+@import url('https://api.fontshare.com/v2/css?f[]=cabinet-grotesk@800,500,700&f[]=satoshi@900,700,500,400&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-[#F9FAFB] text-[#18181B] font-body antialiased;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display tracking-tight text-[#18181B];
+  }
+}
+
+@layer components {
+  .premium-btn {
+    @apply bg-[#006633] text-white px-8 py-3 rounded-sm font-body font-bold text-sm tracking-wide 
+           transition-transform duration-300 ease-[cubic-bezier(0.175,0.885,0.32,1.275)] 
+           hover:-translate-y-1 active:translate-y-0 hover:shadow-lg;
+  }
+}
