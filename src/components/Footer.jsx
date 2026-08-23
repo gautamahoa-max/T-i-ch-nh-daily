@@ -24,14 +24,10 @@ export default function Footer() {
           </div>
         </div>
         
-        <div className="pt-8 border-t border-whisper flex flex-col md:flex-row items-center justify-between gap-4">
+        <div className="pt-8 border-t border-whisper flex flex-col md:flex-row items-center justify-center">
           <p className="font-body text-steel text-sm">
             &copy; {new Date().getFullYear()} Hoa. Mọi bản quyền được bảo lưu.
           </p>
-          <div className="flex gap-6 font-body text-steel text-xs">
-            <a href="#" className="hover:text-ink transition-colors">Bảo mật</a>
-            <a href="#" className="hover:text-ink transition-colors">Điều khoản</a>
-          </div>
         </div>
       </div>
     </footer>
