@@ -2,8 +2,8 @@
   "name": "ocb-clone",
   "private": true,
   "version": "0.0.0",
+  "homepage": "https://gautamahoa-max.github.io/T-i-ch-nh-daily/",
   "type": "module",
-  "homepage": "https://vovanhoa.github.io/ocb-clone/",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
