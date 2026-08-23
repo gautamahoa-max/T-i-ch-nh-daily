@@ -16,11 +16,11 @@ export default function Header() {
                 className="h-8"
               />
             </a>
-            <nav className="hidden md:flex items-center gap-8 font-body font-semibold text-base text-ink">
+            <nav className="flex items-center gap-3 sm:gap-8 font-body font-semibold text-xs sm:text-base text-ink">
               <a href="#" className="hover:text-accent transition-colors">Hệ sinh thái thẻ</a>
               <button 
                 onClick={() => setIsGuideOpen(true)}
-                className="hover:text-accent transition-colors cursor-pointer"
+                className="hover:text-accent transition-colors cursor-pointer text-left"
               >
                 Hướng dẫn mở
               </button>
