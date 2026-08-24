@@ -15,8 +15,8 @@ export default {
         accent: '#006633'
       },
       fontFamily: {
-        display: ['Cabinet Grotesk', 'sans-serif'],
-        body: ['Satoshi', 'sans-serif'],
+        display: ['Roboto', 'Arial', 'sans-serif'],
+        body: ['Roboto', 'Arial', 'sans-serif'],
       }
     },
   },
