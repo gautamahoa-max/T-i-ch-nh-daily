@@ -30,7 +30,7 @@ const cards = [
   },
   {
     id: 4,
-    name: "Mastercard World",
+    name: "MASTERCARD WORLD 2IN1",
     description: "Hợp nhất công năng. Nền tảng thẻ kép đột phá cho trải nghiệm tài chính không biên giới.",
     image: imgWorld,
     metrics: "Thẻ 2-trong-1"
