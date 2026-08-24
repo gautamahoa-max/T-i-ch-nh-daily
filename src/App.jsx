@@ -1,5 +1,6 @@
 import Header from './components/Header'
 import HeroBanner from './components/HeroBanner'
+import BankMarquee from './components/BankMarquee'
 import CardList from './components/CardList'
 import Footer from './components/Footer'
 
@@ -10,6 +11,7 @@ function App() {
       
       <main className="flex-1 flex flex-col">
         <HeroBanner />
+        <BankMarquee />
         <CardList />
       </main>
 
