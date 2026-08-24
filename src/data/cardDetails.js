@@ -132,5 +132,37 @@ export const cardDetailsData = {
         ]
       }
     ]
+  },
+  5: { // IGEN
+    sections: [
+      {
+        title: "Phí thường niên",
+        items: [
+          "Thẻ chính: 999.000 VND. Miễn phí thường niên năm đầu tiên."
+        ]
+      },
+      {
+        title: "Hạn mức giao dịch/ngày",
+        items: [
+          "500 triệu đồng"
+        ]
+      },
+      {
+        title: "Ưu đãi mở thẻ",
+        items: [
+          "Tặng 01 vali du lịch trị giá 1.500.000 VND khi khách hàng đạt doanh số từ 8.000.000 VND với tối thiểu 7 giao dịch hợp lệ trong vòng 30 ngày kể từ ngày kích hoạt thẻ thành công."
+        ]
+      },
+      {
+        title: "Ưu đãi hoàn tiền",
+        items: [
+          "Hoàn tiền đa lĩnh vực tối đa đến 12.000.000 VND/năm.",
+          "Tổng chi tiêu/kỳ xét thưởng đạt từ 30 triệu trở lên: Hoàn 12% cho các giao dịch mua sắm tại Shopee, Tiktok Shop (tối đa 700.000 VND). Hoàn 3% cho giao dịch qua ví Apple Pay, Google Pay (tối đa 300.000 VND). Giá trị hoàn tối đa là 1.000.000 VND/kỳ.",
+          "Tổng chi tiêu/kỳ xét thưởng đạt từ 5 đến dưới 30 triệu: Hoàn 7% cho các giao dịch mua sắm tại Shopee, Tiktok Shop (tối đa 350.000 VND). Hoàn 3% cho giao dịch qua ví Apple Pay, Google Pay (tối đa 150.000 VND). Giá trị hoàn tối đa là 500.000 VND/kỳ.",
+          "Điều kiện: Chủ thẻ cần chi tiêu hợp lệ từ 5 triệu đồng/kỳ xét thưởng để được hoàn tiền.",
+          "Ghi chú: Kỳ xét thưởng được tính theo tháng dương lịch và trong thời gian triển khai chương trình."
+        ]
+      }
+    ]
   }
 };

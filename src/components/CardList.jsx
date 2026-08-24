@@ -3,6 +3,7 @@ import imgLifestyle from '../assets/images/lifestyle.png';
 import imgNatural from '../assets/images/natural.jpg';
 import imgJcb from '../assets/images/jcb.png';
 import imgWorld from '../assets/images/world.png';
+import imgIgen from '../assets/images/igen.png';
 import CardDetailsModal from './CardDetailsModal';
 
 const cards = [
@@ -33,6 +34,13 @@ const cards = [
     description: "Hợp nhất công năng. Nền tảng thẻ kép đột phá cho trải nghiệm tài chính không biên giới.",
     image: imgWorld,
     metrics: "Thẻ 2-trong-1"
+  },
+  {
+    id: 5,
+    name: "IGEN Mastercard Platinum",
+    description: "Tiên phong phong cách sống số. Hoàn tiền vượt trội khi mua sắm online qua Shopee, Tiktok Shop và Apple Pay.",
+    image: imgIgen,
+    metrics: "Hoàn tiền 12%"
   }
 ];
 
