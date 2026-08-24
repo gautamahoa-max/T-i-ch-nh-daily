@@ -28,4 +28,5 @@ export const bankLogos = {
   "UOB": new URL('./uob.png', import.meta.url).href,
   "Standard Chartered": new URL('./standard_chartered.png', import.meta.url).href,
   "Indovina Bank": new URL('./indovina_bank.png', import.meta.url).href,
+  "Vikki": new URL('./vikki.png', import.meta.url).href,
 };
