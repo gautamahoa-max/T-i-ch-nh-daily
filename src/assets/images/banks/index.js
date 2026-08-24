@@ -24,4 +24,8 @@ export const bankLogos = {
   "BaoViet Bank": new URL('./baoviet_bank.png', import.meta.url).href,
   "Viet A Bank": new URL('./viet_a_bank.png', import.meta.url).href,
   "PGBank": new URL('./pgbank.png', import.meta.url).href,
+  "MBBank": new URL('./mbbank.png', import.meta.url).href,
+  "UOB": new URL('./uob.png', import.meta.url).href,
+  "Standard Chartered": new URL('./standard_chartered.png', import.meta.url).href,
+  "Indovina Bank": new URL('./indovina_bank.png', import.meta.url).href,
 };
