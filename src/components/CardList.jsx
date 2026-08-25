@@ -10,28 +10,28 @@ import CardDetailsModal from './CardDetailsModal';
 const cards = [
   {
     id: 1,
-    name: "Mastercard Lifestyle",
+    name: "OCB Mastercard Lifestyle",
     description: "Định hình phong cách trẻ. Tối đa hóa hoàn tiền cho mọi giao dịch giải trí và du lịch.",
     image: imgLifestyle,
     metrics: "Dòng thẻ dành riêng cho giới trẻ"
   },
   {
     id: 3,
-    name: "JCB Platinum",
+    name: "OCB JCB Platinum",
     description: "Đặc quyền ẩm thực và sân bay. Mở khóa lối sống tinh hoa mang đậm phong vị Nhật Bản.",
     image: imgJcb,
     metrics: "Phòng chờ VIP"
   },
   {
     id: 4,
-    name: "MASTERCARD WORLD 2IN1",
+    name: "OCB MASTERCARD WORLD 2IN1",
     description: "Hợp nhất công năng. Nền tảng thẻ kép đột phá cho trải nghiệm tài chính không biên giới.",
     image: imgWorld,
     metrics: "THẺ TÍCH HỢP QUYỀN LỰC DÀNH CHO PHÂN KHÚC KHÁCH HÀNG CAO CẤP"
   },
   {
     id: 5,
-    name: "IGEN Mastercard Platinum",
+    name: "OCB IGEN Mastercard Platinum",
     description: "Tiên phong phong cách sống số. Hoàn tiền vượt trội khi mua sắm online qua Shopee, Tiktok Shop và Apple Pay.",
     image: imgIgen,
     metrics: "Dòng thẻ dành riêng cho tín đồ mua sắm"
