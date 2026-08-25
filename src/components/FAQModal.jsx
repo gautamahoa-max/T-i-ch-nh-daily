@@ -90,6 +90,20 @@ export default function FAQModal({ isOpen, onClose }) {
           </p>
         </div>
       )
+    },
+    {
+      question: "6. Tiền chuyển vào thẻ tín dụng sẽ có thứ tự thanh toán như thế nào?",
+      answer: (
+        <div className="text-steel leading-relaxed space-y-2">
+          <p>Số dư nợ sẽ được thanh toán theo thứ tự thời gian các giao dịch, phí, lãi được ghi nợ vào tài khoản thẻ và theo thứ tự ưu tiên dưới đây:</p>
+          <ul className="list-none pl-5 space-y-1">
+            <li className="flex gap-2">
+              <span className="text-accent">•</span>
+              <span>Giao dịch chuyển đổi trả góp → Tiền phí → Tiền lãi → Giao dịch rút tiền mặt → Giao dịch thanh toán</span>
+            </li>
+          </ul>
+        </div>
+      )
     }
   ];
 
