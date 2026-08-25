@@ -13,8 +13,7 @@ const cards = [
     name: "OCB Mastercard Lifestyle",
     description: "Định hình phong cách trẻ. Tối đa hóa hoàn tiền cho mọi giao dịch giải trí và du lịch.",
     image: imgLifestyle,
-    metrics: "Dòng thẻ dành riêng cho giới trẻ",
-    isHot: true
+    metrics: "Dòng thẻ dành riêng cho giới trẻ"
   },
   {
     id: 3,
@@ -28,8 +27,7 @@ const cards = [
     name: "OCB MASTERCARD WORLD 2IN1",
     description: "Hợp nhất công năng. Nền tảng thẻ kép đột phá cho trải nghiệm tài chính không biên giới.",
     image: imgWorld,
-    metrics: "THẺ TÍCH HỢP QUYỀN LỰC DÀNH CHO PHÂN KHÚC KHÁCH HÀNG CAO CẤP",
-    isHot: true
+    metrics: "THẺ TÍCH HỢP QUYỀN LỰC DÀNH CHO PHÂN KHÚC KHÁCH HÀNG CAO CẤP"
   },
   {
     id: 5,
@@ -43,8 +41,7 @@ const cards = [
     name: "OCB MASTERCARD PLATINUM",
     description: "Khẳng định dấu ấn cá nhân. Đặc quyền hoàn tiền mua sắm công nghệ và làm đẹp đẳng cấp.",
     image: imgPlatinum,
-    metrics: "Dòng thẻ dành riêng cho tín đồ công nghệ, làm đẹp",
-    isHot: true
+    metrics: "Dòng thẻ dành riêng cho tín đồ công nghệ, làm đẹp"
   },
   {
     id: 2,
@@ -85,28 +82,14 @@ export default function CardList() {
           <div className="flex flex-col gap-20 md:gap-32">
             {cards.map((card, index) => {
               const isEven = index % 2 === 1;
+              const [prefix, ...rest] = card.name.split(' ');
+              const suffix = rest.join(' ');
               return (
                 <div key={card.id} className={`flex flex-col ${isEven ? 'md:flex-row-reverse' : 'md:flex-row'} items-center gap-10 md:gap-20`}>
                   
                   {/* Image Block */}
                   <div className="w-full md:w-1/2 flex justify-center relative">
                     <div className="relative group perspective-1000">
-                      
-                      {card.isHot && (
-                        <div className="absolute -top-[8px] -right-[8px] w-[110px] h-[110px] z-20 pointer-events-none drop-shadow-md">
-                          {/* Folds */}
-                          <div className="absolute top-0 left-[8px] w-[8px] h-[8px] bg-[#b31212]" style={{ clipPath: 'polygon(0 100%, 100% 100%, 100% 0)' }}></div>
-                          <div className="absolute bottom-[8px] right-0 w-[8px] h-[8px] bg-[#b31212]" style={{ clipPath: 'polygon(0 0, 100% 0, 0 100%)' }}></div>
-                          
-                          {/* Ribbon strip */}
-                          <div className="absolute inset-0 overflow-hidden rounded-tr-xl">
-                            <div className="absolute top-[20px] -right-[32px] w-[140px] bg-[#FF3B30] text-white text-[13px] font-bold py-1.5 text-center transform rotate-45 tracking-widest drop-shadow-sm">
-                              HOT
-                            </div>
-                          </div>
-                        </div>
-                      )}
-
                       <img 
                         src={card.image} 
                         alt={card.name} 
@@ -122,8 +105,16 @@ export default function CardList() {
                     <div className="inline-block px-3 py-1 bg-canvas border border-whisper text-ink text-xs font-mono font-medium tracking-wider mb-6">
                       {card.metrics}
                     </div>
-                    <h3 className="text-3xl md:text-4xl font-display font-bold mb-4">{card.name}</h3>
-                    <p className="font-body text-steel text-lg leading-relaxed mb-8 max-w-md">
+                    
+                    <h3 className="text-3xl md:text-4xl font-display font-bold mb-4 flex items-center gap-3 flex-wrap leading-tight">
+                      <span>{prefix}</span>
+                      <span className="inline-flex items-center justify-center px-2.5 py-1 bg-[#FF3B30] text-white text-xs md:text-sm font-bold rounded shadow-sm align-middle tracking-wider transform -translate-y-0.5">
+                        HOT
+                      </span>
+                      <span>{suffix}</span>
+                    </h3>
+                    
+                    <p className="font-body text-steel text-lg leading-relaxed mb-8 max-w-md mt-2">
                       {card.description}
                     </p>
                     <a 
