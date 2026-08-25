@@ -13,7 +13,7 @@ const cards = [
     name: "Mastercard Lifestyle",
     description: "Định hình phong cách trẻ. Tối đa hóa hoàn tiền cho mọi giao dịch giải trí và du lịch.",
     image: imgLifestyle,
-    metrics: "Hoàn tiền 15%"
+    metrics: "Dòng thẻ dành riêng cho giới trẻ"
   },
   {
     id: 3,
