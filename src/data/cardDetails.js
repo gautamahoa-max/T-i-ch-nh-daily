@@ -4,28 +4,27 @@ export const cardDetailsData = {
       {
         title: "Phí thường niên",
         items: [
-          "Thẻ chính: 999.000 VND",
+          "Thẻ chính: 399.000 VND",
           "Thẻ phụ: Miễn phí (đối với thẻ phát hành từ 01/01/2025 trở đi)"
         ]
       },
       {
-        title: "Hạn mức giao dịch/ngày",
+        title: "Hạn mức giao dịch/ ngày",
         items: [
-          "500 triệu đồng"
+          "200 triệu đồng"
         ]
       },
       {
-        title: "Ưu đãi mở thẻ",
+        title: "Ưu đãi nổi bật",
         items: [
-          "Hoàn 100% phí thường niên năm đầu khi chi tiêu tổng doanh số giao dịch hợp lệ đạt 3 triệu đồng trong 45 ngày đầu tiên mở thẻ.",
-        ]
-      },
-      {
-        title: "Ưu đãi hoàn tiền (Tối đa đến 18.000.000 VND/năm)",
-        items: [
-          "Tổng chi tiêu đạt từ 30 triệu/kỳ: Hoàn 15% giải trí (tối đa 1.200.000 VND), Hoàn 7% làm đẹp (tối đa 300.000 VND). Tổng hoàn tối đa 1.500.000 VND/kỳ.",
-          "Tổng chi tiêu đạt dưới 30 triệu/kỳ: Hoàn 7% giải trí (tối đa 600.000 VND), Hoàn 3% làm đẹp (tối đa 150.000 VND). Tổng hoàn tối đa 700.000 VND/kỳ.",
-          "Điều kiện: Chi tiêu hợp lệ từ 7 giao dịch/kỳ xét thưởng để được hoàn tiền."
+          "1. Ưu đãi mở thẻ (*):",
+          "Hoàn 100% phí thường niên năm đầu khi chi tiêu tổng doanh số giao dịch hợp lệ đạt 1 triệu đồng trong 45 ngày đầu tiên mở thẻ.",
+          "Tặng 01 vali du lịch trị giá 1.500.000 VND khi khách hàng đạt doanh số từ 8.000.000 VND với tối thiểu 7 giao dịch hợp lệ trong vòng 30 ngày kể từ ngày kích hoạt thẻ thành công.",
+          "2. Ưu đãi áp dụng cho tất cả chủ thẻ (*):",
+          "Hoàn tiền đa lĩnh vực tối đa đến 18.000.000 VND/năm, trong đó:",
+          "Tổng chi tiêu/kỳ xét thưởng đạt từ 30 triệu trở lên: Hoàn 15% giao dịch chi tiêu dịch vụ giải trí (Spotify, Netflix, BHD, CGV, Galaxy, Lotte Cinema, Youtube, truyền hình, Ticket box,…), tối đa 1.200.000 VND. Hoàn 7% giao dịch chi tiêu làm đẹp (Thời trang, Spa, Gym,…), tối đa 300.000 VND. Hoàn tối đa 1.500.000 VND/kỳ xét thưởng.",
+          "Tổng chi tiêu/kỳ xét thưởng đạt dưới 30 triệu: Hoàn 7% giao dịch chi tiêu dịch vụ giải trí (Spotify, Netflix, BHD, CGV, Galaxy, Lotte Cinema, Youtube, truyền hình, Ticket box,…), tối đa 600.000 VND. Hoàn 3% giao dịch chi tiêu làm đẹp (Thời trang, Spa, Gym,…), tối đa 150.000 VND. Hoàn tối đa 700.000 VND/kỳ xét thưởng.",
+          "Ghi chú: Chủ thẻ cần chi tiêu hợp lệ từ 7 giao dịch/kỳ xét thưởng để được hoàn tiền. Kỳ xét thưởng được tính theo tháng dương lịch trong năm."
         ]
       }
     ]
