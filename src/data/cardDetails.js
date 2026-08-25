@@ -18,7 +18,6 @@ export const cardDetailsData = {
         title: "Ưu đãi mở thẻ",
         items: [
           "Hoàn 100% phí thường niên năm đầu khi chi tiêu tổng doanh số giao dịch hợp lệ đạt 1 triệu đồng trong 45 ngày đầu tiên mở thẻ.",
-          "Tặng 01 vali du lịch trị giá 1.500.000 VND khi khách hàng đạt doanh số từ 8.000.000 VND với tối thiểu 7 giao dịch hợp lệ trong vòng 30 ngày kể từ ngày kích hoạt thẻ thành công."
         ]
       },
       {
@@ -77,7 +76,6 @@ export const cardDetailsData = {
         title: "Ưu đãi mở thẻ",
         items: [
           "Hoàn 100% phí thường niên năm đầu khi chi tiêu tổng doanh số giao dịch hợp lệ đạt 3 triệu đồng trong 45 ngày đầu tiên mở thẻ.",
-          "Tặng 01 vali du lịch trị giá 1.500.000 VND khi khách hàng đạt doanh số từ 8.000.000 VND với tối thiểu 7 giao dịch hợp lệ trong vòng 30 ngày kể từ ngày kích hoạt thẻ thành công."
         ]
       },
       {
@@ -111,7 +109,6 @@ export const cardDetailsData = {
       {
         title: "Ưu đãi mở thẻ",
         items: [
-          "Tặng 01 vali du lịch trị giá 1.900.000 VND khi khách hàng đạt doanh số từ 10.000.000 VND với tối thiểu 7 giao dịch hợp lệ trong vòng 30 ngày kể từ ngày kích hoạt thẻ."
         ]
       },
       {
@@ -150,7 +147,6 @@ export const cardDetailsData = {
       {
         title: "Ưu đãi mở thẻ",
         items: [
-          "Tặng 01 vali du lịch trị giá 1.500.000 VND khi khách hàng đạt doanh số từ 8.000.000 VND với tối thiểu 7 giao dịch hợp lệ trong vòng 30 ngày kể từ ngày kích hoạt thẻ thành công."
         ]
       },
       {
