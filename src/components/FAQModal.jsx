@@ -104,6 +104,42 @@ export default function FAQModal({ isOpen, onClose }) {
           </ul>
         </div>
       )
+    },
+    {
+      question: "7. Tôi có mất phí, lãi gì khi đăng ký trả góp hay không?",
+      answer: (
+        <p className="text-steel leading-relaxed">
+          Quý khách có thể lựa chọn mua hàng trả góp tại các đối tác liên kết của OCB với lãi suất 0% hoặc mua hàng trả góp tại bất kỳ thương hiệu nào mà quý khách yêu thích với phí chuyển đổi trả góp chỉ từ 4% cho các kỳ hạn linh hoạt 3, 6, 9, 12 tháng.
+        </p>
+      )
+    },
+    {
+      question: "8. Thời gian miễn lãi của các thẻ tín dụng như thế nào?",
+      answer: (
+        <div className="text-steel leading-relaxed space-y-2">
+          <p>Thời gian miễn lãi tối đa của Thẻ tín dụng OCB lên đến 55 ngày:</p>
+          <ul className="list-disc pl-5 space-y-1">
+            <li>Đối với dòng tín dụng nội địa, thẻ hạng Standard/Gold: tối đa 45 ngày</li>
+            <li>Đối với dòng thẻ hạng Platinum, thẻ World: tối đa 55 ngày</li>
+          </ul>
+        </div>
+      )
+    },
+    {
+      question: "9. Nếu tôi thanh toán trễ so với thông báo của ngân hàng, tôi sẽ chịu các khoản phí/lãi gì?",
+      answer: (
+        <p className="text-steel leading-relaxed">
+          Nếu quý khách không thanh toán số dư nợ tối thiểu khi đến hạn, một khoản phí chậm thanh toán (quy định trong biểu phí thẻ tín dụng) sẽ được ghi nợ vào tài khoản thẻ tín dụng. Đồng thời lãi suất sẽ áp dụng trên tổng số dư nợ và các giao dịch mới phát sinh (nếu có). Riêng đối với các giao dịch rút tiền mặt, lãi suất sẽ được tính ngay tại thời điểm khách hàng thực hiện giao dịch rút tiền mặt bằng thẻ tín dụng.
+        </p>
+      )
+    },
+    {
+      question: "10. Tôi không kích hoạt thẻ thì có bị mất phí gì không?",
+      answer: (
+        <p className="text-steel leading-relaxed">
+          Theo thông tin từ ngân hàng, khi mở thẻ tín dụng nếu không kích hoạt thẻ thì quý khách vẫn bị tính phí thường niên. Việc kích hoạt thẻ là bước bảo mật do ngân hàng đặt ra để bảo vệ tài khoản tín dụng của quý khách. Khi không kích hoạt thẻ tín dụng, quý khách sẽ không thể quẹt thẻ khi thanh toán tại máy POS nhưng tài khoản tín dụng của quý khách vẫn đang trong trạng thái hoạt động.
+        </p>
+      )
     }
   ];
 
