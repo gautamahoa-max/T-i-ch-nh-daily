@@ -19,7 +19,7 @@ const cards = [
     name: "OCB Natural Credit",
     description: "Lan tỏa lối sống xanh cùng thẻ nội địa. Miễn phí rút tiền mặt mọi ATM trên toàn quốc.",
     image: imgNatural,
-    metrics: "Thẻ xanh NAPAS"
+    metrics: "Miễn phí khi rút tiền"
   },
   {
     id: 3,
