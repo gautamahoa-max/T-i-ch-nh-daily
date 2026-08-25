@@ -40,31 +40,76 @@ export default function FAQModal({ isOpen, onClose }) {
         </div>
         
         {/* Body */}
-        <div className="p-6 md:p-10 overflow-y-auto space-y-8 font-body">
+        <div className="p-6 md:p-10 overflow-y-auto space-y-10 font-body">
+          
+          {/* Q1 */}
           <div className="space-y-4">
-            <h3 className="text-xl font-bold text-accent">1. Điều kiện mở thẻ tín dụng OCB là gì?</h3>
-            <p className="text-steel leading-relaxed">
-              Vui lòng liên hệ nhân viên tư vấn để được hỗ trợ kiểm tra điều kiện cụ thể dựa trên thu nhập và lịch sử tín dụng của bạn.
-            </p>
+            <h3 className="text-xl font-bold text-accent">1. Thẻ tín dụng là gì? Hạn mức thẻ tín dụng là gì?</h3>
+            <div className="text-steel leading-relaxed space-y-2">
+              <p>
+                Thẻ tín dụng là một loại thẻ cho phép khách hàng sử dụng số tiền trong hạn mức đã thỏa thuận trước với ngân hàng mà không cần phải có số dư trong thẻ. Nói đơn giản, thì đây là loại thẻ giúp Khách hàng mua hàng trước và thanh toán lại sau cho ngân hàng.
+              </p>
+              <p>
+                Hạn mức thẻ tín dụng là hạn mức tối đa được ngân hàng cấp cho chủ thẻ. Ngân hàng phát hành sẽ xác định hạn mức bằng cách xem xét tình hình tài chính của Khách hàng tại thời điểm Khách hàng đăng ký Thẻ tín dụng.
+              </p>
+            </div>
           </div>
           
+          {/* Q2 */}
           <div className="space-y-4">
-            <h3 className="text-xl font-bold text-accent">2. Làm thế nào để kích hoạt thẻ?</h3>
+            <h3 className="text-xl font-bold text-accent">2. Thẻ tín dụng có rút được tiền tại máy ATM không?</h3>
             <p className="text-steel leading-relaxed">
-              Bạn có thể kích hoạt thẻ qua ứng dụng OCB OMNI, soạn tin nhắn SMS theo cú pháp quy định, hoặc gọi lên tổng đài OCB.
+              Thẻ tín dụng có thể rút tiền mặt tại máy ATM, khi đó Khách hàng sẽ phải trả thêm phí và bị tính lãi từ ngày rút tiền đến khi thanh toán hết nợ cho OCB. Khách hàng có thể tham khảo biểu phí trước khi thực hiện giao dịch.
             </p>
           </div>
 
+          {/* Q3 */}
           <div className="space-y-4">
-            <h3 className="text-xl font-bold text-accent">3. Thẻ OCB có được miễn phí thường niên không?</h3>
+            <h3 className="text-xl font-bold text-accent">3. Tôi muốn nâng hạn mức Thẻ tín dụng thì phải làm sao?</h3>
             <p className="text-steel leading-relaxed">
-              Tùy thuộc vào từng dòng thẻ và chương trình ưu đãi tại thời điểm mở thẻ. Một số thẻ sẽ được miễn phí thường niên năm đầu hoặc miễn phí khi đạt điều kiện chi tiêu.
+              Sau thời gian sử dụng Thẻ tín dụng từ 06 tháng trở lên, căn cứ vào lịch sử giao dịch và lịch sử thanh toán OCB sẽ xem xét nâng hạn mức tự động. Hoặc sau khi thẻ được sử dụng tối thiểu 03 tháng, Chủ thẻ liên hệ Mr.Hoà OCB - 098.888.6447 để được hỗ trợ tư vấn hồ sơ xét duyệt nâng hạn mức.
             </p>
           </div>
           
-          <p className="text-sm text-steel italic mt-8 border-t border-whisper pt-4">
-            * Nội dung đang được cập nhật thêm. Bạn có thể cung cấp thêm các câu hỏi và câu trả lời.
-          </p>
+          {/* Q4 */}
+          <div className="space-y-4">
+            <h3 className="text-xl font-bold text-accent">4. Số tiền thanh toán tối thiểu tính như thế nào?</h3>
+            <div className="text-steel leading-relaxed space-y-2">
+              <ul className="list-disc pl-5 space-y-1">
+                <li>Khoản trả góp hàng tháng (nếu có); và</li>
+                <li>Nợ quá hạn và/hoặc khoản vượt hạn mức tín dụng (nếu có); và</li>
+                <li>Từ 1% đến 15% của số dư nợ cuối kỳ còn lại (*)</li>
+              </ul>
+              <p className="text-sm italic">
+                (*) Hoặc theo tỷ lệ khác do OCB thông báo đến từng Chủ Thẻ qua email hoặc qua bất kỳ hình thức nào mà OCB cho là phù hợp tùy theo từng loại sản phẩm thẻ khác nhau theo từng thời kỳ.
+              </p>
+            </div>
+          </div>
+
+          {/* Q5 */}
+          <div className="space-y-4">
+            <h3 className="text-xl font-bold text-accent">5. Cách tính lãi thẻ tín dụng như thế nào?</h3>
+            <div className="text-steel leading-relaxed space-y-3">
+              <p>
+                Các giao dịch rút tiền mặt sẽ bị tính lãi từ ngày các giao dịch được thực hiện cho đến khi khoản rút tiền mặt này được trả đầy đủ theo quy định tại Biểu phí dịch vụ và lãi suất Thẻ của OCB tại từng thời kỳ.
+              </p>
+              <p>
+                Các giao dịch trả góp khi tất toán trước hạn sẽ tính lãi từ ngày tất toán trước hạn cho đến ngày khoản dư nợ của giao dịch trả góp này được trả đầy đủ, lãi suất áp dụng theo quy định tại Biểu phí dịch vụ và lãi suất Thẻ của OCB tại từng thời kỳ.
+              </p>
+              <p className="font-semibold text-ink">Các giao dịch thanh toán tiền hàng hóa, dịch vụ:</p>
+              <p>
+                Nếu OCB nhận được toàn bộ khoản thanh toán cho Dư Nợ Cuối Kỳ vào hoặc trước Ngày Đến Hạn Thanh Toán, OCB sẽ:
+              </p>
+              <ul className="list-disc pl-5 space-y-1">
+                <li>(i) không tính lãi với phần Dư Nợ Cuối Kỳ phát sinh mới trong kỳ sao kê hiện tại và</li>
+                <li>(ii) tính lãi cho phần Dư Nợ Cuối Kỳ được kết chuyển từ những kỳ sao kê trước, nếu có (bằng tổng số dư của các giao dịch từ những kỳ sao kê trước chưa được thanh toán kết chuyển sang), được tính tiếp tục từ ngày chốt sao kê đến ngày thanh toán (các) giao dịch, theo mức lãi suất quy định tại Biểu phí dịch vụ và lãi suất Thẻ của OCB tại từng thời kỳ.</li>
+              </ul>
+              <p>
+                Nếu OCB không nhận được toàn bộ khoản thanh toán cho Dư Nợ Cuối Kỳ vào hoặc trước Ngày Đến Hạn Thanh Toán thì OCB sẽ tính lãi đối với toàn bộ số Dư Nợ Cuối Kỳ và toàn bộ các dư nợ mới phát sinh trong kỳ, được tính từ ngày (các) giao dịch được thực hiện đến ngày thanh toán (các) giao dịch đó, theo mức lãi suất quy định tại Biểu phí dịch vụ và lãi suất Thẻ của OCB tại từng thời kỳ.
+              </p>
+            </div>
+          </div>
+          
         </div>
         
       </div>
