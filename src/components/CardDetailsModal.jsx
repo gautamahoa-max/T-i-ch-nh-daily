@@ -30,7 +30,7 @@ export default function CardDetailsModal({ card, isOpen, onClose }) {
         
         {/* Header */}
         <div className="flex items-center justify-between px-6 py-4 border-b border-whisper bg-surface">
-          <h2 className="text-2xl font-display font-bold text-ink">{card.name}</h2>
+          <h2 className="text-2xl font-display font-bold text-ink">{card.name.toUpperCase()}</h2>
           <button 
             onClick={onClose}
             className="p-2 text-steel hover:text-ink transition-colors bg-canvas hover:bg-whisper rounded-full"

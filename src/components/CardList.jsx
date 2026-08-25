@@ -108,7 +108,7 @@ export default function CardList() {
                     </div>
                     
                     <h3 className="text-3xl md:text-4xl font-display font-bold mb-4 flex items-center gap-3 flex-wrap leading-tight">
-                      <span>{card.name}</span>
+                      <span>{card.name.toUpperCase()}</span>
                       {card.isHot && (
                         <span className="inline-flex items-center justify-center px-2.5 py-1 bg-[#FF3B30] text-white text-xs md:text-sm font-bold rounded shadow-sm align-middle tracking-wider transform -translate-y-0.5 animate-pulse">
                           HOT
