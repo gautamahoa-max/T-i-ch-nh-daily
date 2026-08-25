@@ -33,7 +33,7 @@ const cards = [
     name: "MASTERCARD WORLD 2IN1",
     description: "Hợp nhất công năng. Nền tảng thẻ kép đột phá cho trải nghiệm tài chính không biên giới.",
     image: imgWorld,
-    metrics: "Thẻ 2-trong-1"
+    metrics: "THẺ TÍCH HỢP QUYỀN LỰC DÀNH CHO PHÂN KHÚC KHÁCH HÀNG CAO CẤP"
   },
   {
     id: 5,
