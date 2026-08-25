@@ -4,20 +4,20 @@ export const cardDetailsData = {
       {
         title: "Phí thường niên",
         items: [
-          "Thẻ chính: 399.000 VND",
+          "Thẻ chính: 999.000 VND",
           "Thẻ phụ: Miễn phí (đối với thẻ phát hành từ 01/01/2025 trở đi)"
         ]
       },
       {
         title: "Hạn mức giao dịch/ngày",
         items: [
-          "200 triệu đồng"
+          "500 triệu đồng"
         ]
       },
       {
         title: "Ưu đãi mở thẻ",
         items: [
-          "Hoàn 100% phí thường niên năm đầu khi chi tiêu tổng doanh số giao dịch hợp lệ đạt 1 triệu đồng trong 45 ngày đầu tiên mở thẻ.",
+          "Hoàn 100% phí thường niên năm đầu khi chi tiêu tổng doanh số giao dịch hợp lệ đạt 3 triệu đồng trong 45 ngày đầu tiên mở thẻ.",
         ]
       },
       {
@@ -107,11 +107,6 @@ export const cardDetailsData = {
         ]
       },
       {
-        title: "Ưu đãi mở thẻ",
-        items: [
-        ]
-      },
-      {
         title: "Ưu đãi hoàn tiền",
         items: [
           "Thẻ tín dụng (Hoàn đến 5.000.000 VND/kỳ): Hoàn 10% Ẩm thực, Hoàn 5% Du lịch (tối đa 500k), Hoàn 0,3% chi tiêu khác. Điều kiện: Chi tiêu tối thiểu 20.000.000 VNĐ/kỳ.",
@@ -145,11 +140,6 @@ export const cardDetailsData = {
         ]
       },
       {
-        title: "Ưu đãi mở thẻ",
-        items: [
-        ]
-      },
-      {
         title: "Ưu đãi hoàn tiền",
         items: [
           "Hoàn tiền đa lĩnh vực tối đa đến 12.000.000 VND/năm.",
@@ -160,8 +150,7 @@ export const cardDetailsData = {
         ]
       }
     ]
-  }
-,
+  },
   6: { // MASTERCARD PLATINUM
     sections: [
       {
