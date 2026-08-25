@@ -13,7 +13,8 @@ const cards = [
     name: "OCB Mastercard Lifestyle",
     description: "Định hình phong cách trẻ. Tối đa hóa hoàn tiền cho mọi giao dịch giải trí và du lịch.",
     image: imgLifestyle,
-    metrics: "Dòng thẻ dành riêng cho giới trẻ"
+    metrics: "Dòng thẻ dành riêng cho giới trẻ",
+    isHot: true
   },
   {
     id: 3,
@@ -27,7 +28,8 @@ const cards = [
     name: "OCB MASTERCARD WORLD 2IN1",
     description: "Hợp nhất công năng. Nền tảng thẻ kép đột phá cho trải nghiệm tài chính không biên giới.",
     image: imgWorld,
-    metrics: "THẺ TÍCH HỢP QUYỀN LỰC DÀNH CHO PHÂN KHÚC KHÁCH HÀNG CAO CẤP"
+    metrics: "THẺ TÍCH HỢP QUYỀN LỰC DÀNH CHO PHÂN KHÚC KHÁCH HÀNG CAO CẤP",
+    isHot: true
   },
   {
     id: 5,
@@ -41,7 +43,8 @@ const cards = [
     name: "OCB MASTERCARD PLATINUM",
     description: "Khẳng định dấu ấn cá nhân. Đặc quyền hoàn tiền mua sắm công nghệ và làm đẹp đẳng cấp.",
     image: imgPlatinum,
-    metrics: "Dòng thẻ dành riêng cho tín đồ công nghệ, làm đẹp"
+    metrics: "Dòng thẻ dành riêng cho tín đồ công nghệ, làm đẹp",
+    isHot: true
   },
   {
     id: 2,
@@ -82,8 +85,6 @@ export default function CardList() {
           <div className="flex flex-col gap-20 md:gap-32">
             {cards.map((card, index) => {
               const isEven = index % 2 === 1;
-              const [prefix, ...rest] = card.name.split(' ');
-              const suffix = rest.join(' ');
               return (
                 <div key={card.id} className={`flex flex-col ${isEven ? 'md:flex-row-reverse' : 'md:flex-row'} items-center gap-10 md:gap-20`}>
                   
@@ -107,11 +108,12 @@ export default function CardList() {
                     </div>
                     
                     <h3 className="text-3xl md:text-4xl font-display font-bold mb-4 flex items-center gap-3 flex-wrap leading-tight">
-                      <span>{prefix}</span>
-                      <span className="inline-flex items-center justify-center px-2.5 py-1 bg-[#FF3B30] text-white text-xs md:text-sm font-bold rounded shadow-sm align-middle tracking-wider transform -translate-y-0.5">
-                        HOT
-                      </span>
-                      <span>{suffix}</span>
+                      <span>{card.name}</span>
+                      {card.isHot && (
+                        <span className="inline-flex items-center justify-center px-2.5 py-1 bg-[#FF3B30] text-white text-xs md:text-sm font-bold rounded shadow-sm align-middle tracking-wider transform -translate-y-0.5">
+                          HOT
+                        </span>
+                      )}
                     </h3>
                     
                     <p className="font-body text-steel text-lg leading-relaxed mb-8 max-w-md mt-2">
