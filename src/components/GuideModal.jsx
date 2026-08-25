@@ -48,7 +48,7 @@ export default function GuideModal({ isOpen, onClose }) {
           <section className="space-y-6">
             <h3 className="text-xl font-display font-bold text-accent border-l-4 border-accent pl-3 uppercase tracking-wide">CÁCH 1: MỞ THẺ ONLINE</h3>
             
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+            <div className="flex flex-col gap-10 mb-10 max-w-2xl mx-auto">
               {/* Video 1 */}
               <div>
                 <h4 className="font-bold text-ink font-body mb-3">Hướng dẫn mở thẻ (Chung)</h4>
