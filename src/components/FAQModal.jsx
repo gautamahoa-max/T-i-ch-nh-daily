@@ -37,7 +37,21 @@ export default function FAQModal({ isOpen, onClose }) {
       )
     },
     {
-      question: "2. Thẻ tín dụng có rút được tiền tại máy ATM không?",
+      question: "2. Điều kiện mở thẻ tín dụng OCB?",
+      answer: (
+        <div className="text-steel leading-relaxed space-y-2">
+          <p>Khách hàng mở thẻ tín dụng OCB cần đáp ứng các điều kiện sau đây:</p>
+          <ul className="list-disc pl-5 space-y-1">
+            <li><span className="font-semibold text-ink">Quốc tịch:</span> Người Việt Nam</li>
+            <li><span className="font-semibold text-ink">Địa chỉ cư trú/làm việc:</span> Tại các tỉnh/thành phố có Chi nhánh/Phòng giao dịch của OCB</li>
+            <li><span className="font-semibold text-ink">Độ tuổi:</span> Chủ thẻ chính từ đủ 20 tuổi đến 65 tuổi; Chủ thẻ phụ từ đủ 15 tuổi trở lên</li>
+            <li><span className="font-semibold text-ink">Các yêu cầu khác:</span> Theo quy định của OCB từng thời kỳ.</li>
+          </ul>
+        </div>
+      )
+    },
+    {
+      question: "3. Thẻ tín dụng có rút được tiền tại máy ATM không?",
       answer: (
         <p className="text-steel leading-relaxed">
           Thẻ tín dụng có thể rút tiền mặt tại máy ATM, khi đó Khách hàng sẽ phải trả thêm phí và bị tính lãi từ ngày rút tiền đến khi thanh toán hết nợ cho OCB. Khách hàng có thể tham khảo biểu phí trước khi thực hiện giao dịch.
@@ -45,39 +59,40 @@ export default function FAQModal({ isOpen, onClose }) {
       )
     },
     {
-      question: "3. Tôi muốn nâng hạn mức Thẻ tín dụng thì phải làm sao?",
+      question: "4. Tôi muốn nâng hạn mức Thẻ tín dụng thì phải làm sao?",
       answer: (
         <p className="text-steel leading-relaxed">
-          Sau thời gian sử dụng Thẻ tín dụng từ 06 tháng trở lên, căn cứ vào lịch sử giao dịch và lịch sử thanh toán OCB sẽ xem xét nâng hạn mức tự động. Hoặc sau khi thẻ được sử dụng tối thiểu 03 tháng, Chủ thẻ liên hệ Mr.Hoà OCB - 098.888.6447 để được hỗ trợ tư vấn hồ sơ xét duyệt nâng hạn mức.
+          Để nâng hạn mức Thẻ tín dụng Khách hàng có thể liện hệ Mr. Hoà OCB - 098.888.6447 để được tư vấn nâng hạn mức Thẻ.
         </p>
       )
     },
     {
-      question: "4. Số tiền thanh toán tối thiểu tính như thế nào?",
+      question: "5. Số tiền thanh toán tối thiểu của Thẻ tín dụng được tính như thế nào?",
       answer: (
-        <div className="text-steel leading-relaxed space-y-2">
-          <ul className="list-disc pl-5 space-y-1">
-            <li>Khoản trả góp hàng tháng (nếu có); và</li>
-            <li>Nợ quá hạn và/hoặc khoản vượt hạn mức tín dụng (nếu có); và</li>
-            <li>Từ 1% đến 15% của số dư nợ cuối kỳ còn lại (*)</li>
-          </ul>
-          <p className="text-sm italic">
-            (*) Hoặc theo tỷ lệ khác do OCB thông báo đến từng Chủ Thẻ qua email hoặc qua bất kỳ hình thức nào mà OCB cho là phù hợp tùy theo từng loại sản phẩm thẻ khác nhau theo từng thời kỳ.
-          </p>
-        </div>
+        <p className="text-steel leading-relaxed">
+          Số tiền thanh toán tối thiểu bằng 5% dư nợ cuối kỳ hoặc 50.000 VNĐ (Tùy số nào lớn hơn).
+        </p>
       )
     },
     {
-      question: "5. Cách tính lãi thẻ tín dụng như thế nào?",
+      question: "6. Lãi suất sẽ được tính như thế nào?",
       answer: (
-        <div className="text-steel leading-relaxed space-y-3">
+        <div className="text-steel leading-relaxed space-y-2">
+          <p className="font-semibold text-ink">Các giao dịch rút tiền mặt:</p>
           <p>
-            Các giao dịch rút tiền mặt sẽ bị tính lãi từ ngày các giao dịch được thực hiện cho đến khi khoản rút tiền mặt này được trả đầy đủ theo quy định tại Biểu phí dịch vụ và lãi suất Thẻ của OCB tại từng thời kỳ.
+            Các giao dịch rút tiền mặt sẽ bị tính phí rút tiền mặt và bị tính lãi kể từ ngày giao dịch được thực hiện cho đến ngày khoản dư nợ của giao dịch rút tiền mặt này được trả đầy đủ, mức phí và lãi suất áp dụng theo quy định tại Biểu phí dịch vụ và lãi suất Thẻ của OCB tại từng thời kỳ.
+          </p>
+          <p className="font-semibold text-ink mt-4">Các giao dịch trả góp:</p>
+          <p>
+            Trường hợp Khách hàng trả nợ theo đúng kế hoạch trả góp đã thỏa thuận: Giao dịch trả góp sẽ không bị tính lãi suất.
+          </p>
+          <p>
+            Nếu Khách hàng không thanh toán toàn bộ Số Tiền Chậm Thanh Toán (Bao gồm số tiền trả góp hàng kỳ) vào hoặc trước Ngày Đến Hạn Thanh Toán, OCB sẽ tính lãi chậm thanh toán với phần giao dịch trả góp chưa thanh toán đúng hạn. Lãi suất sẽ được tính từ ngày thực hiện giao dịch trả góp đến ngày thanh toán (các) giao dịch đó, theo mức lãi suất quy định tại Biểu phí dịch vụ và lãi suất Thẻ của OCB tại từng thời kỳ.
           </p>
           <p>
             Các giao dịch trả góp khi tất toán trước hạn sẽ tính lãi từ ngày tất toán trước hạn cho đến ngày khoản dư nợ của giao dịch trả góp này được trả đầy đủ, lãi suất áp dụng theo quy định tại Biểu phí dịch vụ và lãi suất Thẻ của OCB tại từng thời kỳ.
           </p>
-          <p className="font-semibold text-ink">Các giao dịch thanh toán tiền hàng hóa, dịch vụ:</p>
+          <p className="font-semibold text-ink mt-4">Các giao dịch thanh toán tiền hàng hóa, dịch vụ:</p>
           <p>
             Nếu OCB nhận được toàn bộ khoản thanh toán cho Dư Nợ Cuối Kỳ vào hoặc trước Ngày Đến Hạn Thanh Toán, OCB sẽ:
           </p>
@@ -92,7 +107,7 @@ export default function FAQModal({ isOpen, onClose }) {
       )
     },
     {
-      question: "6. Tiền chuyển vào thẻ tín dụng sẽ có thứ tự thanh toán như thế nào?",
+      question: "7. Tiền chuyển vào thẻ tín dụng sẽ có thứ tự thanh toán như thế nào?",
       answer: (
         <div className="text-steel leading-relaxed space-y-2">
           <p>Số dư nợ sẽ được thanh toán theo thứ tự thời gian các giao dịch, phí, lãi được ghi nợ vào tài khoản thẻ và theo thứ tự ưu tiên dưới đây:</p>
@@ -106,7 +121,7 @@ export default function FAQModal({ isOpen, onClose }) {
       )
     },
     {
-      question: "7. Tôi có mất phí, lãi gì khi đăng ký trả góp hay không?",
+      question: "8. Tôi có mất phí, lãi gì khi đăng ký trả góp hay không?",
       answer: (
         <p className="text-steel leading-relaxed">
           Quý khách có thể lựa chọn mua hàng trả góp tại các đối tác liên kết của OCB với lãi suất 0% hoặc mua hàng trả góp tại bất kỳ thương hiệu nào mà quý khách yêu thích với phí chuyển đổi trả góp chỉ từ 4% cho các kỳ hạn linh hoạt 3, 6, 9, 12 tháng.
@@ -114,7 +129,7 @@ export default function FAQModal({ isOpen, onClose }) {
       )
     },
     {
-      question: "8. Thời gian miễn lãi của các thẻ tín dụng như thế nào?",
+      question: "9. Thời gian miễn lãi của các thẻ tín dụng như thế nào?",
       answer: (
         <div className="text-steel leading-relaxed space-y-2">
           <p>Thời gian miễn lãi tối đa của Thẻ tín dụng OCB lên đến 55 ngày:</p>
@@ -126,7 +141,7 @@ export default function FAQModal({ isOpen, onClose }) {
       )
     },
     {
-      question: "9. Nếu tôi thanh toán trễ so với thông báo của ngân hàng, tôi sẽ chịu các khoản phí/lãi gì?",
+      question: "10. Nếu tôi thanh toán trễ so với thông báo của ngân hàng, tôi sẽ chịu các khoản phí/lãi gì?",
       answer: (
         <p className="text-steel leading-relaxed">
           Nếu quý khách không thanh toán số dư nợ tối thiểu khi đến hạn, một khoản phí chậm thanh toán (quy định trong biểu phí thẻ tín dụng) sẽ được ghi nợ vào tài khoản thẻ tín dụng. Đồng thời lãi suất sẽ áp dụng trên tổng số dư nợ và các giao dịch mới phát sinh (nếu có). Riêng đối với các giao dịch rút tiền mặt, lãi suất sẽ được tính ngay tại thời điểm khách hàng thực hiện giao dịch rút tiền mặt bằng thẻ tín dụng.
@@ -134,25 +149,11 @@ export default function FAQModal({ isOpen, onClose }) {
       )
     },
     {
-      question: "10. Tôi không kích hoạt thẻ thì có bị mất phí gì không?",
+      question: "11. Tôi không kích hoạt thẻ thì có bị mất phí gì không?",
       answer: (
         <p className="text-steel leading-relaxed">
           Theo thông tin từ ngân hàng, khi mở thẻ tín dụng nếu không kích hoạt thẻ thì quý khách vẫn bị tính phí thường niên. Việc kích hoạt thẻ là bước bảo mật do ngân hàng đặt ra để bảo vệ tài khoản tín dụng của quý khách. Khi không kích hoạt thẻ tín dụng, quý khách sẽ không thể quẹt thẻ khi thanh toán tại máy POS nhưng tài khoản tín dụng của quý khách vẫn đang trong trạng thái hoạt động.
         </p>
-      )
-    },
-    {
-      question: "11. Điều kiện mở thẻ tín dụng OCB?",
-      answer: (
-        <div className="text-steel leading-relaxed space-y-2">
-          <p>Khách hàng mở thẻ tín dụng OCB cần đáp ứng các điều kiện sau đây:</p>
-          <ul className="list-disc pl-5 space-y-1">
-            <li><span className="font-semibold text-ink">Quốc tịch:</span> Người Việt Nam</li>
-            <li><span className="font-semibold text-ink">Địa chỉ cư trú/làm việc:</span> Tại các tỉnh/thành phố có Chi nhánh/Phòng giao dịch của OCB</li>
-            <li><span className="font-semibold text-ink">Độ tuổi:</span> Chủ thẻ chính từ đủ 20 tuổi đến 65 tuổi; Chủ thẻ phụ từ đủ 15 tuổi trở lên</li>
-            <li><span className="font-semibold text-ink">Các yêu cầu khác:</span> Theo quy định của OCB từng thời kỳ.</li>
-          </ul>
-        </div>
       )
     }
   ];
