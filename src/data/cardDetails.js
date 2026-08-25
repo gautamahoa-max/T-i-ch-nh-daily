@@ -66,23 +66,21 @@ export const cardDetailsData = {
         ]
       },
       {
-        title: "Hạn mức giao dịch/ngày",
+        title: "Hạn mức giao dịch/ ngày",
         items: [
           "500 triệu đồng"
         ]
       },
       {
-        title: "Ưu đãi mở thẻ",
+        title: "Ưu đãi nổi bật",
         items: [
+          "1. Ưu đãi mở thẻ (*):",
           "Hoàn 100% phí thường niên năm đầu khi chi tiêu tổng doanh số giao dịch hợp lệ đạt 3 triệu đồng trong 45 ngày đầu tiên mở thẻ.",
-        ]
-      },
-      {
-        title: "Ưu đãi hoàn tiền (Tối đa đến 18.000.000 VND/ năm)",
-        items: [
-          "Tổng chi tiêu đạt từ 30 triệu/kỳ: Hoàn 15% y tế/sức khỏe (tối đa 300.000 VND), Hoàn 15% bảo hiểm (tối đa 300.000 VND), Hoàn 0.1% giao dịch khác.",
-          "Tổng chi tiêu đạt dưới 30 triệu/kỳ: Hoàn 7% y tế/sức khỏe (tối đa 150.000 VND), Hoàn 7% bảo hiểm (tối đa 150.000 VND), Hoàn 0.1% giao dịch khác.",
-          "Điều kiện: Chi tiêu hợp lệ từ 7 giao dịch/kỳ xét thưởng để được hoàn tiền."
+          "2. Ưu đãi áp dụng cho tất cả chủ thẻ (*):",
+          "Hoàn tiền đa lĩnh vực tối đa đến 18.000.000 VND/ năm, trong đó:",
+          "Tổng chi tiêu/kỳ xét thưởng đạt từ 30 triệu trở lên: Hoàn 15% giao dịch chi tiêu liên quan đến sức khỏe (Bệnh viện, phòng khám, nhà thuốc,…), tối đa 300.000 VND. Hoàn 15% giao dịch chi tiêu liên quan đến bảo hiểm, tối đa 300.000 VND. Hoàn 0.1% cho tất cả giao dịch hợp lệ còn lại.",
+          "Tổng chi tiêu/kỳ xét thưởng đạt dưới 30 triệu: Hoàn 7% giao dịch chi tiêu liên quan đến sức khỏe (Bệnh viện, phòng khám, nhà thuốc,…), tối đa 150.000 VND. Hoàn 7% giao dịch chi tiêu liên quan đến bảo hiểm, tối đa 150.000 VND. Hoàn 0.1% cho tất cả giao dịch hợp lệ còn lại.",
+          "Ghi chú: Chủ thẻ cần chi tiêu hợp lệ từ 7 giao dịch/ kỳ xét thưởng để được hoàn tiền. Kỳ xét thưởng được tính theo tháng dương lịch trong năm."
         ]
       }
     ]
