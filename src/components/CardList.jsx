@@ -16,13 +16,6 @@ const cards = [
     metrics: "Hoàn tiền 15%"
   },
   {
-    id: 2,
-    name: "OCB Natural Credit",
-    description: "Lan tỏa lối sống xanh cùng thẻ nội địa. Miễn phí rút tiền mặt mọi ATM trên toàn quốc.",
-    image: imgNatural,
-    metrics: "Miễn phí khi rút tiền"
-  },
-  {
     id: 3,
     name: "JCB Platinum",
     description: "Đặc quyền ẩm thực và sân bay. Mở khóa lối sống tinh hoa mang đậm phong vị Nhật Bản.",
@@ -49,6 +42,13 @@ const cards = [
     description: "Khẳng định dấu ấn cá nhân. Đặc quyền hoàn tiền mua sắm công nghệ và làm đẹp đẳng cấp.",
     image: imgPlatinum,
     metrics: "Hoàn tiền 15% mua sắm"
+  },
+  {
+    id: 2,
+    name: "OCB Natural Credit",
+    description: "Lan tỏa lối sống xanh cùng thẻ nội địa. Miễn phí rút tiền mặt mọi ATM trên toàn quốc.",
+    image: imgNatural,
+    metrics: "Miễn phí khi rút tiền"
   }
 ];
 
