@@ -140,6 +140,20 @@ export default function FAQModal({ isOpen, onClose }) {
           Theo thông tin từ ngân hàng, khi mở thẻ tín dụng nếu không kích hoạt thẻ thì quý khách vẫn bị tính phí thường niên. Việc kích hoạt thẻ là bước bảo mật do ngân hàng đặt ra để bảo vệ tài khoản tín dụng của quý khách. Khi không kích hoạt thẻ tín dụng, quý khách sẽ không thể quẹt thẻ khi thanh toán tại máy POS nhưng tài khoản tín dụng của quý khách vẫn đang trong trạng thái hoạt động.
         </p>
       )
+    },
+    {
+      question: "11. Điều kiện mở thẻ tín dụng OCB?",
+      answer: (
+        <div className="text-steel leading-relaxed space-y-2">
+          <p>Khách hàng mở thẻ tín dụng OCB cần đáp ứng các điều kiện sau đây:</p>
+          <ul className="list-disc pl-5 space-y-1">
+            <li><span className="font-semibold text-ink">Quốc tịch:</span> Người Việt Nam</li>
+            <li><span className="font-semibold text-ink">Địa chỉ cư trú/làm việc:</span> Tại các tỉnh/thành phố có Chi nhánh/Phòng giao dịch của OCB</li>
+            <li><span className="font-semibold text-ink">Độ tuổi:</span> Chủ thẻ chính từ đủ 20 tuổi đến 65 tuổi; Chủ thẻ phụ từ đủ 15 tuổi trở lên</li>
+            <li><span className="font-semibold text-ink">Các yêu cầu khác:</span> Theo quy định của OCB từng thời kỳ.</li>
+          </ul>
+        </div>
+      )
     }
   ];
 
