@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { cardDetailsData } from '../data/cardDetails';
-import { partnerOffers, cardNetworkMap } from '../data/partnerOffers';
+import { cardNetworkMap } from '../data/partnerOffers';
+import { partnerCategories, specialOffers } from '../data/detailedPartnerOffers';
 
 // Simple SVG logos for the networks
 const NetworkLogos = {
@@ -33,7 +34,6 @@ const NetworkLogos = {
 
 export default function CardDetailsModal({ card, isOpen, onClose }) {
   const [showPartnerModal, setShowPartnerModal] = useState(false);
-  const [partnerData, setPartnerData] = useState(null);
 
   useEffect(() => {
     if (isOpen) {
@@ -52,10 +52,7 @@ export default function CardDetailsModal({ card, isOpen, onClose }) {
   const network = cardNetworkMap[card.id];
   
   const handlePartnerClick = () => {
-    if (network && partnerOffers[network]) {
-      setPartnerData(partnerOffers[network]);
-      setShowPartnerModal(true);
-    }
+    setShowPartnerModal(true);
   };
 
   const closePartnerModal = (e) => {
@@ -103,11 +100,11 @@ export default function CardDetailsModal({ card, isOpen, onClose }) {
               {/* Partner Logo */}
               {network && (
                 <div 
-                  className="w-full bg-surface border border-whisper p-4 rounded-xl flex flex-col items-center justify-center gap-3 cursor-pointer hover:shadow-md transition-shadow group"
+                  className="w-full bg-surface border border-whisper p-4 rounded-xl flex flex-col items-center justify-center gap-3 cursor-pointer hover:shadow-md hover:border-accent transition-all group"
                   onClick={handlePartnerClick}
                 >
-                  <p className="text-xs font-bold text-steel uppercase tracking-wider group-hover:text-accent transition-colors">Xem ưu đãi đối tác</p>
-                  <div className="opacity-80 group-hover:opacity-100 transition-opacity">
+                  <p className="text-xs font-bold text-steel uppercase tracking-wider group-hover:text-accent transition-colors">Xem chi tiết ưu đãi đối tác</p>
+                  <div className="opacity-80 group-hover:opacity-100 group-hover:scale-105 transition-all">
                     {network === 'mastercard' && <NetworkLogos.mastercard />}
                     {network === 'jcb' && <NetworkLogos.jcb />}
                     {network === 'napas' && <NetworkLogos.napas />}
@@ -142,15 +139,18 @@ export default function CardDetailsModal({ card, isOpen, onClose }) {
       </div>
 
       {/* Partner Offers Sub-Modal */}
-      {showPartnerModal && partnerData && (
+      {showPartnerModal && (
         <div className="fixed inset-0 z-[110] flex items-center justify-center p-4 sm:p-6 md:p-12">
           <div 
             className="absolute inset-0 bg-ink/60 backdrop-blur-sm transition-opacity duration-300"
             onClick={closePartnerModal}
           ></div>
-          <div className="relative bg-canvas w-full max-w-2xl max-h-full rounded-sm shadow-2xl overflow-hidden flex flex-col animate-in slide-in-from-bottom-10 duration-300">
+          <div className="relative bg-canvas w-full max-w-4xl max-h-full rounded-sm shadow-2xl overflow-hidden flex flex-col animate-in slide-in-from-bottom-10 duration-300">
             <div className="flex items-center justify-between px-6 py-4 border-b border-whisper bg-surface sticky top-0 z-10">
-              <h2 className="text-xl font-display font-bold text-accent">{partnerData.title}</h2>
+              <div>
+                <h2 className="text-xl md:text-2xl font-display font-bold text-accent">Hệ sinh thái ưu đãi đối tác</h2>
+                <p className="text-sm text-steel font-body mt-1">Cập nhật ngày: 25/08/2026</p>
+              </div>
               <button 
                 onClick={closePartnerModal}
                 className="p-2 text-steel hover:text-ink transition-colors bg-canvas hover:bg-whisper rounded-full"
@@ -162,28 +162,76 @@ export default function CardDetailsModal({ card, isOpen, onClose }) {
               </button>
             </div>
             
-            <div className="p-6 md:p-8 overflow-y-auto">
-              <p className="text-ink font-body mb-6 text-sm md:text-base leading-relaxed bg-surface p-4 rounded-lg border border-whisper">
-                {partnerData.description}
-              </p>
+            <div className="p-6 md:p-8 overflow-y-auto font-body space-y-10">
               
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                {partnerData.offers.map((item, idx) => (
-                  <div key={idx} className="border border-whisper p-4 rounded-lg hover:border-accent hover:shadow-sm transition-all bg-canvas">
-                    <h4 className="font-bold text-ink mb-1">{item.name}</h4>
-                    <p className="text-sm text-steel">{item.offer}</p>
-                  </div>
-                ))}
-              </div>
-              
-              {partnerData.note && (
-                <div className="mt-8 p-4 bg-accent/10 border-l-4 border-accent rounded-r-lg">
-                  <p className="text-sm font-body text-ink">
-                    <span className="font-bold text-accent">Lưu ý: </span>
-                    {partnerData.note}
-                  </p>
+              {/* Special Offers Section */}
+              <section>
+                <h3 className="text-xl font-display font-bold text-ink border-b-2 border-accent pb-2 mb-6 inline-block">Ưu đãi đặc biệt theo dòng thẻ</h3>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  {specialOffers.map((card, idx) => (
+                    <div key={idx} className="bg-surface p-4 rounded-xl border border-whisper">
+                      <h4 className="font-bold text-accent mb-2">{card.card}</h4>
+                      <ul className="space-y-1">
+                        {card.offers.map((offer, i) => (
+                          <li key={i} className="text-sm text-steel flex items-start">
+                            <span className="text-accent mr-2">✓</span> {offer}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  ))}
                 </div>
-              )}
+              </section>
+
+              {/* General Partner Categories */}
+              {partnerCategories.map((category, idx) => (
+                <section key={idx}>
+                  <h3 className="text-lg md:text-xl font-display font-bold text-ink mb-4">{category.title}</h3>
+                  {category.note && (
+                    <div className="mb-4 p-3 bg-accent/5 border-l-4 border-accent rounded-r-lg">
+                      <p className="text-sm text-ink">{category.note}</p>
+                    </div>
+                  )}
+                  
+                  <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                    {category.partners.map((partner, pIdx) => (
+                      <div key={pIdx} className="bg-canvas border border-whisper rounded-xl overflow-hidden">
+                        <div className="bg-surface px-4 py-2 border-b border-whisper">
+                          <h4 className="font-bold text-ink">{partner.name}</h4>
+                        </div>
+                        <div className="p-0">
+                          <table className="w-full text-left text-sm">
+                            <thead className="bg-whisper/30 text-steel">
+                              <tr>
+                                <th className="px-4 py-2 font-medium">Chi tiết</th>
+                                <th className="px-4 py-2 font-medium">Ưu đãi</th>
+                                <th className="px-4 py-2 font-medium">Điều kiện</th>
+                              </tr>
+                            </thead>
+                            <tbody className="divide-y divide-whisper">
+                              {partner.offers.map((offer, oIdx) => (
+                                <tr key={oIdx} className="hover:bg-surface/50 transition-colors">
+                                  <td className="px-4 py-3 text-ink">{offer.text}</td>
+                                  <td className="px-4 py-3 text-accent font-bold">{offer.discount}</td>
+                                  <td className="px-4 py-3 text-steel text-xs">{offer.condition}</td>
+                                </tr>
+                              ))}
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </section>
+              ))}
+
+              <div className="mt-8 p-4 bg-surface border border-whisper rounded-xl flex items-start gap-4">
+                <span className="text-2xl">⚠️</span>
+                <p className="text-sm text-steel">
+                  <strong>Lưu ý:</strong> Tất cả thông tin trên được tổng hợp tính đến 25/08/2026. Các chương trình ưu đãi thay đổi thường xuyên theo tháng/quý và có thể kết thúc sớm khi hết ngân sách. Vui lòng luôn kiểm tra lại trên OCB OMNI hoặc website chính thức trước khi thực hiện giao dịch.
+                </p>
+              </div>
+
             </div>
           </div>
         </div>
