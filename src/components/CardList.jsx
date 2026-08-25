@@ -4,6 +4,7 @@ import imgNatural from '../assets/images/natural.jpg';
 import imgJcb from '../assets/images/jcb.png';
 import imgWorld from '../assets/images/world.png';
 import imgIgen from '../assets/images/igen.png';
+import imgPlatinum from '../assets/images/platinum.png';
 import CardDetailsModal from './CardDetailsModal';
 
 const cards = [
