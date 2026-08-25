@@ -7,7 +7,7 @@ export default function Footer() {
             <img 
               src="https://ocb.com.vn/assets/images/logo/ocb-logo-full.svg" 
               alt="OCB Logo" 
-              className="h-8 mb-8 grayscale opacity-80"
+              className="h-8 mb-8"
             />
             <p className="font-body text-steel text-sm leading-relaxed max-w-sm mb-8">
               Ngân hàng TMCP Phương Đông (OCB) được thành lập từ năm 1996. Kiến tạo chuẩn mực tài chính mới.
