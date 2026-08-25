@@ -89,18 +89,28 @@ export default function CardList() {
                 <div key={card.id} className={`flex flex-col ${isEven ? 'md:flex-row-reverse' : 'md:flex-row'} items-center gap-10 md:gap-20`}>
                   
                   {/* Image Block */}
-                  <div className="w-full md:w-1/2 flex justify-center">
+                  <div className="w-full md:w-1/2 flex justify-center relative">
                     <div className="relative group perspective-1000">
+                      
                       {card.isHot && (
-                        <div className="absolute -top-4 -right-4 z-10 bg-[#FF3B30] text-white text-xs md:text-sm font-bold px-3 py-1.5 rounded-full shadow-lg transform rotate-12 border-2 border-white flex items-center gap-1 animate-in zoom-in duration-500 hover:scale-110 transition-transform cursor-default">
-                          <span>🔥</span>
-                          <span>HOT</span>
+                        <div className="absolute -top-[8px] -right-[8px] w-[110px] h-[110px] z-20 pointer-events-none drop-shadow-md">
+                          {/* Folds */}
+                          <div className="absolute top-0 left-[8px] w-[8px] h-[8px] bg-[#b31212]" style={{ clipPath: 'polygon(0 100%, 100% 100%, 100% 0)' }}></div>
+                          <div className="absolute bottom-[8px] right-0 w-[8px] h-[8px] bg-[#b31212]" style={{ clipPath: 'polygon(0 0, 100% 0, 0 100%)' }}></div>
+                          
+                          {/* Ribbon strip */}
+                          <div className="absolute inset-0 overflow-hidden rounded-tr-xl">
+                            <div className="absolute top-[20px] -right-[32px] w-[140px] bg-[#FF3B30] text-white text-[13px] font-bold py-1.5 text-center transform rotate-45 tracking-widest drop-shadow-sm">
+                              HOT
+                            </div>
+                          </div>
                         </div>
                       )}
+
                       <img 
                         src={card.image} 
                         alt={card.name} 
-                        className="w-64 md:w-80 h-auto object-contain transform transition-transform duration-700 ease-[cubic-bezier(0.175,0.885,0.32,1.275)] group-hover:scale-105 group-hover:rotate-y-6 group-hover:-rotate-x-6" 
+                        className="w-64 md:w-80 h-auto object-contain transform transition-transform duration-700 ease-[cubic-bezier(0.175,0.885,0.32,1.275)] group-hover:scale-105 group-hover:rotate-y-6 group-hover:-rotate-x-6 relative z-10" 
                         style={{ clipPath: 'inset(4px round 16px)' }}
                       />
                       <div className="absolute inset-0 bg-black opacity-0 blur-2xl transition-opacity duration-700 group-hover:opacity-10 -z-10 translate-y-10 scale-90"></div>
