@@ -1,8 +1,10 @@
 import { useState } from 'react';
 import GuideModal from './GuideModal';
+import FAQModal from './FAQModal';
 
 export default function Header() {
   const [isGuideOpen, setIsGuideOpen] = useState(false);
+  const [isFAQOpen, setIsFAQOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   return (
@@ -25,6 +27,12 @@ export default function Header() {
                 className="hover:text-accent transition-colors cursor-pointer"
               >
                 Hướng dẫn mở
+              </button>
+              <button 
+                onClick={() => setIsFAQOpen(true)}
+                className="hover:text-accent transition-colors cursor-pointer"
+              >
+                Câu hỏi thường gặp
               </button>
             </nav>
           </div>
@@ -52,7 +60,7 @@ export default function Header() {
         {/* Mobile Dropdown Menu */}
         <div 
           className={`md:hidden absolute top-full left-0 right-0 bg-surface border-b border-whisper transition-all duration-300 ease-in-out overflow-hidden shadow-lg ${
-            isMobileMenuOpen ? 'max-h-48 py-4 opacity-100' : 'max-h-0 opacity-0'
+            isMobileMenuOpen ? 'max-h-64 py-4 opacity-100' : 'max-h-0 opacity-0'
           }`}
         >
           <div className="flex flex-col px-6 gap-6 font-body font-semibold text-base text-ink">
@@ -72,6 +80,15 @@ export default function Header() {
             >
               Hướng dẫn mở
             </button>
+            <button 
+              onClick={() => {
+                setIsMobileMenuOpen(false);
+                setIsFAQOpen(true);
+              }}
+              className="hover:text-accent transition-colors text-left block"
+            >
+              Câu hỏi thường gặp
+            </button>
           </div>
         </div>
       </header>
@@ -79,6 +96,10 @@ export default function Header() {
       <GuideModal 
         isOpen={isGuideOpen} 
         onClose={() => setIsGuideOpen(false)} 
+      />
+      <FAQModal 
+        isOpen={isFAQOpen} 
+        onClose={() => setIsFAQOpen(false)} 
       />
     </>
   )
