@@ -13,7 +13,8 @@ const cards = [
     name: "OCB Mastercard Lifestyle",
     description: "Định hình phong cách trẻ. Tối đa hóa hoàn tiền cho mọi giao dịch giải trí và du lịch.",
     image: imgLifestyle,
-    metrics: "Dòng thẻ dành riêng cho giới trẻ"
+    metrics: "Dòng thẻ dành riêng cho giới trẻ",
+    isHot: true
   },
   {
     id: 3,
@@ -27,7 +28,8 @@ const cards = [
     name: "OCB MASTERCARD WORLD 2IN1",
     description: "Hợp nhất công năng. Nền tảng thẻ kép đột phá cho trải nghiệm tài chính không biên giới.",
     image: imgWorld,
-    metrics: "THẺ TÍCH HỢP QUYỀN LỰC DÀNH CHO PHÂN KHÚC KHÁCH HÀNG CAO CẤP"
+    metrics: "THẺ TÍCH HỢP QUYỀN LỰC DÀNH CHO PHÂN KHÚC KHÁCH HÀNG CAO CẤP",
+    isHot: true
   },
   {
     id: 5,
@@ -41,7 +43,8 @@ const cards = [
     name: "OCB MASTERCARD PLATINUM",
     description: "Khẳng định dấu ấn cá nhân. Đặc quyền hoàn tiền mua sắm công nghệ và làm đẹp đẳng cấp.",
     image: imgPlatinum,
-    metrics: "Dòng thẻ dành riêng cho tín đồ công nghệ, làm đẹp"
+    metrics: "Dòng thẻ dành riêng cho tín đồ công nghệ, làm đẹp",
+    isHot: true
   },
   {
     id: 2,
@@ -88,6 +91,12 @@ export default function CardList() {
                   {/* Image Block */}
                   <div className="w-full md:w-1/2 flex justify-center">
                     <div className="relative group perspective-1000">
+                      {card.isHot && (
+                        <div className="absolute -top-4 -right-4 z-10 bg-[#FF3B30] text-white text-xs md:text-sm font-bold px-3 py-1.5 rounded-full shadow-lg transform rotate-12 border-2 border-white flex items-center gap-1 animate-in zoom-in duration-500 hover:scale-110 transition-transform cursor-default">
+                          <span>🔥</span>
+                          <span>HOT</span>
+                        </div>
+                      )}
                       <img 
                         src={card.image} 
                         alt={card.name} 
