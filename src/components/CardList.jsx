@@ -34,14 +34,14 @@ const cards = [
     name: "IGEN Mastercard Platinum",
     description: "Tiên phong phong cách sống số. Hoàn tiền vượt trội khi mua sắm online qua Shopee, Tiktok Shop và Apple Pay.",
     image: imgIgen,
-    metrics: "Hoàn tiền 12%"
+    metrics: "Dòng thẻ dành riêng cho tín đồ mua sắm"
   },
   {
     id: 6,
     name: "OCB MASTERCARD PLATINUM",
     description: "Khẳng định dấu ấn cá nhân. Đặc quyền hoàn tiền mua sắm công nghệ và làm đẹp đẳng cấp.",
     image: imgPlatinum,
-    metrics: "Hoàn tiền 15% mua sắm"
+    metrics: "Dòng thẻ dành riêng cho tín đồ công nghệ, làm đẹp"
   },
   {
     id: 2,
