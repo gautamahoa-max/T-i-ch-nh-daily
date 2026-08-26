@@ -27,7 +27,7 @@ export default function FloatingContact() {
       {/* Toggle Button (Visible when closed) */}
       <button
         onClick={() => setIsOpen(true)}
-        className={`absolute right-0 bg-accent text-white p-3 md:p-4 rounded-l-xl shadow-[-4px_4px_15px_rgba(33,184,136,0.3)] transition-all duration-300 flex items-center justify-center hover:bg-accent/90 focus:outline-none z-10 opacity-50 hover:opacity-100 md:opacity-100 ${
+        className={`absolute right-0 bg-accent text-white w-12 h-16 md:w-14 md:h-20 rounded-l-full shadow-[-4px_4px_15px_rgba(33,184,136,0.3)] transition-all duration-300 flex items-center justify-center pl-1 hover:bg-accent/90 focus:outline-none z-10 opacity-50 hover:opacity-100 md:opacity-100 ${
           isOpen ? 'translate-x-full opacity-0 pointer-events-none' : 'translate-x-0 cursor-pointer'
         }`}
         aria-label="Liên hệ"
@@ -41,7 +41,7 @@ export default function FloatingContact() {
 
       {/* Expanded Panel */}
       <div 
-        className={`bg-white/90 backdrop-blur-xl shadow-[-4px_4px_25px_rgba(0,0,0,0.08)] border border-whisper border-r-0 rounded-l-2xl py-4 px-2 md:px-3 gap-5 flex flex-col items-center transition-all duration-300 ease-out relative ${
+        className={`bg-white/90 backdrop-blur-xl shadow-[-4px_4px_25px_rgba(0,0,0,0.08)] border border-whisper border-r-0 rounded-l-full py-6 px-2 md:px-3 gap-5 flex flex-col items-center transition-all duration-300 ease-out relative ${
           isOpen ? 'translate-x-0' : 'translate-x-[120%]'
         }`}
       >
