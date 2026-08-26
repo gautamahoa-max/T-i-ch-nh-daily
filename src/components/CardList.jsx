@@ -73,10 +73,12 @@ export default function CardList() {
 
   return (
     <>
-      <section className="bg-surface py-24 md:py-32 relative">
+      <section className="bg-surface py-24 md:py-32 relative overflow-x-clip">
         <div className="absolute inset-0 pointer-events-none z-50">
-          <div className="sticky top-24 md:top-32 right-0 flex justify-end pointer-events-auto">
-            <FloatingContact />
+          <div className="sticky top-24 md:top-32 right-0 flex justify-end">
+            <div className="pointer-events-auto">
+              <FloatingContact />
+            </div>
           </div>
         </div>
         <div className="container mx-auto px-6 md:px-12 max-w-[1200px]">
