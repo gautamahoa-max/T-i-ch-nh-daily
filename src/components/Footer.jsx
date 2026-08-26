@@ -1,6 +1,6 @@
 export default function Footer() {
   return (
-    <footer className="bg-canvas border-t border-whisper pt-24 pb-12">
+    <footer className="bg-canvas border-t border-whisper pt-16 pb-8 md:pt-24 md:pb-12">
       <div className="container mx-auto px-6 md:px-12 max-w-[1200px]">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-12 mb-20">
           <div className="md:col-span-5">

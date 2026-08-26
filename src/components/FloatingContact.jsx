@@ -46,7 +46,7 @@ export default function FloatingContact() {
     <div 
       ref={menuRef} 
       className={`fixed bottom-6 right-4 md:bottom-8 md:right-8 z-50 flex flex-col items-center gap-4 transition-all duration-500 ${
-        isVisible ? 'translate-y-0 opacity-100 pointer-events-auto' : 'translate-y-10 opacity-0 pointer-events-none'
+        isVisible ? 'translate-y-0 opacity-100 pointer-events-auto' : 'translate-y-0 opacity-100 pointer-events-auto md:translate-y-10 md:opacity-0 md:pointer-events-none'
       }`}
     >
       
