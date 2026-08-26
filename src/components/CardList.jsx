@@ -86,7 +86,7 @@ export default function CardList() {
             {cards.map((card, index) => {
               const isEven = index % 2 === 1;
               return (
-                <div key={card.id} className={`flex flex-col ${isEven ? 'md:flex-row-reverse' : 'md:flex-row'} items-center gap-10 md:gap-20`}>
+                <div id={card.id === 2 ? 'ocb-natural-card' : undefined} key={card.id} className={`flex flex-col ${isEven ? 'md:flex-row-reverse' : 'md:flex-row'} items-center gap-10 md:gap-20`}>
                   
                   {/* Image Block */}
                   <div className="w-full md:w-1/2 flex justify-center relative">

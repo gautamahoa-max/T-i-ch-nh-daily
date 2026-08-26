@@ -13,20 +13,20 @@ export default function FloatingContact() {
       const isBottom = window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 300;
       setIsDesktopVisible(isBottom);
       
-      // 2. Mobile logic: Show only when inside CardList
-      const cardList = document.getElementById('card-list');
-      let inCardList = false;
-      if (cardList) {
-        const rect = cardList.getBoundingClientRect();
-        // Visible when CardList is taking up the main viewport
-        // (its top has entered, and its bottom hasn't scrolled up past the viewport bottom)
-        inCardList = rect.top < window.innerHeight - 100 && rect.bottom > window.innerHeight - 50;
+      // 2. Mobile logic: Show only when inside OCB Natural Card
+      const naturalCard = document.getElementById('ocb-natural-card');
+      let inNaturalCard = false;
+      if (naturalCard) {
+        const rect = naturalCard.getBoundingClientRect();
+        // Visible when OCB Natural Card is in the viewport
+        // (top is above the bottom edge by 100px, and bottom is below the top edge by 100px)
+        inNaturalCard = rect.top < window.innerHeight - 100 && rect.bottom > 100;
       }
-      setIsMobileVisible(inCardList);
+      setIsMobileVisible(inNaturalCard);
       
       // Auto-close panel if they scroll away
       if ((window.innerWidth >= 768 && !isBottom && isOpen) || 
-          (window.innerWidth < 768 && !inCardList && isOpen)) {
+          (window.innerWidth < 768 && !inNaturalCard && isOpen)) {
         setIsOpen(false);
       }
     };
