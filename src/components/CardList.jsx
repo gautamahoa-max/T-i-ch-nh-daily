@@ -72,7 +72,7 @@ export default function CardList() {
 
   return (
     <>
-      <section className="bg-surface py-24 md:py-32 relative overflow-x-clip">
+      <section id="card-list" className="bg-surface py-24 md:py-32 relative overflow-x-clip">
         <div className="container mx-auto px-6 md:px-12 max-w-[1200px]">
           <div className="mb-16 md:mb-24 md:max-w-2xl">
             <h2 className="text-4xl md:text-5xl font-display font-bold mb-6">Hệ sinh thái thẻ.</h2>

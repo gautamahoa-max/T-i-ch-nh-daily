@@ -2,19 +2,31 @@ import { useState, useEffect, useRef } from 'react';
 
 export default function FloatingContact() {
   const [isOpen, setIsOpen] = useState(false);
-  const [isVisible, setIsVisible] = useState(false);
+  const [isMobileVisible, setIsMobileVisible] = useState(false);
+  const [isDesktopVisible, setIsDesktopVisible] = useState(false);
   const menuRef = useRef(null);
 
   // Check scroll position to show/hide
   useEffect(() => {
     const handleScroll = () => {
-      // Show when user scrolls near the bottom of the page
-      // e.g. within 300px of the bottom
+      // 1. Desktop logic: Show when user scrolls near the bottom of the page
       const isBottom = window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 300;
-      setIsVisible(isBottom);
+      setIsDesktopVisible(isBottom);
+      
+      // 2. Mobile logic: Show only when inside CardList
+      const cardList = document.getElementById('card-list');
+      let inCardList = false;
+      if (cardList) {
+        const rect = cardList.getBoundingClientRect();
+        // Visible when CardList is taking up the main viewport
+        // (its top has entered, and its bottom hasn't scrolled up past the viewport bottom)
+        inCardList = rect.top < window.innerHeight - 100 && rect.bottom > window.innerHeight - 50;
+      }
+      setIsMobileVisible(inCardList);
       
       // Auto-close panel if they scroll away
-      if (!isBottom && isOpen) {
+      if ((window.innerWidth >= 768 && !isBottom && isOpen) || 
+          (window.innerWidth < 768 && !inCardList && isOpen)) {
         setIsOpen(false);
       }
     };
@@ -42,12 +54,13 @@ export default function FloatingContact() {
     };
   }, []);
 
+  const mobileClasses = isMobileVisible ? 'translate-y-0 opacity-100 pointer-events-auto' : 'translate-y-10 opacity-0 pointer-events-none';
+  const desktopClasses = isDesktopVisible ? 'md:translate-y-0 md:opacity-100 md:pointer-events-auto' : 'md:translate-y-10 md:opacity-0 md:pointer-events-none';
+
   return (
     <div 
       ref={menuRef} 
-      className={`fixed bottom-6 right-4 md:bottom-8 md:right-8 z-50 flex flex-col items-center gap-4 transition-all duration-500 ${
-        isVisible ? 'translate-y-0 opacity-100 pointer-events-auto' : 'translate-y-0 opacity-100 pointer-events-auto md:translate-y-10 md:opacity-0 md:pointer-events-none'
-      }`}
+      className={`fixed bottom-6 right-4 md:bottom-8 md:right-8 z-50 flex flex-col items-center gap-4 transition-all duration-500 ${mobileClasses} ${desktopClasses}`}
     >
       
       {/* Expanded Panel (Vertical) */}
