@@ -3,10 +3,11 @@ import HeroBanner from './components/HeroBanner'
 import BankMarquee from './components/BankMarquee'
 import CardList from './components/CardList'
 import Footer from './components/Footer'
+import FloatingContact from './components/FloatingContact'
 
 function App() {
   return (
-    <div className="min-h-screen flex flex-col bg-gray-50 relative pb-24 md:pb-0">
+    <div className="min-h-screen flex flex-col bg-gray-50 relative pb-24 md:pb-0 overflow-x-hidden">
       <Header />
       
       <main className="flex-1 flex flex-col">
@@ -16,6 +17,7 @@ function App() {
       </main>
 
       <Footer />
+      <FloatingContact />
     </div>
   )
 }

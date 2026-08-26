@@ -22,7 +22,7 @@ export default function FloatingContact() {
   }, []);
 
   return (
-    <div ref={menuRef} className="relative z-50 flex items-center">
+    <div ref={menuRef} className="fixed right-0 top-[75vh] -translate-y-1/2 z-50 flex items-center">
       
       {/* Toggle Button (Visible when closed) */}
       <button
