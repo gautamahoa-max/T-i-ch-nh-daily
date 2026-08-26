@@ -7,7 +7,7 @@ import FloatingContact from './components/FloatingContact'
 
 function App() {
   return (
-    <div className="min-h-screen flex flex-col bg-gray-50 relative">
+    <div className="min-h-screen flex flex-col bg-gray-50 relative pb-24 md:pb-0">
       <Header />
       
       <main className="flex-1 flex flex-col">
