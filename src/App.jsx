@@ -3,7 +3,6 @@ import HeroBanner from './components/HeroBanner'
 import BankMarquee from './components/BankMarquee'
 import CardList from './components/CardList'
 import Footer from './components/Footer'
-import FloatingContact from './components/FloatingContact'
 
 function App() {
   return (
@@ -17,7 +16,6 @@ function App() {
       </main>
 
       <Footer />
-      <FloatingContact />
     </div>
   )
 }

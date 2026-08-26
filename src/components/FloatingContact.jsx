@@ -22,13 +22,13 @@ export default function FloatingContact() {
   }, []);
 
   return (
-    <div ref={menuRef} className="fixed right-0 top-1/2 -translate-y-1/2 z-50 flex items-center">
+    <div ref={menuRef} className="relative z-50 flex items-center">
       
       {/* Toggle Button (Visible when closed) */}
       <button
         onClick={() => setIsOpen(true)}
-        className={`absolute right-0 bg-accent text-white p-3 md:p-4 rounded-l-xl shadow-[-4px_4px_15px_rgba(33,184,136,0.3)] transition-transform duration-300 flex items-center justify-center hover:bg-accent/90 focus:outline-none z-10 ${
-          isOpen ? 'translate-x-full opacity-0 pointer-events-none' : 'translate-x-0 opacity-100 cursor-pointer'
+        className={`absolute right-0 bg-accent text-white p-3 md:p-4 rounded-l-xl shadow-[-4px_4px_15px_rgba(33,184,136,0.3)] transition-all duration-300 flex items-center justify-center hover:bg-accent/90 focus:outline-none z-10 opacity-50 hover:opacity-100 md:opacity-100 ${
+          isOpen ? 'translate-x-full opacity-0 pointer-events-none' : 'translate-x-0 cursor-pointer'
         }`}
         aria-label="Liên hệ"
       >
