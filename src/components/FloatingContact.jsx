@@ -2,7 +2,9 @@ import { useState, useEffect, useRef } from 'react';
 
 export default function FloatingContact() {
   const [isOpen, setIsOpen] = useState(false);
+  const [isFixed, setIsFixed] = useState(false);
   const menuRef = useRef(null);
+  const dockRef = useRef(null);
 
   // Close when clicking outside
   useEffect(() => {
@@ -21,8 +23,33 @@ export default function FloatingContact() {
     };
   }, []);
 
+  // Handle docking vs fixed
+  useEffect(() => {
+    const handleScroll = () => {
+      if (dockRef.current) {
+        const rect = dockRef.current.getBoundingClientRect();
+        // If the dock's top is less than 75vh (meaning it scrolled UP past 75vh),
+        // we fix the button at 75vh.
+        if (rect.top < window.innerHeight * 0.75) {
+          setIsFixed(true);
+        } else {
+          setIsFixed(false);
+        }
+      }
+    };
+    
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll(); // initial check
+    
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   return (
-    <div ref={menuRef} className="fixed right-0 top-[75vh] -translate-y-1/2 z-50 flex items-center">
+    <div ref={dockRef} className="relative w-full h-full pointer-events-none">
+      <div 
+        ref={menuRef} 
+        className={`${isFixed ? 'fixed top-[75vh] -translate-y-1/2 right-0' : 'absolute top-0 right-0'} flex items-center z-50 pointer-events-auto`}
+      >
       
       {/* Toggle Button (Visible when closed) */}
       <button
@@ -102,6 +129,7 @@ export default function FloatingContact() {
           </a>
         </div>
       </div>
+    </div>
     </div>
   );
 }
