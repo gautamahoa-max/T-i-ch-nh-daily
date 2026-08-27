@@ -116,24 +116,9 @@ export default function CardList() {
                       )}
                     </h3>
                     
-                    <p className="font-body text-steel text-lg leading-relaxed mb-6 max-w-md mt-2">
+                    <p className="font-body text-steel text-lg leading-relaxed mb-8 max-w-md mt-2">
                       {card.description}
                     </p>
-
-                    <div className="mb-8 w-full max-w-md">
-                      <p className="text-xs font-bold text-steel tracking-widest uppercase mb-3 font-mono">
-                        HƯỚNG DẪN SỬ DỤNG
-                      </p>
-                      <div className="flex items-center gap-4">
-                        <div className="w-16 h-16 bg-white border border-whisper p-1 rounded-lg shadow-sm flex-shrink-0">
-                          <svg viewBox="0 0 100 100" className="w-full h-full text-ink">
-                            <path fill="currentColor" d="M10 10h30v30H10V10zm5 5v20h20V15H15zm-5 45h30v30H10V60zm5 5v20h20V65H15zM60 10h30v30H60V10zm5 5v20h20V15H65zm15 45h10v10H80V65zM60 60h10v10H60V60zm0 20h10v10H60V80zm20-20h10v10H80V60zm-10 10h10v10H70V70zm10 10h10v10H80V80zM20 20h10v10H20V20zm50 0h10v10H70V20zm-50 50h10v10H20V70zM45 45h10v10H45V45z"/>
-                            <path fill="currentColor" d="M45 10h10v10H45V10zm0 20h10v10H45V30zm-10 15h10v10H35V45zm20 0h10v10H55V45zm-20 20h10v10H35V65zm20 0h10v10H55V65z"/>
-                          </svg>
-                        </div>
-                        <span className="font-body text-ink font-medium">Trải nghiệm bằng AR</span>
-                      </div>
-                    </div>
 
                     <a 
                       href="#" 
