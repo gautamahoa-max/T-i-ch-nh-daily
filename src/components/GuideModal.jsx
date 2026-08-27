@@ -16,6 +16,18 @@ export default function GuideModal({ isOpen, onClose }) {
     }
   };
 
+  // Auto-pause inactive videos when swiping
+  useEffect(() => {
+    if (scrollContainerRef.current) {
+      const videos = scrollContainerRef.current.querySelectorAll('video');
+      videos.forEach((video, index) => {
+        if (index !== activeVideo) {
+          video.pause();
+        }
+      });
+    }
+  }, [activeVideo]);
+
   // Prevent scrolling when modal is open
   useEffect(() => {
     if (isOpen) {
