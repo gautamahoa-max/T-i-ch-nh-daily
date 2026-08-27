@@ -1,13 +1,30 @@
-import { useEffect } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import videoSrc1 from '../assets/videos/huong_dan_mo.mov';
 import videoSrc2 from '../assets/videos/huong_dan_mo_mc.mov';
 import zaloQr from '../assets/images/zalo-qr.jpg';
 
 export default function GuideModal({ isOpen, onClose }) {
+  const [activeVideo, setActiveVideo] = useState(0);
+  const scrollContainerRef = useRef(null);
+
+  const handleScroll = () => {
+    if (scrollContainerRef.current) {
+      const scrollLeft = scrollContainerRef.current.scrollLeft;
+      const width = scrollContainerRef.current.clientWidth;
+      const newIndex = Math.round(scrollLeft / width);
+      setActiveVideo(newIndex);
+    }
+  };
+
   // Prevent scrolling when modal is open
   useEffect(() => {
     if (isOpen) {
       document.body.style.overflow = 'hidden';
+      // Reset video to first one when opened
+      setActiveVideo(0);
+      if (scrollContainerRef.current) {
+        scrollContainerRef.current.scrollLeft = 0;
+      }
     } else {
       document.body.style.overflow = 'unset';
     }
@@ -49,9 +66,13 @@ export default function GuideModal({ isOpen, onClose }) {
             <h3 className="text-xl font-display font-bold text-accent border-l-4 border-accent pl-3 uppercase tracking-wide">CÁCH 1: MỞ THẺ ONLINE</h3>
             
             <div className="mb-10">
-              <div className="flex overflow-x-auto snap-x snap-mandatory gap-6 pb-4 hide-scrollbar">
+              <div 
+                ref={scrollContainerRef}
+                onScroll={handleScroll}
+                className="flex overflow-x-auto snap-x snap-mandatory gap-6 pb-2 hide-scrollbar"
+              >
                 {/* Video 1 */}
-                <div className="snap-center shrink-0 w-[90%] md:w-full max-w-2xl mx-auto flex flex-col">
+                <div className="snap-center shrink-0 w-full max-w-2xl mx-auto flex flex-col">
                   <h4 className="font-bold text-ink font-body mb-3">Hướng dẫn mở thẻ (Chung)</h4>
                   <div className="rounded-xl overflow-hidden shadow-lg bg-black aspect-video border border-whisper">
                     <video 
@@ -66,7 +87,7 @@ export default function GuideModal({ isOpen, onClose }) {
                 </div>
 
                 {/* Video 2 */}
-                <div className="snap-center shrink-0 w-[90%] md:w-full max-w-2xl mx-auto flex flex-col">
+                <div className="snap-center shrink-0 w-full max-w-2xl mx-auto flex flex-col">
                   <h4 className="font-bold text-ink font-body mb-3">Hướng dẫn mở MC WORLD 2IN1</h4>
                   <div className="rounded-xl overflow-hidden shadow-lg bg-black aspect-video border border-whisper">
                     <video 
@@ -81,12 +102,10 @@ export default function GuideModal({ isOpen, onClose }) {
                 </div>
               </div>
               
-              {/* Swipe hint for mobile */}
-              <div className="flex justify-center items-center gap-2 mt-2 md:hidden text-steel text-sm font-body">
-                <svg className="w-4 h-4 animate-bounce-x" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4" />
-                </svg>
-                <span>Vuốt sang ngang để xem thêm</span>
+              {/* Pagination Dots */}
+              <div className="flex justify-center items-center gap-2 mt-4">
+                <div className={`w-2 h-2 rounded-full transition-all duration-300 ${activeVideo === 0 ? 'w-6 bg-accent' : 'bg-steel/30'}`}></div>
+                <div className={`w-2 h-2 rounded-full transition-all duration-300 ${activeVideo === 1 ? 'w-6 bg-accent' : 'bg-steel/30'}`}></div>
               </div>
             </div>
 
