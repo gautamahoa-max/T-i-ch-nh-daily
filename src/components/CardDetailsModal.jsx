@@ -45,14 +45,32 @@ export default function CardDetailsModal({ card, isOpen, onClose }) {
         {/* Body */}
         <div className="p-6 md:p-10 overflow-y-auto">
           <div className="flex flex-col md:flex-row gap-10">
-            {/* Left: Image preview */}
-            <div className="w-full md:w-1/3 flex-shrink-0 flex justify-center items-start">
-              <img 
-                src={card.image} 
-                alt={card.name} 
-                className="w-48 md:w-full object-contain drop-shadow-2xl" 
-                style={{ clipPath: 'inset(4px round 16px)' }}
-              />
+            {/* Left: Image preview & QR Code */}
+            <div className="w-full md:w-1/3 flex-shrink-0 flex flex-col items-center md:items-start gap-8">
+              <div className="w-full flex justify-center">
+                <img 
+                  src={card.image} 
+                  alt={card.name} 
+                  className="w-48 md:w-full max-w-[280px] object-contain drop-shadow-2xl" 
+                  style={{ clipPath: 'inset(4px round 16px)' }}
+                />
+              </div>
+
+              {/* Hướng dẫn sử dụng QR Code */}
+              <div className="w-full max-w-[280px] mx-auto pt-2">
+                <p className="text-xs font-bold text-steel tracking-widest uppercase mb-3 font-mono">
+                  HƯỚNG DẪN SỬ DỤNG
+                </p>
+                <div className="flex items-center gap-4">
+                  <div className="w-16 h-16 bg-white border border-whisper p-1 rounded-lg shadow-sm flex-shrink-0">
+                    <svg viewBox="0 0 100 100" className="w-full h-full text-ink">
+                      <path fill="currentColor" d="M10 10h30v30H10V10zm5 5v20h20V15H15zm-5 45h30v30H10V60zm5 5v20h20V65H15zM60 10h30v30H60V10zm5 5v20h20V15H65zm15 45h10v10H80V65zM60 60h10v10H60V60zm0 20h10v10H60V80zm20-20h10v10H80V60zm-10 10h10v10H70V70zm10 10h10v10H80V80zM20 20h10v10H20V20zm50 0h10v10H70V20zm-50 50h10v10H20V70zM45 45h10v10H45V45z"/>
+                      <path fill="currentColor" d="M45 10h10v10H45V10zm0 20h10v10H45V30zm-10 15h10v10H35V45zm20 0h10v10H55V45zm-20 20h10v10H35V65zm20 0h10v10H55V65z"/>
+                    </svg>
+                  </div>
+                  <span className="font-body text-ink font-medium">Trải nghiệm bằng AR</span>
+                </div>
+              </div>
             </div>
             
             {/* Right: Content details */}
@@ -75,22 +93,6 @@ export default function CardDetailsModal({ card, isOpen, onClose }) {
               {!details && (
                 <p className="text-steel font-body">Nội dung chi tiết đang được cập nhật...</p>
               )}
-
-              {/* Hướng dẫn sử dụng QR Code */}
-              <div className="pt-4">
-                <h3 className="text-lg font-display font-bold text-accent uppercase tracking-wide border-b border-whisper pb-2 mb-4">
-                  Hướng dẫn sử dụng
-                </h3>
-                <div className="flex items-center gap-4">
-                  <div className="w-20 h-20 bg-white border border-whisper p-1 rounded-lg shadow-sm flex-shrink-0">
-                    <svg viewBox="0 0 100 100" className="w-full h-full text-ink">
-                      <path fill="currentColor" d="M10 10h30v30H10V10zm5 5v20h20V15H15zm-5 45h30v30H10V60zm5 5v20h20V65H15zM60 10h30v30H60V10zm5 5v20h20V15H65zm15 45h10v10H80V65zM60 60h10v10H60V60zm0 20h10v10H60V80zm20-20h10v10H80V60zm-10 10h10v10H70V70zm10 10h10v10H80V80zM20 20h10v10H20V20zm50 0h10v10H70V20zm-50 50h10v10H20V70zM45 45h10v10H45V45z"/>
-                      <path fill="currentColor" d="M45 10h10v10H45V10zm0 20h10v10H45V30zm-10 15h10v10H35V45zm20 0h10v10H55V45zm-20 20h10v10H35V65zm20 0h10v10H55V65z"/>
-                    </svg>
-                  </div>
-                  <span className="font-body text-steel text-base">Trải nghiệm bằng AR</span>
-                </div>
-              </div>
             </div>
           </div>
         </div>
