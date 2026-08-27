@@ -5,6 +5,7 @@ import zaloQr from '../assets/images/zalo-qr.jpg';
 
 export default function GuideModal({ isOpen, onClose }) {
   const [activeVideo, setActiveVideo] = useState(0);
+  const [isVideoInView, setIsVideoInView] = useState(true);
   const scrollContainerRef = useRef(null);
 
   const handleScroll = () => {
@@ -16,14 +17,32 @@ export default function GuideModal({ isOpen, onClose }) {
     }
   };
 
-  // Auto-play active and pause/rewind inactive videos
+  // Observe if video container is in view
+  useEffect(() => {
+    if (!isOpen || !scrollContainerRef.current) return;
+    
+    const observer = new IntersectionObserver((entries) => {
+      const entry = entries[0];
+      setIsVideoInView(entry.isIntersecting);
+    }, { threshold: 0.1 });
+    
+    observer.observe(scrollContainerRef.current);
+    
+    return () => observer.disconnect();
+  }, [isOpen]);
+
+  // Auto-play active (if in view) and pause/rewind inactive videos
   useEffect(() => {
     if (scrollContainerRef.current) {
       const videos = scrollContainerRef.current.querySelectorAll('video');
       videos.forEach((video, index) => {
         if (index === activeVideo) {
-          // Play active video (catch errors if browser blocks autoplay)
-          video.play().catch(() => {});
+          if (isVideoInView) {
+            // Play active video (catch errors if browser blocks autoplay)
+            video.play().catch(() => {});
+          } else {
+            video.pause();
+          }
         } else {
           // Pause and rewind inactive video like a Story
           video.pause();
@@ -31,7 +50,7 @@ export default function GuideModal({ isOpen, onClose }) {
         }
       });
     }
-  }, [activeVideo]);
+  }, [activeVideo, isVideoInView]);
 
   // Prevent scrolling when modal is open
   useEffect(() => {
