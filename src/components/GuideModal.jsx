@@ -72,32 +72,36 @@ export default function GuideModal({ isOpen, onClose }) {
                 className="flex overflow-x-auto snap-x snap-mandatory gap-6 pb-2 hide-scrollbar"
               >
                 {/* Video 1 */}
-                <div className="snap-center shrink-0 w-full max-w-2xl mx-auto flex flex-col">
-                  <h4 className="font-bold text-ink font-body mb-3">Hướng dẫn mở thẻ (Chung)</h4>
-                  <div className="rounded-xl overflow-hidden shadow-lg bg-black aspect-video border border-whisper">
-                    <video 
-                      controls 
-                      className="w-full h-full object-contain"
-                    >
-                      <source src={videoSrc1} type="video/mp4" />
-                      <source src={videoSrc1} type="video/quicktime" />
-                      Trình duyệt không hỗ trợ thẻ video.
-                    </video>
+                <div className="snap-center shrink-0 w-full flex justify-center">
+                  <div className="w-full max-w-2xl flex flex-col">
+                    <h4 className="font-bold text-ink font-body mb-3">Hướng dẫn mở thẻ (Chung)</h4>
+                    <div className="rounded-xl overflow-hidden shadow-lg bg-black aspect-video border border-whisper">
+                      <video 
+                        controls 
+                        className="w-full h-full object-contain"
+                      >
+                        <source src={videoSrc1} type="video/mp4" />
+                        <source src={videoSrc1} type="video/quicktime" />
+                        Trình duyệt không hỗ trợ thẻ video.
+                      </video>
+                    </div>
                   </div>
                 </div>
 
                 {/* Video 2 */}
-                <div className="snap-center shrink-0 w-full max-w-2xl mx-auto flex flex-col">
-                  <h4 className="font-bold text-ink font-body mb-3">Hướng dẫn mở MC WORLD 2IN1</h4>
-                  <div className="rounded-xl overflow-hidden shadow-lg bg-black aspect-video border border-whisper">
-                    <video 
-                      controls 
-                      className="w-full h-full object-contain"
-                    >
-                      <source src={videoSrc2} type="video/mp4" />
-                      <source src={videoSrc2} type="video/quicktime" />
-                      Trình duyệt không hỗ trợ thẻ video.
-                    </video>
+                <div className="snap-center shrink-0 w-full flex justify-center">
+                  <div className="w-full max-w-2xl flex flex-col">
+                    <h4 className="font-bold text-ink font-body mb-3">Hướng dẫn mở MC WORLD 2IN1</h4>
+                    <div className="rounded-xl overflow-hidden shadow-lg bg-black aspect-video border border-whisper">
+                      <video 
+                        controls 
+                        className="w-full h-full object-contain"
+                      >
+                        <source src={videoSrc2} type="video/mp4" />
+                        <source src={videoSrc2} type="video/quicktime" />
+                        Trình duyệt không hỗ trợ thẻ video.
+                      </video>
+                    </div>
                   </div>
                 </div>
               </div>
