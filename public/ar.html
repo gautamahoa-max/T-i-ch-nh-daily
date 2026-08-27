@@ -1,27 +1,49 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta charset="UTF-8">
     <title>OCB AR Experience</title>
     <!-- A-Frame -->
     <script src="https://aframe.io/releases/1.4.2/aframe.min.js"></script>
-    <!-- MindAR for A-Frame -->
-    <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.2.2/dist/mindar-image-aframe.prod.js"></script>
     <!-- A-Frame Extras for animation -->
     <script src="https://cdn.jsdelivr.net/gh/c-frame/aframe-extras@7.0.0/dist/aframe-extras.min.js"></script>
     <style>
       body { margin: 0; overflow: hidden; font-family: sans-serif; }
-      #ui-overlay {
+      #overlay {
         position: absolute;
-        bottom: 30px;
+        bottom: 40px;
+        left: 0;
+        width: 100%;
+        text-align: center;
+        z-index: 100;
+        display: none;
+      }
+      .btn {
+        pointer-events: auto;
+        background: #00B050;
+        color: white;
+        border: none;
+        padding: 16px 40px;
+        font-size: 18px;
+        border-radius: 30px;
+        font-weight: bold;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+        cursor: pointer;
+      }
+      .btn:active {
+        transform: scale(0.95);
+      }
+      #ar-instructions {
+        position: absolute;
+        top: 20px;
         left: 0;
         width: 100%;
         text-align: center;
         z-index: 100;
         pointer-events: none;
       }
-      .instruction {
+      .instruction-text {
         background: rgba(0, 0, 0, 0.7);
         color: white;
         padding: 12px 24px;
@@ -33,46 +55,101 @@
         box-shadow: 0 4px 6px rgba(0,0,0,0.1);
       }
     </style>
+    <script>
+      AFRAME.registerComponent('ar-placement', {
+        init: function () {
+          const sceneEl = this.el;
+          const reticle = document.getElementById('reticle');
+          const modelContainer = document.getElementById('model-container');
+          const placeBtn = document.getElementById('place-btn');
+          const overlay = document.getElementById('overlay');
+          const instructions = document.getElementById('instruction-text');
+
+          sceneEl.addEventListener('enter-vr', () => {
+            if (sceneEl.is('ar-mode')) {
+              overlay.style.display = 'block';
+              instructions.innerHTML = "Di chuyển điện thoại chậm rãi để quét mặt phẳng";
+            }
+          });
+
+          sceneEl.addEventListener('exit-vr', () => {
+            overlay.style.display = 'none';
+            instructions.innerHTML = "Nhấn nút AR (ở góc dưới) để bắt đầu";
+          });
+
+          placeBtn.addEventListener('click', () => {
+            if (reticle.getAttribute('visible')) {
+              // Copy position and rotation from reticle to model container
+              const position = reticle.getAttribute('position');
+              const rotation = reticle.getAttribute('rotation');
+              
+              modelContainer.setAttribute('position', position);
+              // Model looks towards the camera (y-axis rotation only)
+              const cameraRotation = document.getElementById('camera').getAttribute('rotation');
+              modelContainer.setAttribute('rotation', `0 ${cameraRotation.y} 0`);
+              modelContainer.setAttribute('visible', 'true');
+              
+              // Hide reticle and UI
+              reticle.setAttribute('visible', 'false');
+              reticle.removeAttribute('ar-hit-test');
+              overlay.style.display = 'none';
+              instructions.innerHTML = "Tuyệt vời! Chú gấu trúc đang giới thiệu thẻ.";
+            } else {
+              instructions.innerHTML = "Vui lòng đợi quét được mặt phẳng (vòng tròn xanh xuất hiện)";
+            }
+          });
+        }
+      });
+    </script>
   </head>
   <body>
-    <div id="ui-overlay">
-      <div class="instruction">Hãy hướng camera vào mặt trước của thẻ OCB</div>
+    <div id="ar-instructions">
+      <div id="instruction-text" class="instruction-text">Nhấn nút AR (góc dưới cùng) để bắt đầu</div>
+    </div>
+    <div id="overlay">
+      <button id="place-btn" class="btn">OK</button>
     </div>
     
-    <!-- 
-      LƯU Ý CHO DEV:
-      1. Hiện tại đang dùng imageTargetSrc mặc định của thư viện MindAR để làm mẫu (cần trỏ camera vào hình ảnh thẻ test của MindAR).
-      2. Để chạy thật, bạn cần dùng công cụ MindAR Compiler (https://hiukim.github.io/mind-ar-js-doc/tools/compile) 
-         để tạo file .mind từ hình ảnh mặt trước của thẻ OCB, sau đó thay link vào imageTargetSrc.
-      3. src="#avatarModel" hiện tại là model chú gấu trúc (raccoon) miễn phí để thay thế tạm cho chú mèo. 
-         Bạn có thể tải model GLTF chú mèo lên host và đổi link.
-    -->
-    <a-scene mindar-image="imageTargetSrc: https://cdn.jsdelivr.net/gh/hiukim/mind-ar-js@1.2.2/examples/image-tracking/assets/card-example/card.mind;" color-space="sRGB" renderer="colorManagement: true, physicallyCorrectLights" vr-mode-ui="enabled: false" device-orientation-permission-ui="enabled: false">
+    <a-scene 
+      ar-placement
+      webxr="requiredFeatures: hit-test,local-floor" 
+      renderer="colorManagement: true, physicallyCorrectLights">
+      
       <a-assets>
         <a-asset-item id="avatarModel" src="https://cdn.jsdelivr.net/gh/hiukim/mind-ar-js@1.2.2/examples/image-tracking/assets/band-example/raccoon/scene.gltf"></a-asset-item>
       </a-assets>
 
-      <a-camera position="0 0 0" look-controls="enabled: false"></a-camera>
+      <a-camera id="camera" position="0 1.6 0"></a-camera>
 
-      <a-entity mindar-image-target="targetIndex: 0">
-        <!-- 3D Model -->
-        <a-gltf-model rotation="90 0 0" position="0 -0.2 0" scale="0.05 0.05 0.05" src="#avatarModel" animation-mixer="clip: *">
-        </a-gltf-model>
+      <!-- Reticle (Cursor to indicate placement position) -->
+      <a-entity id="reticle" 
+                visible="false"
+                ar-hit-test
+                geometry="primitive: ring; radiusInner: 0.15; radiusOuter: 0.2"
+                material="color: #00B050; shader: flat"
+                rotation="-90 0 0">
+      </a-entity>
+
+      <!-- 3D Character and Info Panel (Hidden initially) -->
+      <a-entity id="model-container" visible="false">
+        <a-gltf-model position="0 0 0" scale="0.1 0.1 0.1" src="#avatarModel" animation-mixer="clip: *"></a-gltf-model>
         
-        <!-- Text Panels for Card Details -->
-        <a-entity position="0 0.4 0.1">
-          <a-plane color="#00B050" width="1.2" height="0.5" opacity="0.9" border-radius="0.1"></a-plane>
+        <a-entity position="0 1.0 0">
+          <a-plane color="#00B050" width="2.0" height="0.8" opacity="0.9" border-radius="0.1"></a-plane>
           <a-text 
             value="THE TIN DUNG OCB\n\n- Hoan tien den 15%\n- Mien phi thuong nien\n- Han muc 50 trieu VND" 
             position="0 0 0.02" 
             align="center" 
             color="#FFFFFF" 
-            scale="0.25 0.25 0.25" 
+            scale="0.4 0.4 0.4" 
             wrap-count="25"
             line-height="60">
           </a-text>
         </a-entity>
       </a-entity>
+      
+      <a-light type="ambient" color="#ffffff" intensity="1"></a-light>
+      <a-light type="directional" color="#ffffff" intensity="0.5" position="1 2 1"></a-light>
     </a-scene>
   </body>
 </html>
