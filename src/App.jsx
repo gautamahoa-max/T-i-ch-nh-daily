@@ -4,7 +4,6 @@ import BankMarquee from './components/BankMarquee'
 import CardList from './components/CardList'
 import Footer from './components/Footer'
 import FloatingContact from './components/FloatingContact'
-import BackgroundMusic from './components/BackgroundMusic'
 
 function App() {
   return (
@@ -19,7 +18,6 @@ function App() {
 
       <Footer />
       <FloatingContact />
-      <BackgroundMusic />
     </div>
   )
 }
