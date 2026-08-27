@@ -19,7 +19,6 @@ export const cardDetailsData = {
         items: [
           "1. Ưu đãi mở thẻ (*):",
           "Hoàn 100% phí thường niên năm đầu khi chi tiêu tổng doanh số giao dịch hợp lệ đạt 1 triệu đồng trong 45 ngày đầu tiên mở thẻ.",
-          "Tặng 01 vali du lịch trị giá 1.500.000 VND khi khách hàng đạt doanh số từ 8.000.000 VND với tối thiểu 7 giao dịch hợp lệ trong vòng 30 ngày kể từ ngày kích hoạt thẻ thành công.",
           "2. Ưu đãi áp dụng cho tất cả chủ thẻ (*):",
           "Hoàn tiền đa lĩnh vực tối đa đến 18.000.000 VND/năm, trong đó:",
           "Tổng chi tiêu/kỳ xét thưởng đạt từ 30 triệu trở lên: Hoàn 15% giao dịch chi tiêu dịch vụ giải trí (Spotify, Netflix, BHD, CGV, Galaxy, Lotte Cinema, Youtube, truyền hình, Ticket box,…), tối đa 1.200.000 VND. Hoàn 7% giao dịch chi tiêu làm đẹp (Thời trang, Spa, Gym,…), tối đa 300.000 VND. Hoàn tối đa 1.500.000 VND/kỳ xét thưởng.",
