@@ -58,7 +58,7 @@ export default function CardDetailsModal({ card, isOpen, onClose }) {
 
               {/* Hướng dẫn sử dụng QR Code */}
               <div className="w-full max-w-[280px] mx-auto pt-2">
-                <p className="text-xs font-bold text-steel tracking-widest uppercase mb-3 font-mono">
+                <p className="text-sm font-display font-bold text-accent tracking-widest uppercase mb-4 border-b border-whisper pb-2">
                   HƯỚNG DẪN SỬ DỤNG
                 </p>
                 <div className="flex items-center gap-4">
