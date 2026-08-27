@@ -60,6 +60,11 @@ export default function GuideModal({ isOpen, onClose }) {
       setActiveVideo(0);
       if (scrollContainerRef.current) {
         scrollContainerRef.current.scrollLeft = 0;
+        // Set default volume to 50% for all videos
+        const videos = scrollContainerRef.current.querySelectorAll('video');
+        videos.forEach((video) => {
+          video.volume = 0.5;
+        });
       }
     } else {
       document.body.style.overflow = 'unset';
