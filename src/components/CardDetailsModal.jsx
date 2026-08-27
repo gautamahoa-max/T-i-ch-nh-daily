@@ -45,7 +45,7 @@ export default function CardDetailsModal({ card, isOpen, onClose }) {
         {/* Body */}
         <div className="p-6 md:p-10 overflow-y-auto">
           <div className="flex flex-col md:flex-row gap-10">
-            {/* Left: Image preview & QR Code */}
+            {/* Left: Image preview */}
             <div className="w-full md:w-1/3 flex-shrink-0 flex flex-col items-center md:items-start gap-8">
               <div className="w-full flex justify-center">
                 <img 
@@ -54,19 +54,6 @@ export default function CardDetailsModal({ card, isOpen, onClose }) {
                   className="w-48 md:w-full max-w-[280px] object-contain drop-shadow-2xl" 
                   style={{ clipPath: 'inset(4px round 16px)' }}
                 />
-              </div>
-
-              {/* Hướng dẫn sử dụng QR Code */}
-              <div className="w-full max-w-[280px] mx-auto pt-2">
-                <p className="text-sm font-display font-bold text-accent tracking-widest uppercase mb-4 border-b border-whisper pb-2">
-                  HƯỚNG DẪN SỬ DỤNG
-                </p>
-                <div className="flex items-center gap-4">
-                  <div className="w-16 h-16 bg-white border border-whisper p-1 rounded-lg shadow-sm flex-shrink-0">
-                    <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://gautamahoa-max.github.io/T-i-ch-nh-daily/ar.html" alt="AR Experience QR Code" className="w-full h-full object-contain" />
-                  </div>
-                  <span className="font-body text-ink font-medium">Trải nghiệm bằng AR</span>
-                </div>
               </div>
             </div>
             
