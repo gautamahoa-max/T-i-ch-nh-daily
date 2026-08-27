@@ -16,13 +16,18 @@ export default function GuideModal({ isOpen, onClose }) {
     }
   };
 
-  // Auto-pause inactive videos when swiping
+  // Auto-play active and pause/rewind inactive videos
   useEffect(() => {
     if (scrollContainerRef.current) {
       const videos = scrollContainerRef.current.querySelectorAll('video');
       videos.forEach((video, index) => {
-        if (index !== activeVideo) {
+        if (index === activeVideo) {
+          // Play active video (catch errors if browser blocks autoplay)
+          video.play().catch(() => {});
+        } else {
+          // Pause and rewind inactive video like a Story
           video.pause();
+          video.currentTime = 0;
         }
       });
     }
@@ -81,7 +86,7 @@ export default function GuideModal({ isOpen, onClose }) {
               <div 
                 ref={scrollContainerRef}
                 onScroll={handleScroll}
-                className="flex overflow-x-auto snap-x snap-mandatory gap-6 pb-2 hide-scrollbar"
+                className="flex overflow-x-auto snap-x snap-mandatory gap-6 pb-2 hide-scrollbar transform-gpu"
               >
                 {/* Video 1 */}
                 <div className="snap-center shrink-0 w-full flex justify-center">
@@ -90,6 +95,8 @@ export default function GuideModal({ isOpen, onClose }) {
                     <div className="rounded-xl overflow-hidden shadow-lg bg-black aspect-video border border-whisper">
                       <video 
                         controls 
+                        playsInline
+                        preload="metadata"
                         className="w-full h-full object-contain"
                       >
                         <source src={videoSrc1} type="video/mp4" />
@@ -107,6 +114,8 @@ export default function GuideModal({ isOpen, onClose }) {
                     <div className="rounded-xl overflow-hidden shadow-lg bg-black aspect-video border border-whisper">
                       <video 
                         controls 
+                        playsInline
+                        preload="metadata"
                         className="w-full h-full object-contain"
                       >
                         <source src={videoSrc2} type="video/mp4" />
