@@ -48,35 +48,45 @@ export default function GuideModal({ isOpen, onClose }) {
           <section className="space-y-6">
             <h3 className="text-xl font-display font-bold text-accent border-l-4 border-accent pl-3 uppercase tracking-wide">CÁCH 1: MỞ THẺ ONLINE</h3>
             
-            <div className="flex flex-col gap-10 mb-10 max-w-2xl mx-auto">
-              {/* Video 1 */}
-              <div>
-                <h4 className="font-bold text-ink font-body mb-3">Hướng dẫn mở thẻ (Chung)</h4>
-                <div className="rounded-xl overflow-hidden shadow-lg bg-black aspect-video border border-whisper">
-                  <video 
-                    controls 
-                    className="w-full h-full object-contain"
-                  >
-                    <source src={videoSrc1} type="video/mp4" />
-                    <source src={videoSrc1} type="video/quicktime" />
-                    Trình duyệt không hỗ trợ thẻ video.
-                  </video>
+            <div className="mb-10">
+              <div className="flex overflow-x-auto snap-x snap-mandatory gap-6 pb-4 hide-scrollbar">
+                {/* Video 1 */}
+                <div className="snap-center shrink-0 w-[90%] md:w-full max-w-2xl mx-auto flex flex-col">
+                  <h4 className="font-bold text-ink font-body mb-3">Hướng dẫn mở thẻ (Chung)</h4>
+                  <div className="rounded-xl overflow-hidden shadow-lg bg-black aspect-video border border-whisper">
+                    <video 
+                      controls 
+                      className="w-full h-full object-contain"
+                    >
+                      <source src={videoSrc1} type="video/mp4" />
+                      <source src={videoSrc1} type="video/quicktime" />
+                      Trình duyệt không hỗ trợ thẻ video.
+                    </video>
+                  </div>
+                </div>
+
+                {/* Video 2 */}
+                <div className="snap-center shrink-0 w-[90%] md:w-full max-w-2xl mx-auto flex flex-col">
+                  <h4 className="font-bold text-ink font-body mb-3">Hướng dẫn mở MC WORLD 2IN1</h4>
+                  <div className="rounded-xl overflow-hidden shadow-lg bg-black aspect-video border border-whisper">
+                    <video 
+                      controls 
+                      className="w-full h-full object-contain"
+                    >
+                      <source src={videoSrc2} type="video/mp4" />
+                      <source src={videoSrc2} type="video/quicktime" />
+                      Trình duyệt không hỗ trợ thẻ video.
+                    </video>
+                  </div>
                 </div>
               </div>
-
-              {/* Video 2 */}
-              <div>
-                <h4 className="font-bold text-ink font-body mb-3">Hướng dẫn mở MC WORLD 2IN1</h4>
-                <div className="rounded-xl overflow-hidden shadow-lg bg-black aspect-video border border-whisper">
-                  <video 
-                    controls 
-                    className="w-full h-full object-contain"
-                  >
-                    <source src={videoSrc2} type="video/mp4" />
-                    <source src={videoSrc2} type="video/quicktime" />
-                    Trình duyệt không hỗ trợ thẻ video.
-                  </video>
-                </div>
+              
+              {/* Swipe hint for mobile */}
+              <div className="flex justify-center items-center gap-2 mt-2 md:hidden text-steel text-sm font-body">
+                <svg className="w-4 h-4 animate-bounce-x" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4" />
+                </svg>
+                <span>Vuốt sang ngang để xem thêm</span>
               </div>
             </div>
 
