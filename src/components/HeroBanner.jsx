@@ -1,30 +1,16 @@
-import imgBanner from '../assets/images/banner.png';
-import videoBanner from '../assets/videos/banner-video.mp4';
+import imgBanner from '../assets/images/new_banner.jpg';
 
 export default function HeroBanner() {
   return (
     <section className="w-full pt-[80px] bg-canvas overflow-hidden">
-      {/* Edge-to-edge full-width container */}
+      {/* Edge-to-edge full-width image container */}
       <div className="w-full relative pointer-events-none">
-        
-        {/* Mobile: Image banner */}
         <img 
           src={imgBanner} 
-          alt="OCB Credit Cards - Quẹt thẻ chi tiêu" 
-          className="w-full h-auto max-h-[70vh] object-cover object-center md:hidden"
+          alt="OCB Credit Cards - Tận hưởng ẩm thực Á Âu" 
+          className="w-full h-auto object-contain"
           style={{ imageRendering: '-webkit-optimize-contrast' }}
         />
-        
-        {/* Desktop: Video banner */}
-        <video 
-          src={videoBanner}
-          className="w-full h-auto hidden md:block"
-          autoPlay 
-          muted 
-          loop 
-          playsInline
-        />
-        
       </div>
     </section>
   )
