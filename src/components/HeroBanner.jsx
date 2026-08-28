@@ -1,4 +1,4 @@
-import imgBanner from '../assets/images/new_banner.jpg';
+import imgBanner from '../assets/images/new_banner_v2.png';
 
 export default function HeroBanner() {
   return (
