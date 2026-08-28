@@ -3,6 +3,84 @@ import videoSrc1 from '../assets/videos/huong_dan_mo.mov';
 import videoSrc2 from '../assets/videos/huong_dan_mo_mc.mov';
 import zaloQr from '../assets/images/zalo-qr.jpg';
 
+const CustomVideoPlayer = ({ srcMap, isActive, isViewable }) => {
+  const videoRef = useRef(null);
+  const [isPlaying, setIsPlaying] = useState(false);
+
+  useEffect(() => {
+    if (!videoRef.current) return;
+    videoRef.current.volume = 0.5;
+    
+    if (isActive) {
+      if (isViewable) {
+        videoRef.current.play().catch(() => {});
+        setIsPlaying(true);
+      } else {
+        videoRef.current.pause();
+        setIsPlaying(false);
+      }
+    } else {
+      videoRef.current.pause();
+      videoRef.current.currentTime = 0;
+      setIsPlaying(false);
+    }
+  }, [isActive, isViewable]);
+
+  const togglePlay = () => {
+    if (videoRef.current) {
+      if (videoRef.current.paused) {
+        videoRef.current.play().catch(() => {});
+        setIsPlaying(true);
+      } else {
+        videoRef.current.pause();
+        setIsPlaying(false);
+      }
+    }
+  };
+
+  return (
+    <div 
+      className="relative rounded-xl overflow-hidden shadow-lg bg-black aspect-video border border-whisper group cursor-pointer" 
+      onClick={togglePlay}
+    >
+      <video 
+        ref={videoRef}
+        playsInline
+        preload="metadata"
+        className="w-full h-full object-contain"
+        onPlay={() => setIsPlaying(true)}
+        onPause={() => setIsPlaying(false)}
+        onEnded={() => setIsPlaying(false)}
+      >
+        <source src={srcMap} type="video/mp4" />
+        <source src={srcMap} type="video/quicktime" />
+        Trình duyệt không hỗ trợ thẻ video.
+      </video>
+      
+      {/* Play/Pause Overlay Overlaying the whole video */}
+      <div className={`absolute inset-0 flex items-center justify-center bg-black/30 transition-opacity duration-300 ${isPlaying ? 'opacity-0 group-hover:opacity-100' : 'opacity-100'}`}>
+        <button 
+          className="w-16 h-16 rounded-full bg-accent/90 text-white flex items-center justify-center transform transition-transform hover:scale-110 shadow-lg"
+          onClick={(e) => {
+            e.stopPropagation();
+            togglePlay();
+          }}
+        >
+          {isPlaying ? (
+            <svg className="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z" />
+            </svg>
+          ) : (
+            <svg className="w-8 h-8 ml-1" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M8 5v14l11-7z" />
+            </svg>
+          )}
+        </button>
+      </div>
+    </div>
+  );
+};
+
 export default function GuideModal({ isOpen, onClose }) {
   const [activeVideo, setActiveVideo] = useState(0);
   const [isVideoInView, setIsVideoInView] = useState(true);
@@ -31,68 +109,40 @@ export default function GuideModal({ isOpen, onClose }) {
     return () => observer.disconnect();
   }, [isOpen]);
 
-  // Auto-play active (if in view) and pause/rewind inactive videos
-  useEffect(() => {
-    if (scrollContainerRef.current) {
-      const videos = scrollContainerRef.current.querySelectorAll('video');
-      videos.forEach((video, index) => {
-        if (index === activeVideo) {
-          if (isVideoInView) {
-            // Play active video (catch errors if browser blocks autoplay)
-            video.play().catch(() => {});
-          } else {
-            video.pause();
-          }
-        } else {
-          // Pause and rewind inactive video like a Story
-          video.pause();
-          video.currentTime = 0;
-        }
-      });
-    }
-  }, [activeVideo, isVideoInView]);
-
   // Prevent scrolling when modal is open
   useEffect(() => {
     if (isOpen) {
       document.body.style.overflow = 'hidden';
       // Reset video to first one when opened
       setActiveVideo(0);
-      if (scrollContainerRef.current) {
-        scrollContainerRef.current.scrollLeft = 0;
-        // Set default volume to 50% for all videos
-        const videos = scrollContainerRef.current.querySelectorAll('video');
-        videos.forEach((video) => {
-          video.volume = 0.5;
-        });
-      }
     } else {
       document.body.style.overflow = 'unset';
     }
-    return () => { document.body.style.overflow = 'unset'; };
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
   }, [isOpen]);
 
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-6 md:p-12">
-      {/* Backdrop overlay */}
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 bg-black/80 backdrop-blur-sm transition-opacity duration-300">
+      {/* Modal Container */}
       <div 
-        className="absolute inset-0 bg-ink/70 backdrop-blur-sm transition-opacity"
-        onClick={onClose}
-      ></div>
-
-      {/* Modal Content */}
-      <div className="relative w-full max-w-4xl bg-canvas rounded-xl shadow-2xl overflow-hidden flex flex-col max-h-[90vh] animate-in fade-in zoom-in-95 duration-300">
-        
-        {/* Header */}
-        <div className="flex items-center justify-between px-6 py-4 border-b border-whisper bg-surface sticky top-0 z-10">
-          <h2 className="font-display font-bold text-xl md:text-2xl text-ink">Hướng dẫn mở thẻ tín dụng</h2>
+        className="w-full max-w-4xl max-h-[90vh] bg-surface rounded-2xl md:rounded-3xl shadow-2xl flex flex-col relative overflow-hidden transform transition-all"
+        onClick={(e) => e.stopPropagation()}
+      >
+        {/* Header (Sticky) */}
+        <div className="sticky top-0 z-10 bg-white/95 backdrop-blur-md px-6 py-4 md:px-8 md:py-6 border-b border-whisper flex justify-between items-center shadow-sm">
+          <h2 className="text-xl md:text-3xl font-display font-bold text-ink flex items-center gap-3">
+            HƯỚNG DẪN MỞ THẺ
+          </h2>
           <button 
             onClick={onClose}
-            className="w-10 h-10 flex items-center justify-center rounded-full bg-canvas text-steel hover:bg-whisper hover:text-ink transition-colors"
+            className="w-10 h-10 flex items-center justify-center rounded-full bg-surface text-steel hover:bg-accent hover:text-white transition-colors border border-whisper"
+            aria-label="Đóng"
           >
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
               <line x1="18" y1="6" x2="6" y2="18"></line>
               <line x1="6" y1="6" x2="18" y2="18"></line>
             </svg>
@@ -116,18 +166,11 @@ export default function GuideModal({ isOpen, onClose }) {
                 <div className="snap-center shrink-0 w-full flex justify-center">
                   <div className="w-full max-w-2xl flex flex-col">
                     <h4 className="font-bold text-ink font-body mb-3">Hướng dẫn mở thẻ (Chung)</h4>
-                    <div className="rounded-xl overflow-hidden shadow-lg bg-black aspect-video border border-whisper">
-                      <video 
-                        controls 
-                        playsInline
-                        preload="metadata"
-                        className="w-full h-full object-contain"
-                      >
-                        <source src={videoSrc1} type="video/mp4" />
-                        <source src={videoSrc1} type="video/quicktime" />
-                        Trình duyệt không hỗ trợ thẻ video.
-                      </video>
-                    </div>
+                    <CustomVideoPlayer 
+                      srcMap={videoSrc1} 
+                      isActive={activeVideo === 0} 
+                      isViewable={isVideoInView} 
+                    />
                   </div>
                 </div>
 
@@ -135,18 +178,11 @@ export default function GuideModal({ isOpen, onClose }) {
                 <div className="snap-center shrink-0 w-full flex justify-center">
                   <div className="w-full max-w-2xl flex flex-col">
                     <h4 className="font-bold text-ink font-body mb-3">Hướng dẫn mở MC WORLD 2IN1</h4>
-                    <div className="rounded-xl overflow-hidden shadow-lg bg-black aspect-video border border-whisper">
-                      <video 
-                        controls 
-                        playsInline
-                        preload="metadata"
-                        className="w-full h-full object-contain"
-                      >
-                        <source src={videoSrc2} type="video/mp4" />
-                        <source src={videoSrc2} type="video/quicktime" />
-                        Trình duyệt không hỗ trợ thẻ video.
-                      </video>
-                    </div>
+                    <CustomVideoPlayer 
+                      srcMap={videoSrc2} 
+                      isActive={activeVideo === 1} 
+                      isViewable={isVideoInView} 
+                    />
                   </div>
                 </div>
               </div>
