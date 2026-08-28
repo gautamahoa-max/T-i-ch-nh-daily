@@ -18,7 +18,7 @@ export default function HeroBanner() {
         {/* Desktop: Video banner */}
         <video 
           src={videoBanner}
-          className="w-full h-auto max-h-[85vh] object-cover object-center hidden md:block"
+          className="w-full h-auto hidden md:block"
           autoPlay 
           muted 
           loop 
