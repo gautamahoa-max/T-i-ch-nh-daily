@@ -8,7 +8,7 @@ export default function HeroBanner() {
         <img 
           src={imgBanner} 
           alt="OCB Credit Cards - Tận hưởng ẩm thực Á Âu" 
-          className="w-full h-auto object-contain"
+          className="w-full h-[60vh] md:h-[calc(100vh-80px)] object-cover object-center"
           style={{ imageRendering: '-webkit-optimize-contrast' }}
         />
       </div>
