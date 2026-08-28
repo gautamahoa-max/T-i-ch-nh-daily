@@ -159,14 +159,19 @@ export default function CardDetailsModal({ card, isOpen, onClose }) {
                     {section.title}
                   </h3>
                   <ul className="space-y-3">
-                    {section.items.map((item, idx) => (
-                      <li key={idx} className="font-body text-steel text-base flex items-start">
-                        <svg className="w-5 h-5 text-accent/70 mr-3 flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
-                        </svg>
-                        <div className="flex-1">{formatText(item)}</div>
-                      </li>
-                    ))}
+                    {section.items.map((item, idx) => {
+                      const isNumbered = /^\d+\./.test(item);
+                      return (
+                        <li key={idx} className={`font-body text-steel text-base flex items-start ${isNumbered ? 'mt-4' : ''}`}>
+                          {!isNumbered && (
+                            <svg className="w-5 h-5 text-accent/70 mr-3 flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
+                            </svg>
+                          )}
+                          <div className={`flex-1 ${isNumbered ? 'text-ink' : ''}`}>{formatText(item)}</div>
+                        </li>
+                      );
+                    })}
                   </ul>
                 </div>
               ))}
