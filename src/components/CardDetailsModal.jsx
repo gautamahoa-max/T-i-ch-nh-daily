@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { cardDetailsData } from '../data/cardDetails';
 
 
-const splitRegex = /(\d+(?:\.\d+)*\s*VND[^\s,.]*|\d+\s*triệu(?:\s*đồng)?|\d+(?:\.\d+)?%|miễn phí)/gi;
+const splitRegex = /(\d+(?:\.\d+)*\s*VND[^\s,.]*|\d+\s*triệu(?:\s*đồng)?|\d+(?:[.,]\d+)?%|miễn phí)/gi;
 
 const formatText = (text) => {
   const numberPrefixMatch = text.match(/^(\d+\.)\s+(.*)/);
