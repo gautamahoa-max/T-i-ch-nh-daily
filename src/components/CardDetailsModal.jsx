@@ -7,10 +7,10 @@ export default function CardDetailsModal({ card, isOpen, onClose }) {
   useEffect(() => {
     if (isOpen) {
       document.body.style.overflow = 'hidden';
-      // Trigger rotation 3 seconds after opening
+      // Trigger rotation 1 second after opening
       const timer = setTimeout(() => {
         setRotation(-360);
-      }, 3000);
+      }, 1000);
       return () => {
         document.body.style.overflow = 'unset';
         clearTimeout(timer);
