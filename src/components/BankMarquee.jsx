@@ -65,13 +65,17 @@ export default function BankMarquee() {
   const scrollItems = [...banks, ...banks, ...banks]; // Triple the items for smooth infinite loop
 
   useEffect(() => {
-    let animationFrameId;
-    let lastTime = performance.now();
-
-    // Start at the middle block so user can scroll left immediately
+    // Start at the middle block once on mount so user can scroll left immediately
     if (scrollRef.current) {
       scrollRef.current.scrollLeft = scrollRef.current.scrollWidth / 3;
     }
+  }, []);
+
+  useEffect(() => {
+    let animationFrameId;
+    let lastTime = performance.now();
+
+
 
     const scrollLoop = (time) => {
       if (scrollRef.current) {
