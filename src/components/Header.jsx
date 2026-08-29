@@ -86,10 +86,7 @@ export default function Header() {
       </header>
       
       
-      <FAQModal 
-        isOpen={isFAQOpen} 
-        onClose={() => setIsFAQOpen(false)} 
-      />
+
     </>
   )
 }
