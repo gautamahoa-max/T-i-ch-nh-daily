@@ -1,4 +1,6 @@
-import { useState, useRef } from 'react';
+const fs = require('fs');
+
+const content = `import { useState, useRef } from 'react';
 import { bankLogos } from '../assets/images/banks/index.js';
 
 const banks = [
@@ -92,7 +94,7 @@ export default function BankMarquee() {
       <div className="relative w-full py-6">
         <div 
           ref={scrollRef}
-          className="flex overflow-x-auto no-scrollbar [&::-webkit-scrollbar]:hidden scroll-smooth snap-x snap-mandatory px-4 md:px-12 items-center"
+          className="flex overflow-x-auto no-scrollbar scroll-smooth snap-x snap-mandatory px-4 md:px-12 items-center"
           style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
         >
           {banks.map((bank, index) => (
@@ -125,3 +127,7 @@ export default function BankMarquee() {
     </section>
   );
 }
+`;
+
+fs.writeFileSync('src/components/BankMarquee.jsx', content);
+console.log('BankMarquee updated');
