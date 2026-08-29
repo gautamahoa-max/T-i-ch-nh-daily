@@ -19,22 +19,20 @@ function App() {
     return () => window.removeEventListener('hashchange', onHashChange);
   }, []);
 
-  if (hash === '#/guide') {
-    return (
-      <div className="min-h-screen flex flex-col bg-gray-50 relative">
-        <GuidePage />
-      </div>
-    );
-  }
-
   return (
-    <div className="min-h-screen flex flex-col bg-gray-50 relative md:pb-0 overflow-x-hidden">
+    <div className="min-h-screen flex flex-col bg-white relative overflow-x-hidden">
       <Header />
       
       <main className="flex-1 flex flex-col">
-        <HeroBanner />
-        <BankMarquee />
-        <CardList />
+        {hash === '#/guide' ? (
+          <GuidePage />
+        ) : (
+          <>
+            <HeroBanner />
+            <BankMarquee />
+            <CardList />
+          </>
+        )}
       </main>
 
       <Footer />
