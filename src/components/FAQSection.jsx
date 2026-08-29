@@ -3,18 +3,7 @@ import { useEffect, useState } from 'react';
 export default function FAQSection() {
   const [openIndex, setOpenIndex] = useState(null);
 
-  useEffect(() => {
-    if (isOpen) {
-      document.body.style.overflow = 'hidden';
-      // Reset open item when modal opens
-      setOpenIndex(null);
-    } else {
-      document.body.style.overflow = 'unset';
-    }
-    return () => {
-      document.body.style.overflow = 'unset';
-    };
-  }, [isOpen]);
+
 
   const toggleItem = (index) => {
     setOpenIndex(openIndex === index ? null : index);
