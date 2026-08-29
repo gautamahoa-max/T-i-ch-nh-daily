@@ -78,10 +78,7 @@ export default function Header() {
         </div>
       </header>
       
-      <GuideModal 
-        isOpen={isGuideOpen} 
-        onClose={() => setIsGuideOpen(false)} 
-      />
+      
       <FAQModal 
         isOpen={isFAQOpen} 
         onClose={() => setIsFAQOpen(false)} 
