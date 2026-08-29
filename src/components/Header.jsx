@@ -1,9 +1,19 @@
 import { useState } from 'react';
-import FAQModal from './FAQModal';
 
 export default function Header() {
-    const [isFAQOpen, setIsFAQOpen] = useState(false);
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const scrollToFAQ = () => {
+    if (window.location.hash === '#/guide') {
+      window.location.hash = '#/';
+      setTimeout(() => {
+        document.getElementById('faq')?.scrollIntoView({ behavior: 'smooth' });
+      }, 100);
+    } else {
+      document.getElementById('faq')?.scrollIntoView({ behavior: 'smooth' });
+    }
+    setIsMobileMenuOpen(false);
+  };
+
+    const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   return (
     <>
@@ -22,7 +32,7 @@ export default function Header() {
               <a href="#/" className="hover:text-accent transition-colors">Hệ sinh thái thẻ</a>
               <a href="#/guide" className="hover:text-accent transition-colors cursor-pointer">Hướng dẫn mở</a>
               <button 
-                onClick={() => setIsFAQOpen(true)}
+                onClick={scrollToFAQ}
                 className="hover:text-accent transition-colors cursor-pointer"
               >
                 Câu hỏi thường gặp
@@ -66,10 +76,7 @@ export default function Header() {
             </a>
             <a href="#/guide" onClick={() => setIsMobileMenuOpen(false)} className="hover:text-accent transition-colors text-left block">Hướng dẫn mở</a>
             <button 
-              onClick={() => {
-                setIsMobileMenuOpen(false);
-                setIsFAQOpen(true);
-              }}
+              onClick={scrollToFAQ}
               className="hover:text-accent transition-colors text-left block"
             >
               Câu hỏi thường gặp

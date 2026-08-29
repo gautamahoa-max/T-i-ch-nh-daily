@@ -3,6 +3,7 @@ import Header from './components/Header'
 import HeroBanner from './components/HeroBanner'
 import BankMarquee from './components/BankMarquee'
 import CardList from './components/CardList'
+import FAQSection from './components/FAQSection'
 import Footer from './components/Footer'
 import FloatingContact from './components/FloatingContact'
 import GuidePage from './components/GuidePage'
@@ -31,6 +32,7 @@ function App() {
             <HeroBanner />
             <BankMarquee />
             <CardList />
+            <FAQSection />
           </>
         )}
       </main>
