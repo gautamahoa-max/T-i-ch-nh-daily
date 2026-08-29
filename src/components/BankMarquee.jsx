@@ -61,6 +61,7 @@ const BankLogo = ({ bank }) => {
 
 export default function BankMarquee() {
   const scrollRef = useRef(null);
+  const pauseRef = useRef(0);
   const [isHovered, setIsHovered] = useState(false);
   const scrollItems = [...banks, ...banks, ...banks]; // Triple the items for smooth infinite loop
 
@@ -82,7 +83,7 @@ export default function BankMarquee() {
         const container = scrollRef.current;
         const deltaTime = time - lastTime;
         
-        if (!isHovered) {
+        if (!isHovered && time > pauseRef.current) {
           // Move 1 pixel every 16ms approx (60fps)
           if (deltaTime > 16) {
             container.scrollLeft += 1;
@@ -110,6 +111,7 @@ export default function BankMarquee() {
 
   const scroll = (direction) => {
     if (scrollRef.current) {
+      pauseRef.current = performance.now() + 600; // Pause auto-scroll for 600ms
       const scrollAmount = window.innerWidth < 768 ? 200 : 400;
       scrollRef.current.scrollBy({
         left: direction === 'left' ? -scrollAmount : scrollAmount,
