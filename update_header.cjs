@@ -1,32 +1,47 @@
 const fs = require('fs');
 let content = fs.readFileSync('src/components/Header.jsx', 'utf8');
 
-// Remove FAQModal import and component
-content = content.replace("import FAQModal from './FAQModal';\n", "");
-content = content.replace(/<FAQModal[^>]*\/>/s, "");
+const oldImport = `import { useState } from 'react';`;
+const newImport = `import { useState } from 'react';`; // unchanged
 
-// Remove isFAQOpen state
-content = content.replace(/const \[isFAQOpen, setIsFAQOpen\] = useState\(false\);\n\s*/g, "");
+const oldLinkDesktop = `<a href="#/" className="hover:text-accent transition-colors">Hệ sinh thái thẻ</a>`;
+const newLinkDesktop = `<a href="#/" onClick={handleScrollToCards} className="hover:text-accent transition-colors cursor-pointer">Hệ sinh thái thẻ</a>`;
 
-// Add scrollToFAQ function
-const scrollToFAQFn = `
-  const scrollToFAQ = () => {
+const oldLinkMobile = `<a 
+              href="#/" 
+              onClick={() => setIsMobileMenuOpen(false)}
+              className="hover:text-accent transition-colors block"
+            >
+              Hệ sinh thái thẻ
+            </a>`;
+const newLinkMobile = `<a 
+              href="#/" 
+              onClick={handleScrollToCards}
+              className="hover:text-accent transition-colors block cursor-pointer"
+            >
+              Hệ sinh thái thẻ
+            </a>`;
+
+const insertFunc = `  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+  const handleScrollToCards = (e) => {
+    e.preventDefault();
     if (window.location.hash === '#/guide') {
       window.location.hash = '#/';
       setTimeout(() => {
-        document.getElementById('faq')?.scrollIntoView({ behavior: 'smooth' });
-      }, 100);
+        const el = document.getElementById('card-list');
+        if (el) el.scrollIntoView({ behavior: 'smooth' });
+      }, 150);
     } else {
-      document.getElementById('faq')?.scrollIntoView({ behavior: 'smooth' });
+      const el = document.getElementById('card-list');
+      if (el) el.scrollIntoView({ behavior: 'smooth' });
     }
     setIsMobileMenuOpen(false);
-  };
-`;
+  };`;
 
-content = content.replace("export default function Header() {", "export default function Header() {" + scrollToFAQFn);
-
-// Replace button onClick handlers
-content = content.replace(/onClick=\{[^}]*setIsFAQOpen\(true\)[^}]*\}/g, "onClick={scrollToFAQ}");
+content = content.replace(`  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);`, insertFunc);
+content = content.replace(oldLinkDesktop, newLinkDesktop);
+content = content.replace(oldLinkMobile, newLinkMobile);
 
 fs.writeFileSync('src/components/Header.jsx', content);
-console.log('Header updated');
+console.log('Header updated to scroll to card-list');

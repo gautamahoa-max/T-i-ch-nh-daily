@@ -4,6 +4,21 @@ export default function Header() {
   
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
+  const handleScrollToCards = (e) => {
+    e.preventDefault();
+    if (window.location.hash === '#/guide') {
+      window.location.hash = '#/';
+      setTimeout(() => {
+        const el = document.getElementById('card-list');
+        if (el) el.scrollIntoView({ behavior: 'smooth' });
+      }, 150);
+    } else {
+      const el = document.getElementById('card-list');
+      if (el) el.scrollIntoView({ behavior: 'smooth' });
+    }
+    setIsMobileMenuOpen(false);
+  };
+
   return (
     <>
       <header className="fixed top-0 left-0 right-0 bg-surface/80 backdrop-blur-md border-b border-whisper z-50 transition-all duration-300">
@@ -18,7 +33,7 @@ export default function Header() {
             </a>
             {/* Desktop Navigation */}
             <nav className="hidden md:flex items-center gap-8 font-body font-semibold text-base text-ink">
-              <a href="#/" className="hover:text-accent transition-colors">Hệ sinh thái thẻ</a>
+              <a href="#/" onClick={handleScrollToCards} className="hover:text-accent transition-colors cursor-pointer">Hệ sinh thái thẻ</a>
               <a href="#/guide" className="hover:text-accent transition-colors cursor-pointer">Hướng dẫn mở</a>
 
             </nav>
@@ -53,8 +68,8 @@ export default function Header() {
           <div className="flex flex-col px-6 gap-6 font-body font-semibold text-base text-ink">
             <a 
               href="#/" 
-              onClick={() => setIsMobileMenuOpen(false)}
-              className="hover:text-accent transition-colors block"
+              onClick={handleScrollToCards}
+              className="hover:text-accent transition-colors block cursor-pointer"
             >
               Hệ sinh thái thẻ
             </a>
