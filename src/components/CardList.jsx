@@ -21,7 +21,7 @@ const cards = [
     name: "OCB JCB Platinum",
     description: "Đặc quyền ẩm thực và sân bay. Mở khóa lối sống tinh hoa mang đậm phong vị Nhật Bản.",
     image: imgJcb,
-    metrics: "Phòng chờ VIP"
+    metrics: "Dòng thẻ dành cho các tín đồ Nhật Bản"
   },
   {
     id: 4,
