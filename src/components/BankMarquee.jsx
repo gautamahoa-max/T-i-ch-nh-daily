@@ -68,25 +68,35 @@ export default function BankMarquee() {
     let animationFrameId;
     let lastTime = performance.now();
 
+    // Start at the middle block so user can scroll left immediately
+    if (scrollRef.current) {
+      scrollRef.current.scrollLeft = scrollRef.current.scrollWidth / 3;
+    }
+
     const scrollLoop = (time) => {
-      if (!isHovered && scrollRef.current) {
+      if (scrollRef.current) {
         const container = scrollRef.current;
         const deltaTime = time - lastTime;
         
-        // Move 1 pixel every 16ms approx (60fps)
-        if (deltaTime > 16) {
-          container.scrollLeft += 1;
-          lastTime = time;
-
-          // If we scrolled past one full set of items, reset to beginning seamlessly
-          // We assume half the scroll width is the safe reset point since we duplicated items
-          if (container.scrollLeft >= container.scrollWidth / 3) {
-            container.scrollLeft = 0;
+        if (!isHovered) {
+          // Move 1 pixel every 16ms approx (60fps)
+          if (deltaTime > 16) {
+            container.scrollLeft += 1;
+            lastTime = time;
           }
+        } else {
+          lastTime = performance.now();
         }
-      } else {
-        lastTime = performance.now();
+
+        // Always check boundaries for infinite loop (even during manual scroll)
+        const oneBlockWidth = container.scrollWidth / 3;
+        if (container.scrollLeft >= oneBlockWidth * 2) {
+          container.scrollLeft -= oneBlockWidth;
+        } else if (container.scrollLeft <= 0) {
+          container.scrollLeft += oneBlockWidth;
+        }
       }
+      
       animationFrameId = requestAnimationFrame(scrollLoop);
     };
 
