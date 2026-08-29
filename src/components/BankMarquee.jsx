@@ -1,4 +1,4 @@
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { bankLogos } from '../assets/images/banks/index.js';
 
 const banks = [
@@ -40,14 +40,14 @@ const BankLogo = ({ bank }) => {
 
   if (imgError || !localSrc) {
     return (
-      <div className="flex-shrink-0 flex items-center justify-center h-20 px-8 bg-white border border-gray-100 rounded-xl shadow-sm mx-3 snap-center">
+      <div className="flex-shrink-0 flex items-center justify-center h-20 px-8 bg-white border border-gray-100 rounded-xl shadow-sm mx-3 ">
         <span className="font-bold text-gray-700 text-lg uppercase tracking-wider">{bank.name}</span>
       </div>
     );
   }
 
   return (
-    <div className="flex-shrink-0 flex items-center justify-center h-20 w-40 bg-white border border-gray-100 rounded-xl shadow-sm mx-3 p-3 transition-transform hover:scale-105 cursor-default snap-center">
+    <div className="flex-shrink-0 flex items-center justify-center h-20 w-40 bg-white border border-gray-100 rounded-xl shadow-sm mx-3 p-3 transition-transform hover:scale-105 cursor-default ">
       <img
         src={localSrc}
         alt={bank.name}
@@ -61,6 +61,38 @@ const BankLogo = ({ bank }) => {
 
 export default function BankMarquee() {
   const scrollRef = useRef(null);
+  const [isHovered, setIsHovered] = useState(false);
+  const scrollItems = [...banks, ...banks, ...banks]; // Triple the items for smooth infinite loop
+
+  useEffect(() => {
+    let animationFrameId;
+    let lastTime = performance.now();
+
+    const scrollLoop = (time) => {
+      if (!isHovered && scrollRef.current) {
+        const container = scrollRef.current;
+        const deltaTime = time - lastTime;
+        
+        // Move 1 pixel every 16ms approx (60fps)
+        if (deltaTime > 16) {
+          container.scrollLeft += 1;
+          lastTime = time;
+
+          // If we scrolled past one full set of items, reset to beginning seamlessly
+          // We assume half the scroll width is the safe reset point since we duplicated items
+          if (container.scrollLeft >= container.scrollWidth / 3) {
+            container.scrollLeft = 0;
+          }
+        }
+      } else {
+        lastTime = performance.now();
+      }
+      animationFrameId = requestAnimationFrame(scrollLoop);
+    };
+
+    animationFrameId = requestAnimationFrame(scrollLoop);
+    return () => cancelAnimationFrame(animationFrameId);
+  }, [isHovered]);
 
   const scroll = (direction) => {
     if (scrollRef.current) {
@@ -92,10 +124,14 @@ export default function BankMarquee() {
       <div className="relative w-full py-6">
         <div 
           ref={scrollRef}
-          className="flex overflow-x-auto no-scrollbar [&::-webkit-scrollbar]:hidden scroll-smooth snap-x snap-mandatory px-4 md:px-12 items-center"
+          className="flex overflow-x-auto no-scrollbar [&::-webkit-scrollbar]:hidden px-4 md:px-12 items-center"
           style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+          onMouseEnter={() => setIsHovered(true)}
+          onMouseLeave={() => setIsHovered(false)}
+          onTouchStart={() => setIsHovered(true)}
+          onTouchEnd={() => setIsHovered(false)}
         >
-          {banks.map((bank, index) => (
+          {scrollItems.map((bank, index) => (
             <BankLogo key={index} bank={bank} />
           ))}
         </div>
