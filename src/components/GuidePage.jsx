@@ -117,11 +117,11 @@ export default function GuidePage() {
     <div className="min-h-screen bg-gray-50 flex flex-col items-center">
       {/* Modal Container */}
       <div 
-        className="w-full max-w-4xl max-h-[90vh] bg-surface rounded-2xl md:rounded-3xl shadow-2xl flex flex-col relative overflow-hidden transform transition-all"
+        className="w-full max-w-5xl bg-white md:shadow-2xl flex flex-col relative md:my-12 md:rounded-3xl"
         
       >
         {/* Header (Sticky) */}
-        <div className="sticky top-0 z-10 bg-white/95 backdrop-blur-md px-6 py-4 md:px-8 md:py-6 border-b border-whisper flex justify-between items-center shadow-sm">
+        <div className="sticky top-0 z-10 bg-white/95 backdrop-blur-md px-6 py-4 md:px-8 md:py-6 border-b border-whisper flex justify-between items-center shadow-sm md:rounded-t-3xl">
           <h2 className="text-xl md:text-3xl font-display font-bold text-ink flex items-center gap-3">
             HƯỚNG DẪN MỞ THẺ
           </h2>
@@ -139,7 +139,7 @@ export default function GuidePage() {
         </div>
 
         {/* Scrollable Body */}
-        <div className="flex-1 p-6 md:p-10 space-y-12 bg-white">
+        <div className="flex-1 p-6 md:p-10 space-y-12 bg-white md:rounded-b-3xl">
           
           {/* CÁCH 1 */}
           <section className="space-y-6">

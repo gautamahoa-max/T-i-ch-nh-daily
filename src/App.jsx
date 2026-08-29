@@ -21,7 +21,7 @@ function App() {
 
   if (hash === '#/guide') {
     return (
-      <div className="min-h-screen flex flex-col bg-gray-50 relative overflow-x-hidden">
+      <div className="min-h-screen flex flex-col bg-gray-50 relative">
         <GuidePage />
       </div>
     );
