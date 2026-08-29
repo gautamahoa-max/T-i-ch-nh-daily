@@ -1,10 +1,8 @@
 import { useState } from 'react';
-import GuideModal from './GuideModal';
 import FAQModal from './FAQModal';
 
 export default function Header() {
-  const [isGuideOpen, setIsGuideOpen] = useState(false);
-  const [isFAQOpen, setIsFAQOpen] = useState(false);
+    const [isFAQOpen, setIsFAQOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   return (
@@ -22,12 +20,7 @@ export default function Header() {
             {/* Desktop Navigation */}
             <nav className="hidden md:flex items-center gap-8 font-body font-semibold text-base text-ink">
               <a href="#" className="hover:text-accent transition-colors">Hệ sinh thái thẻ</a>
-              <button 
-                onClick={() => setIsGuideOpen(true)}
-                className="hover:text-accent transition-colors cursor-pointer"
-              >
-                Hướng dẫn mở
-              </button>
+              <a href="#/guide" className="hover:text-accent transition-colors cursor-pointer">Hướng dẫn mở</a>
               <button 
                 onClick={() => setIsFAQOpen(true)}
                 className="hover:text-accent transition-colors cursor-pointer"
@@ -71,15 +64,7 @@ export default function Header() {
             >
               Hệ sinh thái thẻ
             </a>
-            <button 
-              onClick={() => {
-                setIsMobileMenuOpen(false);
-                setIsGuideOpen(true);
-              }}
-              className="hover:text-accent transition-colors text-left block"
-            >
-              Hướng dẫn mở
-            </button>
+            <a href="#/guide" onClick={() => setIsMobileMenuOpen(false)} className="hover:text-accent transition-colors text-left block">Hướng dẫn mở</a>
             <button 
               onClick={() => {
                 setIsMobileMenuOpen(false);

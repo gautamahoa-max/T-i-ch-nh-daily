@@ -81,7 +81,7 @@ const CustomVideoPlayer = ({ srcMap, isActive, isViewable }) => {
   );
 };
 
-export default function GuideModal({ isOpen, onClose }) {
+export default function GuidePage() {
   const [activeVideo, setActiveVideo] = useState(0);
   const [isVideoInView, setIsVideoInView] = useState(true);
   const scrollContainerRef = useRef(null);
@@ -97,7 +97,7 @@ export default function GuideModal({ isOpen, onClose }) {
 
   // Observe if video container is in view
   useEffect(() => {
-    if (!isOpen || !scrollContainerRef.current) return;
+    
     
     const observer = new IntersectionObserver((entries) => {
       const entry = entries[0];
@@ -107,50 +107,39 @@ export default function GuideModal({ isOpen, onClose }) {
     observer.observe(scrollContainerRef.current);
     
     return () => observer.disconnect();
-  }, [isOpen]);
+  }, []);
 
-  // Prevent scrolling when modal is open
-  useEffect(() => {
-    if (isOpen) {
-      document.body.style.overflow = 'hidden';
-      // Reset video to first one when opened
-      setActiveVideo(0);
-    } else {
-      document.body.style.overflow = 'unset';
-    }
-    return () => {
-      document.body.style.overflow = 'unset';
-    };
-  }, [isOpen]);
 
-  if (!isOpen) return null;
+
+  
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 bg-black/80 backdrop-blur-sm transition-opacity duration-300">
+    <div className="min-h-screen bg-gray-50 flex flex-col items-center">
       {/* Modal Container */}
       <div 
         className="w-full max-w-4xl max-h-[90vh] bg-surface rounded-2xl md:rounded-3xl shadow-2xl flex flex-col relative overflow-hidden transform transition-all"
-        onClick={(e) => e.stopPropagation()}
+        
       >
         {/* Header (Sticky) */}
         <div className="sticky top-0 z-10 bg-white/95 backdrop-blur-md px-6 py-4 md:px-8 md:py-6 border-b border-whisper flex justify-between items-center shadow-sm">
           <h2 className="text-xl md:text-3xl font-display font-bold text-ink flex items-center gap-3">
             HƯỚNG DẪN MỞ THẺ
           </h2>
-          <button 
-            onClick={onClose}
-            className="w-10 h-10 flex items-center justify-center rounded-full bg-surface text-steel hover:bg-accent hover:text-white transition-colors border border-whisper"
-            aria-label="Đóng"
+          
+          <a 
+            href="#/"
+            className="flex items-center gap-2 px-4 py-2 rounded-full bg-surface text-steel hover:bg-accent hover:text-white transition-colors border border-whisper font-semibold text-sm"
           >
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-              <line x1="18" y1="6" x2="6" y2="18"></line>
-              <line x1="6" y1="6" x2="18" y2="18"></line>
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M19 12H5M12 19l-7-7 7-7"/>
             </svg>
-          </button>
+            Quay lại
+          </a>
+
         </div>
 
         {/* Scrollable Body */}
-        <div className="overflow-y-auto flex-1 p-6 md:p-10 space-y-12 bg-white">
+        <div className="flex-1 p-6 md:p-10 space-y-12 bg-white">
           
           {/* CÁCH 1 */}
           <section className="space-y-6">
