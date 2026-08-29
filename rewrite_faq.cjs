@@ -1,4 +1,6 @@
-import { useState } from 'react';
+const fs = require('fs');
+
+const content = `import { useState } from 'react';
 
 export default function FAQSection() {
   const [openIndex, setOpenIndex] = useState(null);
@@ -160,15 +162,15 @@ export default function FAQSection() {
                   className="bg-white border border-gray-200 rounded-2xl overflow-hidden shadow-sm transition-all duration-300"
                 >
                   <button
-                    className="group w-full text-left px-6 py-5 flex items-center justify-between focus:outline-none"
+                    className="w-full text-left px-6 py-5 flex items-center justify-between focus:outline-none"
                     onClick={() => toggleItem(index)}
                   >
                     <h3 className="text-lg md:text-xl font-bold text-black pr-8 leading-snug">{faq.question}</h3>
                     <div 
-                      className={`w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 transition-colors duration-300 ${isOpen ? 'bg-[#FFCC00]' : 'bg-transparent group-hover:bg-[#FFCC00]'}`}
+                      className={\`w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 transition-colors duration-300 \${isOpen ? 'bg-[#FFCC00]' : 'bg-transparent'}\`}
                     >
                       <svg 
-                        className={`w-5 h-5 text-black transform transition-transform duration-300 ${isOpen ? 'rotate-45' : ''}`} 
+                        className={\`w-5 h-5 text-black transform transition-transform duration-300 \${isOpen ? 'rotate-45' : ''}\`} 
                         fill="none" 
                         viewBox="0 0 24 24" 
                         stroke="currentColor"
@@ -178,7 +180,7 @@ export default function FAQSection() {
                     </div>
                   </button>
                   <div 
-                    className={`overflow-hidden transition-all duration-300 ease-in-out ${isOpen ? 'max-h-[1000px] opacity-100' : 'max-h-0 opacity-0'}`}
+                    className={\`overflow-hidden transition-all duration-300 ease-in-out \${isOpen ? 'max-h-[1000px] opacity-100' : 'max-h-0 opacity-0'}\`}
                   >
                     <div className="px-6 pb-6 text-[15px]">
                       {faq.answer}
@@ -192,3 +194,7 @@ export default function FAQSection() {
     </section>
   );
 }
+`;
+
+fs.writeFileSync('src/components/FAQSection.jsx', content);
+console.log('FAQSection updated to match the design');
