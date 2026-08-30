@@ -11,7 +11,7 @@ export default function Footer() {
               className="h-16 mb-8"
             />
             <p className="font-body text-steel text-sm leading-relaxed max-w-sm mb-8">
-              Ngân hàng TMCP Phương Đông (OCB) được thành lập từ năm 1996. Kiến tạo chuẩn mực tài chính mới.
+              Blog chia sẻ các sản phẩm thẻ tín dụng của OCB
             </p>
             <div className="font-mono text-ink text-sm tracking-widest uppercase">Liên hệ: 098.888.6447 - Hoà OCB</div>
           </div>
