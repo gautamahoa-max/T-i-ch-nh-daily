@@ -33,28 +33,26 @@ export default function SplashScreen() {
   if (phase === 'hidden') return null;
 
   return (
-    <>
-      <style>{`
-        .white-light-glow {
-          filter: brightness(10) drop-shadow(0 0 50px white);
-          opacity: 0;
-          transform: scale(1.15);
-        }
-      `}</style>
+    <div 
+      className={`fixed inset-0 z-[9999] flex items-center justify-center bg-white transition-opacity duration-1000 ease-in-out
+        ${phase === 'fading' ? 'opacity-0 pointer-events-none' : 'opacity-100'}
+      `}
+    >
+      {/* Light Burst Element - A bright glow behind/over the logo */}
       <div 
-        className={`fixed inset-0 z-[9999] flex items-center justify-center bg-white transition-opacity duration-1000 ease-in-out
-          ${phase === 'fading' ? 'opacity-0 pointer-events-none' : 'opacity-100'}
+        className={`absolute transition-all duration-[800ms] ease-out rounded-full bg-white blur-3xl
+          ${phase === 'visible' ? 'w-10 h-10 opacity-0' : 'w-[400px] h-[400px] md:w-[600px] md:h-[600px] opacity-100 scale-150'}
         `}
-      >
-        <img 
-          src={blogLogo} 
-          alt="Blog Customer Guidance" 
-          className={`relative z-20 w-64 md:w-80 origin-center transition-all duration-[800ms] ease-out
-            ${phase === 'visible' ? 'scale-100 opacity-100 filter-none' : ''}
-            ${(phase === 'lighting' || phase === 'fading') ? 'white-light-glow' : ''}
-          `}
-        />
-      </div>
-    </>
+      ></div>
+
+      {/* The Logo */}
+      <img 
+        src={blogLogo} 
+        alt="Blog Customer Guidance" 
+        className={`relative z-20 w-64 md:w-80 origin-center transition-all duration-[800ms] ease-out
+          ${phase === 'visible' ? 'scale-100 opacity-100 brightness-100' : 'scale-125 opacity-0 brightness-200'}
+        `}
+      />
+    </div>
   );
 }
