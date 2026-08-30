@@ -1,3 +1,4 @@
+import ConsultationForm from './ConsultationForm';
 import { useEffect, useState, useRef } from 'react';
 import videoSrc1 from '../assets/videos/huong_dan_mo.mov';
 import videoSrc2 from '../assets/videos/huong_dan_mo_mc.mov';
@@ -241,6 +242,8 @@ export default function GuidePage() {
               </div>
             </div>
           </section>
+
+          <ConsultationForm />
 
               </div>
     </div>
