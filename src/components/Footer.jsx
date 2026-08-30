@@ -1,3 +1,4 @@
+import blogLogo from '../assets/images/blog_logo.png';
 export default function Footer() {
   return (
     <footer className="bg-canvas border-t border-whisper pt-16 pb-8 md:pt-24 md:pb-12">
@@ -5,9 +6,9 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-12 gap-12 mb-20">
           <div className="md:col-span-5">
             <img 
-              src="https://ocb.com.vn/assets/images/logo/ocb-logo-full.svg" 
+              src={blogLogo} 
               alt="OCB Logo" 
-              className="h-8 mb-8"
+              className="h-16 mb-8"
             />
             <p className="font-body text-steel text-sm leading-relaxed max-w-sm mb-8">
               Ngân hàng TMCP Phương Đông (OCB) được thành lập từ năm 1996. Kiến tạo chuẩn mực tài chính mới.

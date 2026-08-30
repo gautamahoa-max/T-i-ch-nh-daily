@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import blogLogo from '../assets/images/blog_logo.png';
 
 export default function Header() {
   
@@ -26,9 +27,9 @@ export default function Header() {
           <div className="flex items-center gap-10">
             <a href="#/">
               <img 
-                src="https://ocb.com.vn/assets/images/logo/ocb-logo-full.svg" 
+                src={blogLogo} 
                 alt="OCB Logo" 
-                className="h-8"
+                className="h-12"
               />
             </a>
             {/* Desktop Navigation */}
