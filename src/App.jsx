@@ -1,3 +1,4 @@
+import SplashScreen from './components/SplashScreen';
 import { useState, useEffect } from 'react'
 import Header from './components/Header'
 import HeroBanner from './components/HeroBanner'
@@ -22,6 +23,7 @@ function App() {
 
   return (
     <div className="min-h-screen flex flex-col bg-white relative overflow-x-hidden">
+      <SplashScreen />
       <Header />
       
       <main className="flex-1 flex flex-col">
