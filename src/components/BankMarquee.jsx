@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from 'react';
+import { useState, useRef, useEffect, useCallback } from 'react';
 import { bankLogos } from '../assets/images/banks/index.js';
 
 const banks = [
@@ -69,10 +69,16 @@ export default function BankMarquee() {
   const [isHovered, setIsHovered] = useState(false);
   const scrollItems = [...banks, ...banks, ...banks]; // Triple the items for smooth infinite loop
 
+  
+  const exactScrollLeft = useRef(0);
+  const isDragging = useRef(false);
+
   useEffect(() => {
     // Start at the middle block once on mount so user can scroll left immediately
     if (scrollRef.current) {
-      scrollRef.current.scrollLeft = scrollRef.current.scrollWidth / 3;
+      const startPos = scrollRef.current.scrollWidth / 3;
+      scrollRef.current.scrollLeft = startPos;
+      exactScrollLeft.current = startPos;
     }
   }, []);
 
@@ -80,29 +86,32 @@ export default function BankMarquee() {
     let animationFrameId;
     let lastTime = performance.now();
 
-
-
     const scrollLoop = (time) => {
       if (scrollRef.current) {
         const container = scrollRef.current;
         const deltaTime = time - lastTime;
+        lastTime = time;
         
-        if (!isHovered && time > pauseRef.current) {
-          // Move 1 pixel every 16ms approx (60fps)
-          if (deltaTime > 16) {
-            container.scrollLeft += 1;
-            lastTime = time;
-          }
-        } else {
-          lastTime = performance.now();
+        // Sync exactScrollLeft if user manually scrolled (swipe or buttons)
+        if (Math.abs(container.scrollLeft - exactScrollLeft.current) > 2) {
+          exactScrollLeft.current = container.scrollLeft;
         }
 
-        // Always check boundaries for infinite loop (even during manual scroll)
+        if (!isHovered && !isDragging.current && time > pauseRef.current) {
+          // Speed: 0.04 pixels per millisecond (smooth on any Hz)
+          const speed = 0.04;
+          exactScrollLeft.current += speed * deltaTime;
+          container.scrollLeft = exactScrollLeft.current;
+        }
+
+        // Always check boundaries for infinite loop
         const oneBlockWidth = container.scrollWidth / 3;
         if (container.scrollLeft >= oneBlockWidth * 2) {
-          container.scrollLeft -= oneBlockWidth;
+          exactScrollLeft.current -= oneBlockWidth;
+          container.scrollLeft = exactScrollLeft.current;
         } else if (container.scrollLeft <= 0) {
-          container.scrollLeft += oneBlockWidth;
+          exactScrollLeft.current += oneBlockWidth;
+          container.scrollLeft = exactScrollLeft.current;
         }
       }
       
@@ -148,8 +157,8 @@ export default function BankMarquee() {
           style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
           onMouseEnter={() => setIsHovered(true)}
           onMouseLeave={() => setIsHovered(false)}
-          onTouchStart={() => setIsHovered(true)}
-          onTouchEnd={() => setIsHovered(false)}
+          onTouchStart={() => { setIsHovered(true); isDragging.current = true; }}
+          onTouchEnd={() => { setIsHovered(false); isDragging.current = false; }}
         >
           {scrollItems.map((bank, index) => (
             <BankLogo key={index} bank={bank} />
