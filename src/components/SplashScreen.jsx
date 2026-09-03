@@ -58,11 +58,11 @@ export default function SplashScreen() {
           ${phase === 'visible' ? 'scale-100 opacity-100' : 'scale-125 opacity-0 brightness-200'}
         `}
       >
-        <div className="w-full h-full bg-ink rounded-full flex items-center justify-center">
+        <div className="w-full h-full bg-white/20 backdrop-blur-md bg-gradient-to-br from-white/40 to-transparent shadow-[inset_0_4px_10px_rgba(255,255,255,0.6)] rounded-full flex items-center justify-center">
           <img 
             src={blogLogo} 
             alt="Blog Customer Guidance" 
-            className="w-48 md:w-64 object-contain"
+            className="w-48 md:w-64 object-contain drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)] relative z-10"
           />
         </div>
       </div>

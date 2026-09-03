@@ -27,11 +27,11 @@ export default function Header() {
           <div className="flex items-center gap-10">
             <a href="#/" className="transition-transform hover:scale-105 active:scale-95">
               <div className="relative p-[2px] rounded-full bg-gradient-to-r from-red-500 via-yellow-400 via-green-500 via-blue-500 to-purple-500 w-14 h-14 md:w-16 md:h-16 flex-shrink-0 shadow-sm">
-                <div className="w-full h-full bg-ink rounded-full flex items-center justify-center">
+                <div className="w-full h-full bg-white/20 backdrop-blur-md bg-gradient-to-br from-white/40 to-transparent shadow-[inset_0_4px_8px_rgba(255,255,255,0.6)] rounded-full flex items-center justify-center">
                   <img 
                     src={blogLogo} 
                     alt="Blog Logo" 
-                    className="w-10 md:w-12 object-contain"
+                    className="w-10 md:w-12 object-contain drop-shadow-[0_1px_4px_rgba(0,0,0,0.8)]"
                   />
                 </div>
               </div>
