@@ -29,7 +29,7 @@ export default function Header() {
               <img 
                 src={blogLogo} 
                 alt="Blog Logo" 
-                className="h-10 object-contain drop-shadow-[0_1px_3px_rgba(0,0,0,0.8)]"
+                className="h-10 object-contain drop-shadow-[0_1px_6px_rgba(0,127,62,0.8)]"
               />
             </a>
             {/* Desktop Navigation */}

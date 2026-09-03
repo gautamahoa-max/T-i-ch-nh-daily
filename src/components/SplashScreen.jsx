@@ -56,7 +56,7 @@ export default function SplashScreen() {
       <img 
         src={blogLogo} 
         alt="Blog Customer Guidance" 
-        className={`relative z-20 w-64 md:w-80 origin-center transition-all duration-[800ms] ease-out drop-shadow-[0_2px_8px_rgba(0,0,0,0.6)]
+        className={`relative z-20 w-64 md:w-80 origin-center transition-all duration-[800ms] ease-out drop-shadow-[0_2px_12px_rgba(0,127,62,0.8)]
           ${phase === 'visible' ? 'scale-100 opacity-100 brightness-100' : 'scale-125 opacity-0 brightness-200'}
         `}
       />

@@ -8,7 +8,7 @@ export default function Footer() {
             <img 
               src={blogLogo} 
               alt="OCB Logo" 
-              className="h-16 mb-8 object-contain drop-shadow-[0_1px_3px_rgba(0,0,0,0.8)]"
+              className="h-16 mb-8 object-contain drop-shadow-[0_1px_6px_rgba(0,127,62,0.8)]"
             />
             <p className="font-body text-steel text-sm leading-relaxed max-w-sm mb-8">
               Blog chia sẻ các sản phẩm thẻ tín dụng của OCB
