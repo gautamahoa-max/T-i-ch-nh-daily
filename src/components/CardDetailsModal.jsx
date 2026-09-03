@@ -2,38 +2,19 @@ import { useEffect, useState } from 'react';
 import { cardDetailsData } from '../data/cardDetails';
 
 
-const splitRegex = /(\d+(?:\.\d+)*\s*VND[^\s,.]*|\d+\s*triệu(?:\s*đồng)?|\d+(?:[.,]\d+)?%|miễn phí)/gi;
+const moneyRegex = /((?:\d+\s*đến\s*(?:dưới\s*)?)?\d+(?:[.,]\d+)*\s*(?:tỷ\s*)?(?:VND|VNĐ)(?:\/[^\s,.;:()]+)?|(?:\d+\s*đến\s*(?:dưới\s*)?)?\d+(?:[.,]\d+)*\s*(?:triệu|tỷ)(?:\s*đồng)?(?:\/[^\s,.;:()]+)?|\b\d+\s*k\b)/gi;
 
 const formatText = (text) => {
-  const numberPrefixMatch = text.match(/^(\d+\.)\s+(.*)/);
-  if (numberPrefixMatch) {
-    return (
-      <>
-        <span className="font-bold text-ink mr-1">{numberPrefixMatch[1]}</span>
-        {formatText(numberPrefixMatch[2])}
-      </>
-    );
-  }
-
-  let beforeColon = '';
-  let restText = text;
-  const colonIndex = text.indexOf(':');
-  if (colonIndex !== -1 && colonIndex < 80) {
-    beforeColon = text.substring(0, colonIndex + 1);
-    restText = text.substring(colonIndex + 1);
-  }
-
-  const parts = restText.split(splitRegex);
+  const parts = text.split(moneyRegex);
 
   return (
     <span className="leading-relaxed">
-      {beforeColon && <strong className="font-bold text-ink mr-1">{beforeColon}</strong>}
       {parts.map((part, i) => {
-        if (part.match(splitRegex)) {
+        if (part && part.match(moneyRegex)) {
           return (
-            <span key={i} className="inline-block font-bold text-accent bg-accent/10 px-1.5 py-0.5 rounded text-sm mx-0.5 whitespace-nowrap shadow-sm">
+            <strong key={i} className="font-bold text-ink">
               {part}
-            </span>
+            </strong>
           );
         }
         return <span key={i}>{part}</span>;
