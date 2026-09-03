@@ -2,9 +2,15 @@ import { useState, useEffect } from 'react';
 import blogLogo from '../assets/images/blog_logo.png';
 
 export default function SplashScreen() {
-  const [phase, setPhase] = useState('visible'); 
+  const [phase, setPhase] = useState(() => {
+    return sessionStorage.getItem('splashShown') ? 'hidden' : 'visible';
+  }); 
 
   useEffect(() => {
+    if (sessionStorage.getItem('splashShown')) {
+      return;
+    }
+
     // Scroll to top immediately
     window.scrollTo(0, 0);
     
@@ -21,6 +27,7 @@ export default function SplashScreen() {
     // 3. Hide completely
     const hideTimer = setTimeout(() => {
       setPhase('hidden');
+      sessionStorage.setItem('splashShown', 'true');
     }, 3000);
 
     return () => {
