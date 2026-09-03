@@ -5,11 +5,15 @@ export default function Footer() {
       <div className="container mx-auto px-6 md:px-12 max-w-[1200px]">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-12 mb-20">
           <div className="md:col-span-5">
-            <img 
-              src={blogLogo} 
-              alt="OCB Logo" 
-              className="h-16 mb-8 object-contain drop-shadow-[0_1px_6px_rgba(0,127,62,0.8)]"
-            />
+            <div className="relative p-[2px] rounded-full bg-gradient-to-r from-red-500 via-yellow-400 via-green-500 via-blue-500 to-purple-500 w-20 h-20 mb-8 shadow-sm">
+              <div className="w-full h-full bg-ink rounded-full flex items-center justify-center">
+                <img 
+                  src={blogLogo} 
+                  alt="OCB Logo" 
+                  className="w-14 object-contain"
+                />
+              </div>
+            </div>
             <p className="font-body text-steel text-sm leading-relaxed max-w-sm mb-8">
               Blog chia sẻ các sản phẩm thẻ tín dụng của OCB
             </p>

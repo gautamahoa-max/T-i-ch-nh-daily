@@ -26,11 +26,15 @@ export default function Header() {
         <div className="container mx-auto px-6 md:px-12 max-w-[1200px] h-20 flex items-center justify-between">
           <div className="flex items-center gap-10">
             <a href="#/" className="transition-transform hover:scale-105 active:scale-95">
-              <img 
-                src={blogLogo} 
-                alt="Blog Logo" 
-                className="h-10 object-contain drop-shadow-[0_1px_6px_rgba(0,127,62,0.8)]"
-              />
+              <div className="relative p-[2px] rounded-full bg-gradient-to-r from-red-500 via-yellow-400 via-green-500 via-blue-500 to-purple-500 w-14 h-14 md:w-16 md:h-16 flex-shrink-0 shadow-sm">
+                <div className="w-full h-full bg-ink rounded-full flex items-center justify-center">
+                  <img 
+                    src={blogLogo} 
+                    alt="Blog Logo" 
+                    className="w-10 md:w-12 object-contain"
+                  />
+                </div>
+              </div>
             </a>
             {/* Desktop Navigation */}
             <nav className="hidden md:flex items-center gap-8 font-body font-semibold text-base text-ink">

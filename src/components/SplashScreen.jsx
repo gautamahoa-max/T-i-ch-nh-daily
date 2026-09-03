@@ -52,14 +52,20 @@ export default function SplashScreen() {
         `}
       ></div>
 
-      {/* The Logo */}
-      <img 
-        src={blogLogo} 
-        alt="Blog Customer Guidance" 
-        className={`relative z-20 w-64 md:w-80 origin-center transition-all duration-[800ms] ease-out drop-shadow-[0_2px_12px_rgba(0,127,62,0.8)]
-          ${phase === 'visible' ? 'scale-100 opacity-100 brightness-100' : 'scale-125 opacity-0 brightness-200'}
+      {/* The Logo Container */}
+      <div 
+        className={`relative z-20 transition-all duration-[800ms] ease-out p-[3px] rounded-full bg-gradient-to-r from-red-500 via-yellow-400 via-green-500 via-blue-500 to-purple-500 w-64 h-64 md:w-80 md:h-80 shadow-2xl
+          ${phase === 'visible' ? 'scale-100 opacity-100' : 'scale-125 opacity-0 brightness-200'}
         `}
-      />
+      >
+        <div className="w-full h-full bg-ink rounded-full flex items-center justify-center">
+          <img 
+            src={blogLogo} 
+            alt="Blog Customer Guidance" 
+            className="w-48 md:w-64 object-contain"
+          />
+        </div>
+      </div>
     </div>
   );
 }
