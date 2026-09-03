@@ -25,11 +25,11 @@ export default function Header() {
       <header className="fixed top-0 left-0 right-0 bg-surface/80 backdrop-blur-md border-b border-whisper z-50 transition-all duration-300">
         <div className="container mx-auto px-6 md:px-12 max-w-[1200px] h-20 flex items-center justify-between">
           <div className="flex items-center gap-10">
-            <a href="#/" className="bg-ink px-3 py-1.5 rounded-xl shadow-sm transition-transform hover:scale-105 active:scale-95">
+            <a href="#/" className="transition-transform hover:scale-105 active:scale-95">
               <img 
                 src={blogLogo} 
                 alt="Blog Logo" 
-                className="h-9 object-contain"
+                className="h-10 object-contain drop-shadow-[0_1px_3px_rgba(0,0,0,0.8)]"
               />
             </a>
             {/* Desktop Navigation */}

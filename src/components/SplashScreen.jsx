@@ -52,18 +52,14 @@ export default function SplashScreen() {
         `}
       ></div>
 
-      {/* The Logo Container */}
-      <div 
-        className={`relative z-20 bg-ink p-8 md:p-12 rounded-3xl shadow-2xl transition-all duration-[800ms] ease-out
-          ${phase === 'visible' ? 'scale-100 opacity-100' : 'scale-125 opacity-0 brightness-200'}
+      {/* The Logo */}
+      <img 
+        src={blogLogo} 
+        alt="Blog Customer Guidance" 
+        className={`relative z-20 w-64 md:w-80 origin-center transition-all duration-[800ms] ease-out drop-shadow-[0_2px_8px_rgba(0,0,0,0.6)]
+          ${phase === 'visible' ? 'scale-100 opacity-100 brightness-100' : 'scale-125 opacity-0 brightness-200'}
         `}
-      >
-        <img 
-          src={blogLogo} 
-          alt="Blog Customer Guidance" 
-          className="w-64 md:w-80 object-contain"
-        />
-      </div>
+      />
     </div>
   );
 }
