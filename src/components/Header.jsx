@@ -66,67 +66,92 @@ export default function Header() {
 
         {/* Mobile Radial Menu Overlay (KOI Thé style) */}
         <div 
-          className="md:hidden fixed inset-0 z-40 transition-all duration-[800ms] bg-[#FF5A00]"
+          className="md:hidden fixed inset-0 z-40 transition-all duration-[600ms]"
           style={{
-            transitionTimingFunction: 'cubic-bezier(0.85, 0, 0.15, 1)',
-            clipPath: isMobileMenuOpen ? 'circle(150vh at calc(100% - 38px) 40px)' : 'circle(0px at calc(100% - 38px) 40px)',
             pointerEvents: isMobileMenuOpen ? 'auto' : 'none'
           }}
         >
-          {/* Dark Close Button Corner */}
-          <div className="absolute top-[-40px] right-[-40px] w-[140px] h-[140px] bg-[#1A1F24] rounded-full shadow-lg"></div>
+          {/* Dark overlay underneath */}
+          <div 
+            className="absolute inset-0 bg-ink/60 transition-opacity duration-[600ms]"
+            style={{ opacity: isMobileMenuOpen ? 1 : 0 }}
+            onClick={() => setIsMobileMenuOpen(false)}
+          ></div>
 
-          <div className="absolute inset-0 pointer-events-none">
-            <a 
-              href="#/" 
-              onClick={handleScrollToCards}
-              className="absolute pointer-events-auto origin-center font-display font-black text-[12vw] tracking-tighter text-ink whitespace-nowrap hover:text-white transition-colors"
-              style={{ top: '12%', left: '22%', transform: 'rotate(-12deg)' }}
-            >
-              • TRANG CHỦ
-            </a>
-            
-            <a 
-              href="#/" 
-              onClick={handleScrollToCards}
-              className="absolute pointer-events-auto origin-center font-display font-black text-[12vw] tracking-tighter text-ink whitespace-nowrap hover:text-white transition-colors"
-              style={{ top: '25%', left: '10%', transform: 'rotate(-28deg)' }}
-            >
-              HỆ SINH THÁI
-            </a>
-            
-            <a 
-              href="#/guide" 
-              onClick={() => setIsMobileMenuOpen(false)}
-              className="absolute pointer-events-auto origin-center font-display font-black text-[12vw] tracking-tighter text-ink whitespace-nowrap hover:text-white transition-colors"
-              style={{ top: '45%', left: '25%', transform: 'rotate(-52deg)' }}
-            >
-              HƯỚNG DẪN MỞ
-            </a>
-            
-            <a 
-              href="#footer" 
-              onClick={(e) => { e.preventDefault(); setIsMobileMenuOpen(false); window.scrollTo({top: document.body.scrollHeight, behavior: 'smooth'}); }}
-              className="absolute pointer-events-auto origin-center font-display font-black text-[12vw] tracking-tighter text-ink whitespace-nowrap hover:text-white transition-colors"
-              style={{ top: '68%', left: '55%', transform: 'rotate(-78deg)' }}
-            >
-              LIÊN HỆ
-            </a>
+          {/* Orange Drop Shape */}
+          <div 
+            className="absolute top-0 left-0 right-0 bg-[#ea5504] transition-all duration-[700ms] ease-out shadow-2xl"
+            style={{
+              height: '85vh',
+              transform: isMobileMenuOpen ? 'translateY(0)' : 'translateY(-100%)',
+              borderBottomLeftRadius: '100% 40%',
+              borderBottomRightRadius: '20% 50%'
+            }}
+          >
+            {/* Dark Close Button Corner */}
+            <div className="absolute top-0 right-0 w-[100px] h-[100px] bg-[#1A1F24] rounded-bl-full shadow-lg z-10 flex justify-end items-start"></div>
 
-            {/* Copyright Curved Text */}
+            {/* Fanning Text Items */}
             <div 
-              className="absolute font-mono font-semibold text-[3.5vw] text-ink/80 tracking-widest uppercase"
-              style={{ top: '75%', left: '15%', transform: 'rotate(-35deg)' }}
+              className="absolute pointer-events-none transition-all duration-[700ms] delay-100 ease-out"
+              style={{ 
+                top: '90px', 
+                right: '30px',
+                opacity: isMobileMenuOpen ? 1 : 0,
+                transform: isMobileMenuOpen ? 'translateY(0)' : 'translateY(-30px)'
+              }}
             >
-              © 2026 OCB ALL RIGHTS RESERVED.
-            </div>
-            
-            {/* VN/EN translation toggle aesthetic */}
-            <div 
-              className="absolute font-display font-bold text-[5vw] text-ink"
-              style={{ bottom: '8%', right: '15%', transform: 'rotate(-15deg)' }}
-            >
-              VN/EN
+              <a 
+                href="#/" 
+                onClick={handleScrollToCards}
+                className="absolute pointer-events-auto origin-right font-display font-black text-[13vw] tracking-tighter text-ink whitespace-nowrap hover:text-white transition-colors"
+                style={{ top: '0px', right: '10px', transform: 'rotate(-10deg)' }}
+              >
+                • TRANG CHỦ
+              </a>
+              
+              <a 
+                href="#/" 
+                onClick={handleScrollToCards}
+                className="absolute pointer-events-auto origin-right font-display font-black text-[13vw] tracking-tighter text-ink whitespace-nowrap hover:text-white transition-colors"
+                style={{ top: '65px', right: '30px', transform: 'rotate(-24deg)' }}
+              >
+                HỆ SINH THÁI
+              </a>
+              
+              <a 
+                href="#/guide" 
+                onClick={() => setIsMobileMenuOpen(false)}
+                className="absolute pointer-events-auto origin-right font-display font-black text-[13vw] tracking-tighter text-ink whitespace-nowrap hover:text-white transition-colors"
+                style={{ top: '135px', right: '10px', transform: 'rotate(-38deg)' }}
+              >
+                HƯỚNG DẪN MỞ
+              </a>
+              
+              <a 
+                href="#footer" 
+                onClick={(e) => { e.preventDefault(); setIsMobileMenuOpen(false); window.scrollTo({top: document.body.scrollHeight, behavior: 'smooth'}); }}
+                className="absolute pointer-events-auto origin-right font-display font-black text-[13vw] tracking-tighter text-ink whitespace-nowrap hover:text-white transition-colors"
+                style={{ top: '220px', right: '0px', transform: 'rotate(-52deg)' }}
+              >
+                LIÊN HỆ
+              </a>
+
+              {/* Copyright Curved Text */}
+              <div 
+                className="absolute origin-right font-mono font-semibold text-[3vw] text-ink/80 tracking-widest uppercase pointer-events-auto"
+                style={{ top: '400px', right: '150px', transform: 'rotate(-35deg)' }}
+              >
+                © 2026 OCB ALL RIGHTS RESERVED.
+              </div>
+              
+              {/* VN/EN translation toggle aesthetic */}
+              <div 
+                className="absolute pointer-events-auto font-display font-bold text-[5vw] text-ink"
+                style={{ top: '500px', right: '60px', transform: 'rotate(-15deg)' }}
+              >
+                VN/EN
+              </div>
             </div>
           </div>
         </div>

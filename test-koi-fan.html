@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+  body { margin: 0; overflow: hidden; background: #fff; font-family: 'Helvetica Neue', Arial, sans-serif; }
+  .menu {
+    position: fixed;
+    top: 0; right: 0; bottom: 0; left: 0;
+    background: #FF5A00;
+    clip-path: circle(150vh at calc(100% - 38px) 40px);
+  }
+  .fan-container {
+    position: absolute;
+    top: 80px;
+    right: 30px;
+  }
+  .item {
+    position: absolute;
+    font-size: 11vw;
+    font-weight: 900;
+    white-space: nowrap;
+    text-decoration: none;
+    color: #1a1a1a;
+    transform-origin: right center;
+    letter-spacing: -2px;
+  }
+</style>
+</head>
+<body>
+<div class="menu" id="menu">
+    <div class="fan-container">
+        <a href="#" class="item" style="top: 0px; right: 10px; transform: rotate(-10deg);">• TRANG CHỦ</a>
+        <a href="#" class="item" style="top: 50px; right: 30px; transform: rotate(-24deg);">HỆ SINH THÁI</a>
+        <a href="#" class="item" style="top: 100px; right: 10px; transform: rotate(-38deg);">HƯỚNG DẪN MỞ</a>
+        <a href="#" class="item" style="top: 170px; right: 0px; transform: rotate(-52deg);">LIÊN HỆ</a>
+    </div>
+</div>
+</body>
+</html>
