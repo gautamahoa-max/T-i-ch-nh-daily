@@ -22,7 +22,7 @@ export default function Header() {
 
   return (
     <>
-      <header className="fixed top-0 left-0 right-0 bg-surface/80 backdrop-blur-md border-b border-whisper z-50 transition-all duration-300">
+      <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isMobileMenuOpen ? 'bg-transparent border-transparent' : 'bg-surface/80 backdrop-blur-md border-b border-whisper'}`}>
         <div className="container mx-auto px-6 md:px-12 max-w-[1200px] h-20 flex items-center justify-between">
           <div className="flex items-center gap-10">
             <a href="#/" className="transition-transform hover:scale-105 active:scale-95">
@@ -64,22 +64,46 @@ export default function Header() {
           </div>
         </div>
 
-        {/* Mobile Dropdown Menu */}
+        {/* Mobile Radial Menu Overlay */}
         <div 
-          className={`md:hidden absolute top-full left-0 right-0 bg-surface border-b border-whisper transition-all duration-300 ease-in-out overflow-hidden shadow-lg ${
-            isMobileMenuOpen ? 'max-h-64 py-4 opacity-100' : 'max-h-0 opacity-0'
-          }`}
+          className="md:hidden fixed inset-0 z-40 transition-all duration-[800ms] bg-[#FFC107]"
+          style={{
+            transitionTimingFunction: 'cubic-bezier(0.85, 0, 0.15, 1)',
+            clipPath: isMobileMenuOpen ? 'circle(150vh at calc(100% - 38px) 40px)' : 'circle(0px at calc(100% - 38px) 40px)',
+            pointerEvents: isMobileMenuOpen ? 'auto' : 'none'
+          }}
         >
-          <div className="flex flex-col px-6 gap-6 font-body font-semibold text-base text-ink">
+          <div className="absolute top-[40px] right-[38px]">
             <a 
               href="#/" 
               onClick={handleScrollToCards}
-              className="hover:text-accent transition-colors block cursor-pointer"
+              className="absolute right-0 top-0 origin-right font-display font-black text-4xl tracking-tight text-ink whitespace-nowrap hover:text-white transition-colors"
+              style={{ transform: 'translateY(-50%) rotate(25deg) translateX(-120px)' }}
             >
-              Hệ sinh thái thẻ
+              HỆ SINH THÁI
             </a>
-            <a href="#/guide" onClick={() => setIsMobileMenuOpen(false)} className="hover:text-accent transition-colors text-left block">Hướng dẫn mở</a>
-
+            
+            <a 
+              href="#/guide" 
+              onClick={() => setIsMobileMenuOpen(false)}
+              className="absolute right-0 top-0 origin-right font-display font-black text-4xl tracking-tight text-ink whitespace-nowrap hover:text-white transition-colors"
+              style={{ transform: 'translateY(-50%) rotate(60deg) translateX(-150px)' }}
+            >
+              HƯỚNG DẪN MỞ
+            </a>
+            
+            <a 
+              href="#footer" 
+              onClick={(e) => { e.preventDefault(); setIsMobileMenuOpen(false); window.scrollTo({top: document.body.scrollHeight, behavior: 'smooth'}); }}
+              className="absolute right-0 top-0 origin-right font-display font-black text-2xl tracking-tight text-ink/70 whitespace-nowrap hover:text-white transition-colors"
+              style={{ transform: 'translateY(-50%) rotate(85deg) translateX(-180px)' }}
+            >
+              LIÊN HỆ
+            </a>
+          </div>
+          
+          <div className="absolute bottom-8 right-8 font-mono text-sm font-bold text-ink/50 rotate-90 origin-bottom-right">
+            OCB / MENU
           </div>
         </div>
       </header>
