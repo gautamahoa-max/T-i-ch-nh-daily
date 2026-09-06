@@ -73,12 +73,12 @@ export default function Header() {
             pointerEvents: isMobileMenuOpen ? 'auto' : 'none'
           }}
         >
-          <div className="absolute top-[40px] right-[38px]">
+          <div className="absolute inset-0 pointer-events-none">
             <a 
               href="#/" 
               onClick={handleScrollToCards}
-              className="absolute right-0 top-0 origin-right font-display font-black text-4xl tracking-tight text-ink whitespace-nowrap hover:text-white transition-colors"
-              style={{ transform: 'translateY(-50%) rotate(25deg) translateX(-120px)' }}
+              className="absolute pointer-events-auto origin-right font-display font-black text-4xl sm:text-5xl tracking-tight text-ink whitespace-nowrap hover:text-white transition-colors"
+              style={{ top: '120px', right: '40px', transform: 'rotate(-10deg)' }}
             >
               HỆ SINH THÁI
             </a>
@@ -86,8 +86,8 @@ export default function Header() {
             <a 
               href="#/guide" 
               onClick={() => setIsMobileMenuOpen(false)}
-              className="absolute right-0 top-0 origin-right font-display font-black text-4xl tracking-tight text-ink whitespace-nowrap hover:text-white transition-colors"
-              style={{ transform: 'translateY(-50%) rotate(60deg) translateX(-150px)' }}
+              className="absolute pointer-events-auto origin-right font-display font-black text-4xl sm:text-5xl tracking-tight text-ink whitespace-nowrap hover:text-white transition-colors"
+              style={{ top: '220px', right: '70px', transform: 'rotate(-25deg)' }}
             >
               HƯỚNG DẪN MỞ
             </a>
@@ -95,8 +95,8 @@ export default function Header() {
             <a 
               href="#footer" 
               onClick={(e) => { e.preventDefault(); setIsMobileMenuOpen(false); window.scrollTo({top: document.body.scrollHeight, behavior: 'smooth'}); }}
-              className="absolute right-0 top-0 origin-right font-display font-black text-2xl tracking-tight text-ink/70 whitespace-nowrap hover:text-white transition-colors"
-              style={{ transform: 'translateY(-50%) rotate(85deg) translateX(-180px)' }}
+              className="absolute pointer-events-auto origin-right font-display font-black text-3xl sm:text-4xl tracking-tight text-ink/70 whitespace-nowrap hover:text-white transition-colors"
+              style={{ top: '320px', right: '120px', transform: 'rotate(-40deg)' }}
             >
               LIÊN HỆ
             </a>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+  body { margin: 0; overflow: hidden; background: #fff; font-family: sans-serif; }
+  .menu {
+    position: fixed;
+    top: 0; right: 0; bottom: 0; left: 0;
+    background: #E5B80B;
+    clip-path: circle(150vh at calc(100% - 38px) 40px);
+  }
+  .closed { clip-path: circle(0px at calc(100% - 38px) 40px); }
+  .anchor {
+    position: absolute;
+    top: 40px;
+    right: 38px;
+  }
+  .item {
+    position: absolute;
+    right: 0;
+    top: 0;
+    transform-origin: right center;
+    font-size: 36px;
+    font-weight: 900;
+    white-space: nowrap;
+    text-decoration: none;
+    color: #1a1a1a;
+  }
+</style>
+</head>
+<body>
+<div class="menu" id="menu">
+  <div class="anchor">
+    <a href="#" class="item" style="transform: translateY(-50%) rotate(-25deg) translateX(-100px);">HỆ SINH THÁI</a>
+    <a href="#" class="item" style="transform: translateY(-50%) rotate(-55deg) translateX(-100px);">HƯỚNG DẪN MỞ</a>
+    <a href="#" class="item" style="transform: translateY(-50%) rotate(-82deg) translateX(-100px);">LIÊN HỆ</a>
+  </div>
+</div>
+</body>
+</html>
