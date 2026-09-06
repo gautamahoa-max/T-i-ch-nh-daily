@@ -77,26 +77,6 @@ export default function HeroBanner() {
           </div>
         ))}
 
-        {/* Prev / Next Controls (Desktop & Mobile) */}
-        <button
-          onClick={handlePrev}
-          aria-label="Previous Slide"
-          className="absolute left-2 md:left-6 top-1/2 -translate-y-1/2 z-20 w-8 h-8 md:w-11 md:h-11 rounded-full bg-black/20 hover:bg-black/40 backdrop-blur-md text-white flex items-center justify-center transition-all opacity-60 hover:opacity-100 hover:scale-105 active:scale-95"
-        >
-          <svg className="w-4 h-4 md:w-6 md:h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M15 19l-7-7 7-7" />
-          </svg>
-        </button>
-
-        <button
-          onClick={handleNext}
-          aria-label="Next Slide"
-          className="absolute right-2 md:right-6 top-1/2 -translate-y-1/2 z-20 w-8 h-8 md:w-11 md:h-11 rounded-full bg-black/20 hover:bg-black/40 backdrop-blur-md text-white flex items-center justify-center transition-all opacity-60 hover:opacity-100 hover:scale-105 active:scale-95"
-        >
-          <svg className="w-4 h-4 md:w-6 md:h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 5l7 7-7 7" />
-          </svg>
-        </button>
         
         {/* Pagination Indicators */}
         <div className="absolute bottom-2 md:bottom-5 left-1/2 -translate-x-1/2 z-20 flex items-center gap-1.5 md:gap-2 bg-black/20 backdrop-blur-md px-2.5 py-1 md:px-3 md:py-1.5 rounded-full">
