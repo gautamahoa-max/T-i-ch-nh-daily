@@ -3,6 +3,7 @@ import { useEffect, useState, useRef } from 'react';
 import videoSrc1 from '../assets/videos/huong_dan_mo.mov';
 import videoSrc2 from '../assets/videos/huong_dan_mo_mc.mov';
 import zaloQr from '../assets/images/zalo-qr.jpg';
+import ScrollReveal from './ScrollReveal';
 
 const CustomVideoPlayer = ({ srcMap, isActive, isViewable }) => {
   const videoRef = useRef(null);
