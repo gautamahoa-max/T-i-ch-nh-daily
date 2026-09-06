@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+  body { margin: 0; overflow: hidden; background: #fff; font-family: 'Helvetica Neue', Arial, sans-serif; }
+  .menu {
+    position: fixed;
+    top: 0; right: 0; bottom: 0; left: 0;
+    background: #E85D04; /* Koi orange */
+    clip-path: circle(150vh at calc(100% - 38px) 40px);
+  }
+  .item {
+    position: absolute;
+    font-size: 48px;
+    font-weight: 900;
+    white-space: nowrap;
+    text-decoration: none;
+    color: #1a1a1a;
+    transform-origin: center center;
+    letter-spacing: 2px;
+  }
+  .close-btn {
+    position: absolute;
+    top: 20px; right: 20px;
+    width: 60px; height: 60px;
+    background: #111;
+    border-radius: 50%;
+  }
+</style>
+</head>
+<body>
+<div class="menu" id="menu">
+    <div class="close-btn"></div>
+    <a href="#" class="item" style="top: 10%; left: 30%; transform: rotate(-10deg);">• TRANG CHỦ</a>
+    <a href="#" class="item" style="top: 25%; left: 10%; transform: rotate(-25deg);">HỆ SINH THÁI</a>
+    <a href="#" class="item" style="top: 40%; left: 35%; transform: rotate(-50deg);">HƯỚNG DẪN MỞ</a>
+    <a href="#" class="item" style="top: 65%; left: 65%; transform: rotate(-75deg);">LIÊN HỆ</a>
+    
+    <div style="position: absolute; bottom: 30%; left: 20%; transform: rotate(-40deg); font-size: 14px; color: #111;">© 2026 OCB ALL RIGHTS RESERVED.</div>
+</div>
+</body>
+</html>

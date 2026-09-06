@@ -45,7 +45,7 @@ export default function Header() {
           </div>
           
           {/* Mobile Right Icons */}
-          <div className="md:hidden flex items-center gap-4 text-accent">
+          <div className={`md:hidden flex items-center gap-4 ${isMobileMenuOpen ? 'text-white' : 'text-accent'}`}>
             {/* Hamburger Icon */}
             <button 
               aria-label="Menu"
@@ -64,21 +64,33 @@ export default function Header() {
           </div>
         </div>
 
-        {/* Mobile Radial Menu Overlay */}
+        {/* Mobile Radial Menu Overlay (KOI Thé style) */}
         <div 
-          className="md:hidden fixed inset-0 z-40 transition-all duration-[800ms] bg-[#FFC107]"
+          className="md:hidden fixed inset-0 z-40 transition-all duration-[800ms] bg-[#FF5A00]"
           style={{
             transitionTimingFunction: 'cubic-bezier(0.85, 0, 0.15, 1)',
             clipPath: isMobileMenuOpen ? 'circle(150vh at calc(100% - 38px) 40px)' : 'circle(0px at calc(100% - 38px) 40px)',
             pointerEvents: isMobileMenuOpen ? 'auto' : 'none'
           }}
         >
+          {/* Dark Close Button Corner */}
+          <div className="absolute top-[-40px] right-[-40px] w-[140px] h-[140px] bg-[#1A1F24] rounded-full shadow-lg"></div>
+
           <div className="absolute inset-0 pointer-events-none">
             <a 
               href="#/" 
               onClick={handleScrollToCards}
-              className="absolute pointer-events-auto origin-right font-display font-black text-4xl sm:text-5xl tracking-tight text-ink whitespace-nowrap hover:text-white transition-colors"
-              style={{ top: '120px', right: '40px', transform: 'rotate(-10deg)' }}
+              className="absolute pointer-events-auto origin-center font-display font-black text-[12vw] tracking-tighter text-ink whitespace-nowrap hover:text-white transition-colors"
+              style={{ top: '12%', left: '22%', transform: 'rotate(-12deg)' }}
+            >
+              • TRANG CHỦ
+            </a>
+            
+            <a 
+              href="#/" 
+              onClick={handleScrollToCards}
+              className="absolute pointer-events-auto origin-center font-display font-black text-[12vw] tracking-tighter text-ink whitespace-nowrap hover:text-white transition-colors"
+              style={{ top: '25%', left: '10%', transform: 'rotate(-28deg)' }}
             >
               HỆ SINH THÁI
             </a>
@@ -86,8 +98,8 @@ export default function Header() {
             <a 
               href="#/guide" 
               onClick={() => setIsMobileMenuOpen(false)}
-              className="absolute pointer-events-auto origin-right font-display font-black text-4xl sm:text-5xl tracking-tight text-ink whitespace-nowrap hover:text-white transition-colors"
-              style={{ top: '220px', right: '70px', transform: 'rotate(-25deg)' }}
+              className="absolute pointer-events-auto origin-center font-display font-black text-[12vw] tracking-tighter text-ink whitespace-nowrap hover:text-white transition-colors"
+              style={{ top: '45%', left: '25%', transform: 'rotate(-52deg)' }}
             >
               HƯỚNG DẪN MỞ
             </a>
@@ -95,15 +107,27 @@ export default function Header() {
             <a 
               href="#footer" 
               onClick={(e) => { e.preventDefault(); setIsMobileMenuOpen(false); window.scrollTo({top: document.body.scrollHeight, behavior: 'smooth'}); }}
-              className="absolute pointer-events-auto origin-right font-display font-black text-3xl sm:text-4xl tracking-tight text-ink/70 whitespace-nowrap hover:text-white transition-colors"
-              style={{ top: '320px', right: '120px', transform: 'rotate(-40deg)' }}
+              className="absolute pointer-events-auto origin-center font-display font-black text-[12vw] tracking-tighter text-ink whitespace-nowrap hover:text-white transition-colors"
+              style={{ top: '68%', left: '55%', transform: 'rotate(-78deg)' }}
             >
               LIÊN HỆ
             </a>
-          </div>
-          
-          <div className="absolute bottom-8 right-8 font-mono text-sm font-bold text-ink/50 rotate-90 origin-bottom-right">
-            OCB / MENU
+
+            {/* Copyright Curved Text */}
+            <div 
+              className="absolute font-mono font-semibold text-[3.5vw] text-ink/80 tracking-widest uppercase"
+              style={{ top: '75%', left: '15%', transform: 'rotate(-35deg)' }}
+            >
+              © 2026 OCB ALL RIGHTS RESERVED.
+            </div>
+            
+            {/* VN/EN translation toggle aesthetic */}
+            <div 
+              className="absolute font-display font-bold text-[5vw] text-ink"
+              style={{ bottom: '8%', right: '15%', transform: 'rotate(-15deg)' }}
+            >
+              VN/EN
+            </div>
           </div>
         </div>
       </header>
