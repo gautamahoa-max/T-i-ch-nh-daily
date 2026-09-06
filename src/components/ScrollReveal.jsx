@@ -47,7 +47,7 @@ export default function ScrollReveal({ children, className = "", delay = 0, dire
         opacity: isVisible ? 1 : 0,
         transform: getTransform(),
         transitionDelay: `${delay}ms`,
-        willChange: 'opacity, transform'
+        willChange: isVisible ? 'auto' : 'opacity, transform'
       }}
     >
       {children}
