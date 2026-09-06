@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect, useCallback } from 'react';
 import { bankLogos } from '../assets/images/banks/index.js';
+import ScrollReveal from './ScrollReveal';
 
 const banks = [
   { name: 'MBBank' },
@@ -135,19 +136,21 @@ export default function BankMarquee() {
 
   return (
     <section className="w-full py-16 bg-[#F6F4EB]">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-10 text-center flex flex-col items-center">
-        <h2 className="text-3xl md:text-5xl font-extrabold text-[#006633] uppercase tracking-wide leading-tight">
-          DANH SÁCH <br/> CÁC NGÂN HÀNG
-        </h2>
-        <h3 className="text-xl md:text-3xl font-bold text-[#9D7639] uppercase mt-3">
-          MÀ OCB CHẤP NHẬN
-        </h3>
-        <div className="mt-4">
-          <span className="inline-block bg-[#006633] text-white text-lg md:text-2xl font-bold uppercase py-2 px-10 rounded-full shadow-md">
-            ĐỂ SANG THẺ
-          </span>
+      <ScrollReveal direction="up" delay={0}>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-10 text-center flex flex-col items-center">
+          <h2 className="text-3xl md:text-5xl font-extrabold text-[#006633] uppercase tracking-wide leading-tight">
+            DANH SÁCH <br/> CÁC NGÂN HÀNG
+          </h2>
+          <h3 className="text-xl md:text-3xl font-bold text-[#9D7639] uppercase mt-3">
+            MÀ OCB CHẤP NHẬN
+          </h3>
+          <div className="mt-4">
+            <span className="inline-block bg-[#006633] text-white text-lg md:text-2xl font-bold uppercase py-2 px-10 rounded-full shadow-md">
+              ĐỂ SANG THẺ
+            </span>
+          </div>
         </div>
-      </div>
+      </ScrollReveal>
       
       {/* Scroll container */}
       <div className="relative w-full py-6">

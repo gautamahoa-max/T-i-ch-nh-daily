@@ -1,5 +1,5 @@
 import { useState } from 'react';
-
+import ScrollReveal from './ScrollReveal';
 export default function FAQSection() {
   const [openIndex, setOpenIndex] = useState(null);
 
@@ -155,36 +155,37 @@ export default function FAQSection() {
             {faqs.map((faq, index) => {
               const isOpen = openIndex === index;
               return (
-                <div 
-                  key={index} 
-                  className="bg-white border border-gray-200 rounded-2xl overflow-hidden shadow-sm transition-all duration-300"
-                >
-                  <button
-                    className="group w-full text-left px-6 py-5 flex items-center justify-between focus:outline-none"
-                    onClick={() => toggleItem(index)}
-                  >
-                    <h3 className="text-lg md:text-xl font-bold text-black pr-8 leading-snug">{faq.question}</h3>
-                    <div 
-                      className={`w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 transition-colors duration-300 ${isOpen ? 'bg-[#FFCC00]' : 'bg-transparent group-hover:bg-[#FFCC00]'}`}
-                    >
-                      <svg 
-                        className={`w-5 h-5 text-black transform transition-transform duration-300 ${isOpen ? 'rotate-45' : ''}`} 
-                        fill="none" 
-                        viewBox="0 0 24 24" 
-                        stroke="currentColor"
-                      >
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M12 4v16m8-8H4" />
-                      </svg>
-                    </div>
-                  </button>
+                <ScrollReveal key={index} direction="up" delay={index * 50}>
                   <div 
-                    className={`overflow-hidden transition-all duration-300 ease-in-out ${isOpen ? 'max-h-[1000px] opacity-100' : 'max-h-0 opacity-0'}`}
+                    className="bg-white border border-gray-200 rounded-2xl overflow-hidden shadow-sm transition-all duration-300"
                   >
-                    <div className="px-6 pb-6 text-[15px]">
-                      {faq.answer}
+                    <button
+                      className="group w-full text-left px-6 py-5 flex items-center justify-between focus:outline-none"
+                      onClick={() => toggleItem(index)}
+                    >
+                      <h3 className="text-lg md:text-xl font-bold text-black pr-8 leading-snug">{faq.question}</h3>
+                      <div 
+                        className={`w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 transition-colors duration-300 ${isOpen ? 'bg-[#FFCC00]' : 'bg-transparent group-hover:bg-[#FFCC00]'}`}
+                      >
+                        <svg 
+                          className={`w-5 h-5 text-black transform transition-transform duration-300 ${isOpen ? 'rotate-45' : ''}`} 
+                          fill="none" 
+                          viewBox="0 0 24 24" 
+                          stroke="currentColor"
+                        >
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M12 4v16m8-8H4" />
+                        </svg>
+                      </div>
+                    </button>
+                    <div 
+                      className={`overflow-hidden transition-all duration-300 ease-in-out ${isOpen ? 'max-h-[1000px] opacity-100' : 'max-h-0 opacity-0'}`}
+                    >
+                      <div className="px-6 pb-6 text-[15px]">
+                        {faq.answer}
+                      </div>
                     </div>
                   </div>
-                </div>
+                </ScrollReveal>
               );
             })}
           </div>

@@ -6,6 +6,7 @@ import imgWorld from '../assets/images/world.png';
 import imgIgen from '../assets/images/igen.png';
 import imgPlatinum from '../assets/images/platinum.png';
 import CardDetailsModal from './CardDetailsModal';
+import ScrollReveal from './ScrollReveal';
 
 const cards = [
   {
@@ -74,65 +75,73 @@ export default function CardList() {
     <>
       <section id="card-list" className="bg-surface py-24 md:py-32 relative overflow-x-clip">
         <div className="container mx-auto px-6 md:px-12 max-w-[1200px]">
-          <div className="mb-16 md:mb-24 md:max-w-2xl">
-            <h2 className="text-4xl md:text-5xl font-display font-bold mb-6">Hệ sinh thái thẻ.</h2>
-            <p className="font-body text-steel text-lg leading-relaxed">
-              Mỗi tấm thẻ là một công cụ tài chính được thiết kế đo ni đóng giày cho từng phong cách sống. Lựa chọn đặc quyền của riêng bạn.
-            </p>
-          </div>
+          <ScrollReveal direction="up" delay={0}>
+            <div className="mb-16 md:mb-24 md:max-w-2xl">
+              <h2 className="text-4xl md:text-5xl font-display font-bold mb-6">Hệ sinh thái thẻ.</h2>
+              <p className="font-body text-steel text-lg leading-relaxed">
+                Mỗi tấm thẻ là một công cụ tài chính được thiết kế đo ni đóng giày cho từng phong cách sống. Lựa chọn đặc quyền của riêng bạn.
+              </p>
+            </div>
+          </ScrollReveal>
           
           {/* Asymmetric Zig-Zag Layout */}
           <div className="flex flex-col gap-20 md:gap-32">
             {cards.map((card, index) => {
               const isEven = index % 2 === 1;
               return (
-                <div id={card.id === 2 ? 'ocb-natural-card' : undefined} key={card.id} className={`flex flex-col ${isEven ? 'md:flex-row-reverse' : 'md:flex-row'} items-center gap-10 md:gap-20`}>
-                  
-                  {/* Image Block */}
-                  <div className="w-full md:w-1/2 flex justify-center relative">
-                    <div className="relative group perspective-1000">
-                      <img 
-                        src={card.image} 
-                        alt={card.name} 
-                        className="w-64 md:w-80 h-auto object-contain transform transition-transform duration-700 ease-[cubic-bezier(0.175,0.885,0.32,1.275)] group-hover:scale-105 group-hover:rotate-y-6 group-hover:-rotate-x-6 relative z-10" 
-                        style={{ clipPath: 'inset(4px round 16px)' }}
-                      />
-                      <div className="absolute inset-0 bg-black opacity-0 blur-2xl transition-opacity duration-700 group-hover:opacity-10 -z-10 translate-y-10 scale-90"></div>
-                    </div>
-                  </div>
-
-                  {/* Text Block */}
-                  <div className="w-full md:w-1/2 flex flex-col items-start">
-                    <div className="inline-block px-3 py-1 bg-canvas border border-whisper text-ink text-xs font-mono font-medium tracking-wider mb-6">
-                      {card.metrics}
-                    </div>
+                <ScrollReveal 
+                  key={card.id} 
+                  direction={isEven ? "left" : "right"} 
+                  delay={index % 2 === 0 ? 100 : 200}
+                >
+                  <div id={card.id === 2 ? 'ocb-natural-card' : undefined} className={`flex flex-col ${isEven ? 'md:flex-row-reverse' : 'md:flex-row'} items-center gap-10 md:gap-20`}>
                     
-                    <h3 className="text-3xl md:text-4xl font-display font-bold mb-4 flex items-center gap-3 flex-wrap leading-tight">
-                      <span>{card.name.toUpperCase()}</span>
-                      {card.isHot && (
-                        <span className="inline-flex items-center justify-center px-2.5 py-1 bg-[#FF3B30] text-white text-xs md:text-sm font-bold rounded shadow-sm align-middle tracking-wider transform -translate-y-0.5 animate-pulse">
-                          HOT
-                        </span>
-                      )}
-                    </h3>
-                    
-                    <p className="font-body text-steel text-lg leading-relaxed mb-8 max-w-md mt-2">
-                      {card.description}
-                    </p>
+                    {/* Image Block */}
+                    <div className="w-full md:w-1/2 flex justify-center relative">
+                      <div className="relative group perspective-1000">
+                        <img 
+                          src={card.image} 
+                          alt={card.name} 
+                          className="w-64 md:w-80 h-auto object-contain transform transition-transform duration-700 ease-[cubic-bezier(0.175,0.885,0.32,1.275)] group-hover:scale-105 group-hover:rotate-y-6 group-hover:-rotate-x-6 relative z-10" 
+                          style={{ clipPath: 'inset(4px round 16px)' }}
+                        />
+                        <div className="absolute inset-0 bg-black opacity-0 blur-2xl transition-opacity duration-700 group-hover:opacity-10 -z-10 translate-y-10 scale-90"></div>
+                      </div>
+                    </div>
 
-                    <a 
-                      href="#" 
-                      onClick={(e) => handleOpenModal(card, e)}
-                      className="font-body font-semibold text-accent hover:text-ink transition-colors duration-300 inline-flex items-center gap-2 group cursor-pointer"
-                    >
-                      Chi tiết thẻ
-                      <svg className="w-4 h-4 transform transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="square" strokeLinejoin="miter" strokeWidth={2} d="M5 12h14M12 5l7 7-7 7" />
-                      </svg>
-                    </a>
+                    {/* Text Block */}
+                    <div className="w-full md:w-1/2 flex flex-col items-start">
+                      <div className="inline-block px-3 py-1 bg-canvas border border-whisper text-ink text-xs font-mono font-medium tracking-wider mb-6">
+                        {card.metrics}
+                      </div>
+                      
+                      <h3 className="text-3xl md:text-4xl font-display font-bold mb-4 flex items-center gap-3 flex-wrap leading-tight">
+                        <span>{card.name.toUpperCase()}</span>
+                        {card.isHot && (
+                          <span className="inline-flex items-center justify-center px-2.5 py-1 bg-[#FF3B30] text-white text-xs md:text-sm font-bold rounded shadow-sm align-middle tracking-wider transform -translate-y-0.5 animate-pulse">
+                            HOT
+                          </span>
+                        )}
+                      </h3>
+                      
+                      <p className="font-body text-steel text-lg leading-relaxed mb-8 max-w-md mt-2">
+                        {card.description}
+                      </p>
+
+                      <a 
+                        href="#" 
+                        onClick={(e) => handleOpenModal(card, e)}
+                        className="font-body font-semibold text-accent hover:text-ink transition-colors duration-300 inline-flex items-center gap-2 group cursor-pointer"
+                      >
+                        Chi tiết thẻ
+                        <svg className="w-4 h-4 transform transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path strokeLinecap="square" strokeLinejoin="miter" strokeWidth={2} d="M5 12h14M12 5l7 7-7 7" />
+                        </svg>
+                      </a>
+                    </div>
+
                   </div>
-
-                </div>
+                </ScrollReveal>
               )
             })}
           </div>
