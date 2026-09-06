@@ -22,7 +22,7 @@ export default function Header() {
 
   return (
     <>
-      <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isMobileMenuOpen ? 'bg-transparent border-transparent' : 'bg-surface/80 backdrop-blur-md border-b border-whisper'}`}>
+      <header className="fixed top-0 left-0 right-0 bg-surface/80 backdrop-blur-md border-b border-whisper z-50 transition-all duration-300">
         <div className="container mx-auto px-6 md:px-12 max-w-[1200px] h-20 flex items-center justify-between">
           <div className="flex items-center gap-10">
             <a href="#/" className="transition-transform hover:scale-105 active:scale-95">
@@ -45,7 +45,7 @@ export default function Header() {
           </div>
           
           {/* Mobile Right Icons */}
-          <div className={`md:hidden flex items-center gap-4 ${isMobileMenuOpen ? 'text-white' : 'text-accent'}`}>
+          <div className="md:hidden flex items-center gap-4 text-accent">
             {/* Hamburger Icon */}
             <button 
               aria-label="Menu"
@@ -64,95 +64,22 @@ export default function Header() {
           </div>
         </div>
 
-        {/* Mobile Radial Menu Overlay (KOI Thé style) */}
+        {/* Mobile Dropdown Menu */}
         <div 
-          className="md:hidden fixed inset-0 z-40 transition-all duration-[600ms]"
-          style={{
-            pointerEvents: isMobileMenuOpen ? 'auto' : 'none'
-          }}
+          className={`md:hidden absolute top-full left-0 right-0 bg-surface border-b border-whisper transition-all duration-300 ease-in-out overflow-hidden shadow-lg ${
+            isMobileMenuOpen ? 'max-h-64 py-4 opacity-100' : 'max-h-0 opacity-0'
+          }`}
         >
-          {/* Dark overlay underneath */}
-          <div 
-            className="absolute inset-0 bg-ink/60 transition-opacity duration-[600ms]"
-            style={{ opacity: isMobileMenuOpen ? 1 : 0 }}
-            onClick={() => setIsMobileMenuOpen(false)}
-          ></div>
-
-          {/* Orange Drop Shape */}
-          <div 
-            className="absolute top-0 left-0 right-0 bg-[#ea5504] transition-all duration-[700ms] ease-out shadow-2xl"
-            style={{
-              height: '85vh',
-              transform: isMobileMenuOpen ? 'translateY(0)' : 'translateY(-100%)',
-              borderBottomLeftRadius: '100% 40%',
-              borderBottomRightRadius: '20% 50%'
-            }}
-          >
-            {/* Dark Close Button Corner */}
-            <div className="absolute top-0 right-0 w-[100px] h-[100px] bg-[#1A1F24] rounded-bl-full shadow-lg z-10 flex justify-end items-start"></div>
-
-            {/* Fanning Text Items */}
-            <div 
-              className="absolute pointer-events-none transition-all duration-[700ms] delay-100 ease-out"
-              style={{ 
-                top: '90px', 
-                right: '30px',
-                opacity: isMobileMenuOpen ? 1 : 0,
-                transform: isMobileMenuOpen ? 'translateY(0)' : 'translateY(-30px)'
-              }}
+          <div className="flex flex-col px-6 gap-6 font-body font-semibold text-base text-ink">
+            <a 
+              href="#/" 
+              onClick={handleScrollToCards}
+              className="hover:text-accent transition-colors block cursor-pointer"
             >
-              <a 
-                href="#/" 
-                onClick={handleScrollToCards}
-                className="absolute pointer-events-auto origin-right font-display font-black text-[13vw] tracking-tighter text-ink whitespace-nowrap hover:text-white transition-colors"
-                style={{ top: '0px', right: '10px', transform: 'rotate(-10deg)' }}
-              >
-                • TRANG CHỦ
-              </a>
-              
-              <a 
-                href="#/" 
-                onClick={handleScrollToCards}
-                className="absolute pointer-events-auto origin-right font-display font-black text-[13vw] tracking-tighter text-ink whitespace-nowrap hover:text-white transition-colors"
-                style={{ top: '65px', right: '30px', transform: 'rotate(-24deg)' }}
-              >
-                HỆ SINH THÁI
-              </a>
-              
-              <a 
-                href="#/guide" 
-                onClick={() => setIsMobileMenuOpen(false)}
-                className="absolute pointer-events-auto origin-right font-display font-black text-[13vw] tracking-tighter text-ink whitespace-nowrap hover:text-white transition-colors"
-                style={{ top: '135px', right: '10px', transform: 'rotate(-38deg)' }}
-              >
-                HƯỚNG DẪN MỞ
-              </a>
-              
-              <a 
-                href="#footer" 
-                onClick={(e) => { e.preventDefault(); setIsMobileMenuOpen(false); window.scrollTo({top: document.body.scrollHeight, behavior: 'smooth'}); }}
-                className="absolute pointer-events-auto origin-right font-display font-black text-[13vw] tracking-tighter text-ink whitespace-nowrap hover:text-white transition-colors"
-                style={{ top: '220px', right: '0px', transform: 'rotate(-52deg)' }}
-              >
-                LIÊN HỆ
-              </a>
+              Hệ sinh thái thẻ
+            </a>
+            <a href="#/guide" onClick={() => setIsMobileMenuOpen(false)} className="hover:text-accent transition-colors text-left block">Hướng dẫn mở</a>
 
-              {/* Copyright Curved Text */}
-              <div 
-                className="absolute origin-right font-mono font-semibold text-[3vw] text-ink/80 tracking-widest uppercase pointer-events-auto"
-                style={{ top: '400px', right: '150px', transform: 'rotate(-35deg)' }}
-              >
-                © 2026 OCB ALL RIGHTS RESERVED.
-              </div>
-              
-              {/* VN/EN translation toggle aesthetic */}
-              <div 
-                className="absolute pointer-events-auto font-display font-bold text-[5vw] text-ink"
-                style={{ top: '500px', right: '60px', transform: 'rotate(-15deg)' }}
-              >
-                VN/EN
-              </div>
-            </div>
           </div>
         </div>
       </header>
