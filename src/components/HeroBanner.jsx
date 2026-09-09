@@ -55,7 +55,7 @@ export default function HeroBanner() {
   return (
     <section className="w-full pt-[80px] bg-canvas overflow-hidden select-none">
       <div 
-        className="w-full relative aspect-[2048/900] max-h-[600px] overflow-hidden bg-slate-100"
+        className="w-full relative aspect-[2560/1125] max-h-[600px] overflow-hidden bg-slate-100"
         onTouchStart={handleTouchStart}
         onTouchMove={handleTouchMove}
         onTouchEnd={handleTouchEnd}
