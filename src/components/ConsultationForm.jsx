@@ -11,11 +11,13 @@ const PROVINCES = [
 ];
 
 const CARDS = [
-  "OCB Installment", "OCB JCB Platinum", "OCB Mastercard Lifestyle",
-  "OCB Mastercard Platinum", "OCB OMNI", "OCB Tiki Platinum",
-  "OCB Visa Platinum", "OCB Visa Signature", "OCB Priority",
-  "OCB Natural", "OCB Doctor", "OCB Teacher", "OCB Woman",
-  "OCB Cash Back", "OCB Travel", "OCB Lộc Phát"
+  "OCB Mastercard Lifestyle",
+  "OCB JCB Platinum",
+  "OCB Mastercard World 2in1",
+  "OCB iGen Mastercard Platinum",
+  "OCB Mastercard Platinum",
+  "OCB Natural Credit",
+  "Chưa quyết định (Cần tư vấn thêm)"
 ];
 
 export default function ConsultationForm() {

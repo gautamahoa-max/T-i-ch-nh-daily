@@ -26,7 +26,7 @@ const cards = [
   },
   {
     id: 4,
-    name: "OCB MASTERCARD WORLD 2IN1",
+    name: "OCB Mastercard World 2in1",
     description: "Hợp nhất công năng. Nền tảng thẻ kép đột phá cho trải nghiệm tài chính không biên giới.",
     image: imgWorld,
     metrics: "THẺ TÍCH HỢP QUYỀN LỰC DÀNH CHO PHÂN KHÚC KHÁCH HÀNG CAO CẤP",
@@ -34,14 +34,14 @@ const cards = [
   },
   {
     id: 5,
-    name: "OCB IGEN Mastercard Platinum",
+    name: "OCB iGen Mastercard Platinum",
     description: "Tiên phong phong cách sống số. Hoàn tiền vượt trội khi mua sắm online qua Shopee, Tiktok Shop và Apple Pay.",
     image: imgIgen,
     metrics: "Dòng thẻ dành riêng cho tín đồ mua sắm"
   },
   {
     id: 6,
-    name: "OCB MASTERCARD PLATINUM",
+    name: "OCB Mastercard Platinum",
     description: "Khẳng định dấu ấn cá nhân. Đặc quyền hoàn tiền mua sắm công nghệ và làm đẹp đẳng cấp.",
     image: imgPlatinum,
     metrics: "Dòng thẻ dành riêng cho tín đồ công nghệ, làm đẹp",
