@@ -55,35 +55,6 @@ export const cardDetailsData = {
       }
     ]
   },
-  3: { // JCB PLATINUM
-    sections: [
-      {
-        title: "Phí thường niên",
-        items: [
-          "Thẻ chính: 999.000 VND",
-          "Thẻ phụ: Miễn phí (đối với thẻ phát hành từ 01/01/2025 trở đi)"
-        ]
-      },
-      {
-        title: "Hạn mức giao dịch/ ngày",
-        items: [
-          "500 triệu đồng"
-        ]
-      },
-      {
-        title: "Ưu đãi nổi bật",
-        items: [
-          "1. Ưu đãi mở thẻ (*):",
-          "Hoàn 100% phí thường niên năm đầu khi chi tiêu tổng doanh số giao dịch hợp lệ đạt 3 triệu đồng trong 45 ngày đầu tiên mở thẻ.",
-          "2. Ưu đãi áp dụng cho tất cả chủ thẻ (*):",
-          "Hoàn tiền đa lĩnh vực tối đa đến 18.000.000 VND/ năm, trong đó:",
-          "Tổng chi tiêu/kỳ xét thưởng đạt từ 30 triệu trở lên: Hoàn 15% giao dịch chi tiêu liên quan đến sức khỏe (Bệnh viện, phòng khám, nhà thuốc,…), tối đa 300.000 VND. Hoàn 15% giao dịch chi tiêu liên quan đến bảo hiểm, tối đa 300.000 VND. Hoàn 0.1% cho tất cả giao dịch hợp lệ còn lại.",
-          "Tổng chi tiêu/kỳ xét thưởng đạt dưới 30 triệu: Hoàn 7% giao dịch chi tiêu liên quan đến sức khỏe (Bệnh viện, phòng khám, nhà thuốc,…), tối đa 150.000 VND. Hoàn 7% giao dịch chi tiêu liên quan đến bảo hiểm, tối đa 150.000 VND. Hoàn 0.1% cho tất cả giao dịch hợp lệ còn lại.",
-          "Ghi chú: Chủ thẻ cần chi tiêu hợp lệ từ 7 giao dịch/ kỳ xét thưởng để được hoàn tiền. Kỳ xét thưởng được tính theo tháng dương lịch trong năm."
-        ]
-      }
-    ]
-  },
   4: { // WORLD 2IN1
     sections: [
       {
@@ -117,32 +88,6 @@ export const cardDetailsData = {
           "Miễn lãi thanh toán lên đến 55 ngày.",
           "Phí chuyển đổi ngoại tệ: 0,9% số tiền giao dịch.",
           "Bảo hiểm du lịch toàn cầu & mất bóp ví trị giá 20 tỷ VND/năm."
-        ]
-      }
-    ]
-  },
-  5: { // IGEN
-    sections: [
-      {
-        title: "Phí thường niên",
-        items: [
-          "Thẻ chính: 999.000 VND. Miễn phí thường niên năm đầu tiên."
-        ]
-      },
-      {
-        title: "Hạn mức giao dịch/ngày",
-        items: [
-          "500 triệu đồng"
-        ]
-      },
-      {
-        title: "Ưu đãi hoàn tiền",
-        items: [
-          "Hoàn tiền đa lĩnh vực tối đa đến 12.000.000 VND/năm.",
-          "Tổng chi tiêu/kỳ xét thưởng đạt từ 30 triệu trở lên: Hoàn 12% cho các giao dịch mua sắm tại Shopee, Tiktok Shop (tối đa 700.000 VND). Hoàn 3% cho giao dịch qua ví Apple Pay, Google Pay (tối đa 300.000 VND). Giá trị hoàn tối đa là 1.000.000 VND/kỳ.",
-          "Tổng chi tiêu/kỳ xét thưởng đạt từ 5 đến dưới 30 triệu: Hoàn 7% cho các giao dịch mua sắm tại Shopee, Tiktok Shop (tối đa 350.000 VND). Hoàn 3% cho giao dịch qua ví Apple Pay, Google Pay (tối đa 150.000 VND). Giá trị hoàn tối đa là 500.000 VND/kỳ.",
-          "Điều kiện: Chủ thẻ cần chi tiêu hợp lệ từ 5 triệu đồng/kỳ xét thưởng để được hoàn tiền.",
-          "Ghi chú: Kỳ xét thưởng được tính theo tháng dương lịch và trong thời gian triển khai chương trình."
         ]
       }
     ]

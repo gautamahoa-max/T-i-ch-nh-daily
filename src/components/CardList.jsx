@@ -1,9 +1,7 @@
 import { useState } from 'react';
 import imgLifestyle from '../assets/images/lifestyle.png';
 import imgNatural from '../assets/images/natural.jpg';
-import imgJcb from '../assets/images/jcb.png';
 import imgWorld from '../assets/images/world.png';
-import imgIgen from '../assets/images/igen.png';
 import imgPlatinum from '../assets/images/platinum.png';
 import CardDetailsModal from './CardDetailsModal';
 import ScrollReveal from './ScrollReveal';
@@ -18,26 +16,12 @@ const cards = [
     isHot: true
   },
   {
-    id: 3,
-    name: "OCB JCB Platinum",
-    description: "Đặc quyền ẩm thực và sân bay. Mở khóa lối sống tinh hoa mang đậm phong vị Nhật Bản.",
-    image: imgJcb,
-    metrics: "Dòng thẻ dành cho các tín đồ Nhật Bản"
-  },
-  {
     id: 4,
     name: "OCB Mastercard World 2in1",
     description: "Hợp nhất công năng. Nền tảng thẻ kép đột phá cho trải nghiệm tài chính không biên giới.",
     image: imgWorld,
     metrics: "THẺ TÍCH HỢP QUYỀN LỰC DÀNH CHO PHÂN KHÚC KHÁCH HÀNG CAO CẤP",
     isHot: true
-  },
-  {
-    id: 5,
-    name: "OCB iGen Mastercard Platinum",
-    description: "Tiên phong phong cách sống số. Hoàn tiền vượt trội khi mua sắm online qua Shopee, Tiktok Shop và Apple Pay.",
-    image: imgIgen,
-    metrics: "Dòng thẻ dành riêng cho tín đồ mua sắm"
   },
   {
     id: 6,
