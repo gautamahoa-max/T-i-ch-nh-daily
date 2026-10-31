@@ -348,29 +348,7 @@ export default function CreditLimitCalculator() {
                   </div>
                 </div>
 
-                {/* Salary Policy Highlight Card */}
-                <div className="pt-2 border-t border-slate-100">
-                  <div className="p-4 bg-gradient-to-r from-emerald-50/80 to-teal-50/50 rounded-2xl border border-emerald-200/80">
-                    <div className="flex items-center gap-2 mb-2">
-                      <span className="w-6 h-6 rounded-full bg-[#006633] text-white flex items-center justify-center text-xs font-bold">★</span>
-                      <span className="font-bold text-sm text-ink">Chính sách cấp hạn mức theo Lương OCB</span>
-                      <span className="px-2 py-0.5 rounded text-[10px] font-bold bg-[#006633] text-white">
-                        Tối đa x5 lần
-                      </span>
-                    </div>
-                    <p className="text-xs text-slate-600 leading-relaxed mb-3">
-                      Khách hàng nhận lương chuyển khoản qua tài khoản ngân hàng từ <strong>5 triệu VNĐ/tháng</strong> được hỗ trợ phê duyệt hạn mức tối đa lên tới <strong>5 lần thu nhập</strong> (tối đa đến 500 triệu VNĐ) mà không cần tài sản đảm bảo.
-                    </p>
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs text-slate-700">
-                      <div className="flex items-center gap-1.5 font-medium">
-                        <span className="text-[#006633] font-bold">✓</span> Duyệt nhanh trong 24 giờ làm việc
-                      </div>
-                      <div className="flex items-center gap-1.5 font-medium">
-                        <span className="text-[#006633] font-bold">✓</span> Thủ tục sao kê đơn giản, minh bạch
-                      </div>
-                    </div>
-                  </div>
-                </div>
+
               </>
             ) : (
               <>
