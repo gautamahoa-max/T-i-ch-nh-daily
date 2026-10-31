@@ -61,6 +61,12 @@ const GROUP_3_BANKS = [
   "SCB"
 ];
 
+const ALL_BANKS = [
+  ...GROUP_1_BANKS,
+  ...GROUP_2_BANKS,
+  ...GROUP_3_BANKS
+];
+
 export default function CreditLimitCalculator() {
   const [activeTab, setActiveTab] = useState('salary'); // 'salary' | 'card'
 
@@ -363,21 +369,9 @@ export default function CreditLimitCalculator() {
                       onChange={(e) => setSelectedBank(e.target.value)}
                       className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3.5 text-ink font-semibold text-base appearance-none focus:outline-none focus:border-[#006633] focus:bg-white transition-all cursor-pointer pl-12"
                     >
-                      <optgroup label="Nhóm 1 - Ưu tiên cao (Hạn mức 100% thẻ cũ, tối đa 500tr)">
-                        {GROUP_1_BANKS.map((b) => (
-                          <option key={b} value={b}>{b}</option>
-                        ))}
-                      </optgroup>
-                      <optgroup label="Nhóm 2 - Ngân hàng lớn (Hạn mức 80% thẻ cũ, tối đa 200tr)">
-                        {GROUP_2_BANKS.map((b) => (
-                          <option key={b} value={b}>{b}</option>
-                        ))}
-                      </optgroup>
-                      <optgroup label="Nhóm 3 - Ngân hàng khác (Hạn mức 60% thẻ cũ, tối đa 200tr)">
-                        {GROUP_3_BANKS.map((b) => (
-                          <option key={b} value={b}>{b}</option>
-                        ))}
-                      </optgroup>
+                      {ALL_BANKS.map((b) => (
+                        <option key={b} value={b}>{b}</option>
+                      ))}
                     </select>
 
                     {/* Bank Logo Preview inside select */}
