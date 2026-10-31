@@ -416,19 +416,7 @@ export default function CreditLimitCalculator() {
                     </div>
                   </div>
 
-                  {/* Bank Group Status Pill */}
-                  <div className="mt-2.5 flex items-center gap-2 text-xs">
-                    <span className="text-slate-500">Phân hạng chính sách:</span>
-                    <span className={`font-bold px-2.5 py-0.5 rounded-full ${
-                      GROUP_1_BANKS.includes(selectedBank)
-                        ? 'bg-emerald-100 text-[#006633]'
-                        : GROUP_2_BANKS.includes(selectedBank)
-                        ? 'bg-blue-100 text-blue-800'
-                        : 'bg-amber-100 text-amber-800'
-                    }`}>
-                      {calculationResult.detailNote}
-                    </span>
-                  </div>
+
                 </div>
 
                 {/* Current Card Limit Slider */}
