@@ -1,11 +1,10 @@
 import ConsultationForm from './ConsultationForm';
 import { useEffect, useState, useRef } from 'react';
 import videoSrc1 from '../assets/videos/huong_dan_mo.mov';
-import videoSrc2 from '../assets/videos/huong_dan_mo_mc.mov';
 import zaloQr from '../assets/images/zalo-qr.jpg';
 import ScrollReveal from './ScrollReveal';
 
-const CustomVideoPlayer = ({ srcMap, isActive, isViewable }) => {
+const CustomVideoPlayer = ({ srcMap, isViewable }) => {
   const videoRef = useRef(null);
   const [isPlaying, setIsPlaying] = useState(false);
 
@@ -13,20 +12,11 @@ const CustomVideoPlayer = ({ srcMap, isActive, isViewable }) => {
     if (!videoRef.current) return;
     videoRef.current.volume = 0.5;
     
-    if (isActive) {
-      if (isViewable) {
-        videoRef.current.play().catch(() => {});
-        setIsPlaying(true);
-      } else {
-        videoRef.current.pause();
-        setIsPlaying(false);
-      }
-    } else {
+    if (!isViewable) {
       videoRef.current.pause();
-      videoRef.current.currentTime = 0;
       setIsPlaying(false);
     }
-  }, [isActive, isViewable]);
+  }, [isViewable]);
 
   const togglePlay = () => {
     if (videoRef.current) {
@@ -84,36 +74,22 @@ const CustomVideoPlayer = ({ srcMap, isActive, isViewable }) => {
 };
 
 export default function GuidePage() {
-  const [activeVideo, setActiveVideo] = useState(0);
   const [isVideoInView, setIsVideoInView] = useState(true);
-  const scrollContainerRef = useRef(null);
-
-  const handleScroll = () => {
-    if (scrollContainerRef.current) {
-      const scrollLeft = scrollContainerRef.current.scrollLeft;
-      const width = scrollContainerRef.current.clientWidth;
-      const newIndex = Math.round(scrollLeft / width);
-      setActiveVideo(newIndex);
-    }
-  };
+  const videoContainerRef = useRef(null);
 
   // Observe if video container is in view
   useEffect(() => {
-    
-    
     const observer = new IntersectionObserver((entries) => {
       const entry = entries[0];
       setIsVideoInView(entry.isIntersecting);
     }, { threshold: 0.1 });
     
-    observer.observe(scrollContainerRef.current);
+    if (videoContainerRef.current) {
+      observer.observe(videoContainerRef.current);
+    }
     
     return () => observer.disconnect();
   }, []);
-
-
-
-  
 
   return (
     <div className="w-full bg-white flex flex-col pt-[80px]">
@@ -142,41 +118,13 @@ export default function GuidePage() {
             <section className="space-y-6">
               <h3 className="text-xl font-display font-bold text-accent border-l-4 border-accent pl-3 uppercase tracking-wide">CÁCH 1: MỞ THẺ ONLINE</h3>
               
-              <div className="mb-10">
-                <div 
-                  ref={scrollContainerRef}
-                  onScroll={handleScroll}
-                  className="flex overflow-x-auto snap-x snap-mandatory gap-6 pb-2 hide-scrollbar transform-gpu"
-                >
-                  {/* Video 1 */}
-                  <div className="snap-center shrink-0 w-full flex justify-center">
-                    <div className="w-full max-w-2xl flex flex-col">
-                      <h4 className="font-bold text-ink font-body mb-3">Hướng dẫn mở thẻ (Chung)</h4>
-                      <CustomVideoPlayer 
-                        srcMap={videoSrc1} 
-                        isActive={activeVideo === 0} 
-                        isViewable={isVideoInView} 
-                      />
-                    </div>
-                  </div>
-
-                  {/* Video 2 */}
-                  <div className="snap-center shrink-0 w-full flex justify-center">
-                    <div className="w-full max-w-2xl flex flex-col">
-                      <h4 className="font-bold text-ink font-body mb-3">Hướng dẫn mở MC WORLD 2IN1</h4>
-                      <CustomVideoPlayer 
-                        srcMap={videoSrc2} 
-                        isActive={activeVideo === 1} 
-                        isViewable={isVideoInView} 
-                      />
-                    </div>
-                  </div>
-                </div>
-                
-                {/* Pagination Dots */}
-                <div className="flex justify-center items-center gap-2 mt-4">
-                  <div className={`w-2 h-2 rounded-full transition-all duration-300 ${activeVideo === 0 ? 'w-6 bg-accent' : 'bg-steel/30'}`}></div>
-                  <div className={`w-2 h-2 rounded-full transition-all duration-300 ${activeVideo === 1 ? 'w-6 bg-accent' : 'bg-steel/30'}`}></div>
+              <div className="mb-10 flex justify-center" ref={videoContainerRef}>
+                <div className="w-full max-w-2xl flex flex-col">
+                  <h4 className="font-bold text-ink font-body mb-3">Hướng dẫn mở thẻ (Chung)</h4>
+                  <CustomVideoPlayer 
+                    srcMap={videoSrc1} 
+                    isViewable={isVideoInView} 
+                  />
                 </div>
               </div>
 
