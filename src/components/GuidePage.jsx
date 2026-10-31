@@ -4,7 +4,7 @@ import videoSrc1 from '../assets/videos/huong_dan_mo.mov';
 import zaloQr from '../assets/images/zalo-qr.jpg';
 import ScrollReveal from './ScrollReveal';
 
-const CustomVideoPlayer = ({ srcMap, isViewable }) => {
+const CustomVideoPlayer = ({ srcMap, isActive, isViewable }) => {
   const videoRef = useRef(null);
   const [isPlaying, setIsPlaying] = useState(false);
 
@@ -12,11 +12,17 @@ const CustomVideoPlayer = ({ srcMap, isViewable }) => {
     if (!videoRef.current) return;
     videoRef.current.volume = 0.5;
     
-    if (!isViewable) {
+    if (isActive) {
+      if (!isViewable) {
+        videoRef.current.pause();
+        setIsPlaying(false);
+      }
+    } else {
       videoRef.current.pause();
+      videoRef.current.currentTime = 0;
       setIsPlaying(false);
     }
-  }, [isViewable]);
+  }, [isActive, isViewable]);
 
   const togglePlay = () => {
     if (videoRef.current) {
@@ -74,8 +80,31 @@ const CustomVideoPlayer = ({ srcMap, isViewable }) => {
 };
 
 export default function GuidePage() {
+  const [activeVideo, setActiveVideo] = useState(0);
   const [isVideoInView, setIsVideoInView] = useState(true);
-  const videoContainerRef = useRef(null);
+  const scrollContainerRef = useRef(null);
+
+  const handleScroll = () => {
+    if (scrollContainerRef.current) {
+      const scrollLeft = scrollContainerRef.current.scrollLeft;
+      const width = scrollContainerRef.current.clientWidth;
+      if (width > 0) {
+        const newIndex = Math.round(scrollLeft / width);
+        setActiveVideo(newIndex);
+      }
+    }
+  };
+
+  const scrollToVideo = (index) => {
+    if (scrollContainerRef.current) {
+      const width = scrollContainerRef.current.clientWidth;
+      scrollContainerRef.current.scrollTo({
+        left: index * width,
+        behavior: 'smooth'
+      });
+      setActiveVideo(index);
+    }
+  };
 
   // Observe if video container is in view
   useEffect(() => {
@@ -84,8 +113,8 @@ export default function GuidePage() {
       setIsVideoInView(entry.isIntersecting);
     }, { threshold: 0.1 });
     
-    if (videoContainerRef.current) {
-      observer.observe(videoContainerRef.current);
+    if (scrollContainerRef.current) {
+      observer.observe(scrollContainerRef.current);
     }
     
     return () => observer.disconnect();
@@ -118,12 +147,36 @@ export default function GuidePage() {
             <section className="space-y-6">
               <h3 className="text-xl font-display font-bold text-accent border-l-4 border-accent pl-3 uppercase tracking-wide">CÁCH 1: MỞ THẺ ONLINE</h3>
               
-              <div className="mb-10 flex justify-center" ref={videoContainerRef}>
-                <div className="w-full max-w-2xl flex flex-col">
-                  <h4 className="font-bold text-ink font-body mb-3">Hướng dẫn mở thẻ (Chung)</h4>
-                  <CustomVideoPlayer 
-                    srcMap={videoSrc1} 
-                    isViewable={isVideoInView} 
+              <div className="mb-10">
+                <div 
+                  ref={scrollContainerRef}
+                  onScroll={handleScroll}
+                  className="flex overflow-x-auto snap-x snap-mandatory gap-6 pb-2 hide-scrollbar transform-gpu"
+                >
+                  {/* Video 1 */}
+                  <div className="snap-center shrink-0 w-full flex justify-center">
+                    <div className="w-full max-w-2xl flex flex-col">
+                      <h4 className="font-bold text-ink font-body mb-3">Hướng dẫn mở thẻ (Chung)</h4>
+                      <CustomVideoPlayer 
+                        srcMap={videoSrc1} 
+                        isActive={activeVideo === 0}
+                        isViewable={isVideoInView} 
+                      />
+                    </div>
+                  </div>
+                </div>
+                
+                {/* Pagination Dots (giữ sẵn cấu trúc để mở rộng thêm video tiếp theo) */}
+                <div className="flex justify-center items-center gap-2 mt-4">
+                  <button
+                    onClick={() => scrollToVideo(0)}
+                    className={`h-2 rounded-full transition-all duration-300 cursor-pointer ${activeVideo === 0 ? 'w-6 bg-accent' : 'w-2 bg-steel/30 hover:bg-steel/50'}`}
+                    aria-label="Video 1"
+                  />
+                  <button
+                    onClick={() => scrollToVideo(1)}
+                    className={`h-2 rounded-full transition-all duration-300 cursor-pointer ${activeVideo === 1 ? 'w-6 bg-accent' : 'w-2 bg-steel/30 hover:bg-steel/50'}`}
+                    aria-label="Video 2"
                   />
                 </div>
               </div>
