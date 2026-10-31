@@ -2,8 +2,7 @@ import { useState } from 'react';
 import blogLogo from '../assets/images/blog_logo.png';
 
 export default function Header() {
-  
-    const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const handleScrollToCards = (e) => {
     e.preventDefault();
@@ -15,6 +14,21 @@ export default function Header() {
       }, 150);
     } else {
       const el = document.getElementById('card-list');
+      if (el) el.scrollIntoView({ behavior: 'smooth' });
+    }
+    setIsMobileMenuOpen(false);
+  };
+
+  const handleScrollToCalculator = (e) => {
+    e.preventDefault();
+    if (window.location.hash === '#/guide') {
+      window.location.hash = '#/';
+      setTimeout(() => {
+        const el = document.getElementById('calculator');
+        if (el) el.scrollIntoView({ behavior: 'smooth' });
+      }, 150);
+    } else {
+      const el = document.getElementById('calculator');
       if (el) el.scrollIntoView({ behavior: 'smooth' });
     }
     setIsMobileMenuOpen(false);
@@ -38,9 +52,18 @@ export default function Header() {
             </a>
             {/* Desktop Navigation */}
             <nav className="hidden md:flex items-center gap-8 font-body font-semibold text-base text-ink">
-              <a href="#/" onClick={handleScrollToCards} className="hover:text-accent transition-colors cursor-pointer">Hệ sinh thái thẻ</a>
-              <a href="#/guide" className="hover:text-accent transition-colors cursor-pointer">Hướng dẫn mở</a>
-
+              <a href="#/" onClick={handleScrollToCards} className="hover:text-accent transition-colors cursor-pointer">
+                Hệ sinh thái thẻ
+              </a>
+              <a href="#/calculator" onClick={handleScrollToCalculator} className="hover:text-accent transition-colors cursor-pointer flex items-center gap-1.5">
+                <span>Tính hạn mức</span>
+                <span className="px-1.5 py-0.5 text-[10px] font-bold bg-emerald-100 text-[#006633] rounded-full">
+                  Mới
+                </span>
+              </a>
+              <a href="#/guide" className="hover:text-accent transition-colors cursor-pointer">
+                Hướng dẫn mở
+              </a>
             </nav>
           </div>
           
@@ -67,7 +90,7 @@ export default function Header() {
         {/* Mobile Dropdown Menu */}
         <div 
           className={`md:hidden absolute top-full left-0 right-0 bg-surface border-b border-whisper transition-all duration-300 ease-in-out overflow-hidden shadow-lg ${
-            isMobileMenuOpen ? 'max-h-64 py-4 opacity-100' : 'max-h-0 opacity-0'
+            isMobileMenuOpen ? 'max-h-80 py-4 opacity-100' : 'max-h-0 opacity-0'
           }`}
         >
           <div className="flex flex-col px-6 gap-6 font-body font-semibold text-base text-ink">
@@ -78,14 +101,26 @@ export default function Header() {
             >
               Hệ sinh thái thẻ
             </a>
-            <a href="#/guide" onClick={() => setIsMobileMenuOpen(false)} className="hover:text-accent transition-colors text-left block">Hướng dẫn mở</a>
-
+            <a 
+              href="#/calculator" 
+              onClick={handleScrollToCalculator}
+              className="hover:text-accent transition-colors block cursor-pointer flex items-center justify-between"
+            >
+              <span>Tính hạn mức</span>
+              <span className="px-2 py-0.5 text-xs font-bold bg-emerald-100 text-[#006633] rounded-full">
+                Mới
+              </span>
+            </a>
+            <a 
+              href="#/guide" 
+              onClick={() => setIsMobileMenuOpen(false)} 
+              className="hover:text-accent transition-colors text-left block"
+            >
+              Hướng dẫn mở
+            </a>
           </div>
         </div>
       </header>
-      
-      
-
     </>
   )
 }

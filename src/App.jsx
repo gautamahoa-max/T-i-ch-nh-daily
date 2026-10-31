@@ -1,13 +1,15 @@
 import SplashScreen from './components/SplashScreen';
-import { useState, useEffect } from 'react'
-import Header from './components/Header'
-import HeroBanner from './components/HeroBanner'
-import BankMarquee from './components/BankMarquee'
-import CardList from './components/CardList'
-import FAQSection from './components/FAQSection'
-import Footer from './components/Footer'
-import FloatingContact from './components/FloatingContact'
-import GuidePage from './components/GuidePage'
+import { useState, useEffect } from 'react';
+import Header from './components/Header';
+import HeroBanner from './components/HeroBanner';
+import BankMarquee from './components/BankMarquee';
+import CardList from './components/CardList';
+import CreditLimitCalculator from './components/CreditLimitCalculator';
+import ConsultationForm from './components/ConsultationForm';
+import FAQSection from './components/FAQSection';
+import Footer from './components/Footer';
+import FloatingContact from './components/FloatingContact';
+import GuidePage from './components/GuidePage';
 
 function App() {
   const [hash, setHash] = useState(window.location.hash);
@@ -34,6 +36,12 @@ function App() {
             <HeroBanner />
             <BankMarquee />
             <CardList />
+            <CreditLimitCalculator />
+            <section id="consultation-section" className="bg-[#F8FAFC] pb-20 md:pb-28 px-6 md:px-12 border-t border-whisper">
+              <div className="container mx-auto max-w-[1200px]">
+                <ConsultationForm />
+              </div>
+            </section>
             <FAQSection />
           </>
         )}
@@ -42,7 +50,7 @@ function App() {
       <Footer />
       <FloatingContact />
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
