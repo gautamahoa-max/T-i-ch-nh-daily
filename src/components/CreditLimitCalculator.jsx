@@ -61,19 +61,11 @@ const GROUP_3_BANKS = [
   "SCB"
 ];
 
-const ALL_BANKS = [
-  ...GROUP_1_BANKS,
-  ...GROUP_2_BANKS,
-  ...GROUP_3_BANKS
-];
-
 export default function CreditLimitCalculator() {
   const [activeTab, setActiveTab] = useState('salary'); // 'salary' | 'card'
 
-  // Tab 1: Salary inputs
+  // Tab 1: Salary inputs (always uses maximum x5 multiplier per user instruction)
   const [salary, setSalary] = useState(20000000);
-  const [companyType, setCompanyType] = useState('priority'); // 'priority' | 'standard'
-  const [isOcbPayroll, setIsOcbPayroll] = useState(false);
 
   // Tab 2: Card-to-Card inputs
   const [selectedBank, setSelectedBank] = useState('Vietcombank');
@@ -86,24 +78,15 @@ export default function CreditLimitCalculator() {
   // Calculate limit based on OCB regulations
   const calculationResult = useMemo(() => {
     if (activeTab === 'salary') {
-      const isPriority = companyType === 'priority';
-      let multiplier = 3;
-      if (isPriority) {
-        multiplier = salary >= 15000000 ? 5 : 4;
-      } else {
-        multiplier = salary >= 15000000 ? 4 : 3;
-      }
-      
+      const multiplier = 5;
       const rawLimit = salary * multiplier;
       const finalLimit = Math.min(500000000, rawLimit);
       
       return {
         limit: finalLimit,
-        multiplierLabel: `Gấp ${multiplier} lần lương`,
-        detailNote: isPriority 
-          ? (salary >= 15000000 ? 'Doanh nghiệp Nhóm A / Đối tác OCB (x5 lương)' : 'Doanh nghiệp Nhóm A / Đối tác OCB (x4 lương)')
-          : (salary >= 15000000 ? 'Doanh nghiệp chuẩn (x4 lương)' : 'Doanh nghiệp chuẩn (x3 lương)'),
-        method: 'Lương chuyển khoản'
+        multiplierLabel: `Tối đa x${multiplier} lần lương`,
+        detailNote: 'Hạn mức tối đa lên tới 5 lần lương chuyển khoản (tối đa 500 triệu VNĐ)',
+        method: 'Lương chuyển khoản (Tối đa x5)'
       };
     } else {
       // Card-to-card
@@ -137,7 +120,7 @@ export default function CreditLimitCalculator() {
         method: `Sang ngang thẻ ${selectedBank}`
       };
     }
-  }, [activeTab, salary, companyType, selectedBank, cardLimit, hasBhxhOrGpkd]);
+  }, [activeTab, salary, selectedBank, cardLimit, hasBhxhOrGpkd]);
 
   // Card recommendation logic
   const recommendedCard = useMemo(() => {
@@ -149,7 +132,6 @@ export default function CreditLimitCalculator() {
         tier: "World Elite • Khách hàng Cao cấp",
         badge: "Đặc quyền Thượng lưu",
         image: imgWorld,
-        accentColor: "from-amber-500/20 to-emerald-500/10 border-amber-500/30",
         benefits: [
           "Tặng lượt vào phòng chờ thương gia sân bay (VIP Lounge)",
           "Hoàn tiền 10% chi tiêu ẩm thực cao cấp, 5% du lịch",
@@ -164,7 +146,6 @@ export default function CreditLimitCalculator() {
         tier: "Platinum • Đẳng cấp Bạch Kim",
         badge: "Tối ưu Công nghệ & Làm đẹp",
         image: imgPlatinum,
-        accentColor: "from-purple-500/20 to-blue-500/10 border-purple-500/30",
         benefits: [
           "Hoàn 15% mua sắm công nghệ tại TGDĐ, FPT, CellphoneS...",
           "Hoàn 15% chi tiêu chăm sóc sắc đẹp, Spa, Gym, thời trang",
@@ -179,7 +160,6 @@ export default function CreditLimitCalculator() {
         tier: "Lifestyle • Phong cách Trẻ",
         badge: "Được yêu thích nhất",
         image: imgLifestyle,
-        accentColor: "from-blue-500/20 to-emerald-500/10 border-blue-500/30",
         benefits: [
           "Hoàn đến 15% dịch vụ giải trí (Netflix, Spotify, CGV, Youtube...)",
           "Hoàn đến 7% chi tiêu mua sắm, ẩm thực và làm đẹp",
@@ -194,7 +174,6 @@ export default function CreditLimitCalculator() {
         tier: "Natural • Thẻ Nội Địa Tiện Ích",
         badge: "Miễn phí Rút tiền",
         image: imgNatural,
-        accentColor: "from-emerald-500/20 to-teal-500/10 border-emerald-500/30",
         benefits: [
           "Miễn 100% phí rút tiền mặt tại mọi cây ATM trên toàn quốc",
           "Miễn phí phát hành và miễn phí thường niên năm đầu tiên",
@@ -336,7 +315,7 @@ export default function CreditLimitCalculator() {
                     <input
                       type="range"
                       min={5000000}
-                      max={80000000}
+                      max={100000000}
                       step={500000}
                       value={salary}
                       onChange={(e) => setSalary(Number(e.target.value))}
@@ -346,13 +325,13 @@ export default function CreditLimitCalculator() {
                       <span>5 triệu</span>
                       <span>20 triệu</span>
                       <span>50 triệu</span>
-                      <span>80 triệu+</span>
+                      <span>100 triệu</span>
                     </div>
                   </div>
 
                   {/* Quick Select Buttons */}
                   <div className="flex flex-wrap gap-2 mt-4">
-                    {[7000000, 12000000, 18000000, 25000000, 40000000, 60000000].map((val) => (
+                    {[7000000, 12000000, 18000000, 25000000, 35000000, 50000000, 70000000].map((val) => (
                       <button
                         key={val}
                         type="button"
@@ -369,83 +348,27 @@ export default function CreditLimitCalculator() {
                   </div>
                 </div>
 
-                {/* Company Type Block */}
+                {/* Salary Policy Highlight Card */}
                 <div className="pt-2 border-t border-slate-100">
-                  <label className="block text-sm font-bold text-slate-700 uppercase tracking-wide mb-3">
-                    Phân loại Doanh nghiệp đang làm việc:
-                  </label>
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                    <button
-                      type="button"
-                      onClick={() => setCompanyType('priority')}
-                      className={`p-4 rounded-2xl border text-left transition-all relative ${
-                        companyType === 'priority'
-                          ? 'border-[#006633] bg-emerald-50/50 shadow-sm'
-                          : 'border-slate-200 hover:border-slate-300 bg-white'
-                      }`}
-                    >
-                      <div className="flex items-center justify-between mb-1">
-                        <span className="font-bold text-ink text-sm md:text-base">Doanh nghiệp Nhóm A</span>
-                        {companyType === 'priority' && (
-                          <span className="w-5 h-5 rounded-full bg-[#006633] text-white flex items-center justify-center text-xs font-bold">✓</span>
-                        )}
-                      </div>
-                      <p className="text-xs text-slate-500 leading-relaxed">
-                        Top 500 VNR500, cty FDI, nhà nước, hoặc đơn vị có liên kết tín dụng OCB.
-                      </p>
-                      <div className="mt-2 text-xs font-bold text-[#006633]">
-                        Hạn mức cấp: x4 - x5 lần lương
-                      </div>
-                    </button>
-
-                    <button
-                      type="button"
-                      onClick={() => setCompanyType('standard')}
-                      className={`p-4 rounded-2xl border text-left transition-all relative ${
-                        companyType === 'standard'
-                          ? 'border-[#006633] bg-emerald-50/50 shadow-sm'
-                          : 'border-slate-200 hover:border-slate-300 bg-white'
-                      }`}
-                    >
-                      <div className="flex items-center justify-between mb-1">
-                        <span className="font-bold text-ink text-sm md:text-base">Doanh nghiệp Chuẩn</span>
-                        {companyType === 'standard' && (
-                          <span className="w-5 h-5 rounded-full bg-[#006633] text-white flex items-center justify-center text-xs font-bold">✓</span>
-                        )}
-                      </div>
-                      <p className="text-xs text-slate-500 leading-relaxed">
-                        Doanh nghiệp tư nhân, công ty TNHH/Cổ phần hoạt động từ 1 năm trở lên.
-                      </p>
-                      <div className="mt-2 text-xs font-bold text-[#006633]">
-                        Hạn mức cấp: x3 - x4 lần lương
-                      </div>
-                    </button>
-                  </div>
-                </div>
-
-                {/* Payroll via OCB Toggle */}
-                <div className="pt-2 border-t border-slate-100">
-                  <div className="flex items-center justify-between p-4 bg-slate-50 rounded-2xl border border-slate-200/80">
-                    <div className="pr-4">
-                      <div className="flex items-center gap-2">
-                        <span className="font-bold text-sm text-ink">Nhận lương qua tài khoản OCB (Payroll)</span>
-                        <span className="px-2 py-0.5 rounded text-[10px] font-bold bg-amber-100 text-amber-800">
-                          Ưu đãi
-                        </span>
-                      </div>
-                      <p className="text-xs text-slate-500 mt-1">
-                        Chỉ cần thâm niên từ 01 tháng (thay vì 06 tháng) và giảm tối đa chứng từ sao kê.
-                      </p>
+                  <div className="p-4 bg-gradient-to-r from-emerald-50/80 to-teal-50/50 rounded-2xl border border-emerald-200/80">
+                    <div className="flex items-center gap-2 mb-2">
+                      <span className="w-6 h-6 rounded-full bg-[#006633] text-white flex items-center justify-center text-xs font-bold">★</span>
+                      <span className="font-bold text-sm text-ink">Chính sách cấp hạn mức theo Lương OCB</span>
+                      <span className="px-2 py-0.5 rounded text-[10px] font-bold bg-[#006633] text-white">
+                        Tối đa x5 lần
+                      </span>
                     </div>
-                    <label className="relative inline-flex items-center cursor-pointer flex-shrink-0">
-                      <input
-                        type="checkbox"
-                        checked={isOcbPayroll}
-                        onChange={(e) => setIsOcbPayroll(e.target.checked)}
-                        className="sr-only peer"
-                      />
-                      <div className="w-11 h-6 bg-slate-300 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-slate-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-[#006633]"></div>
-                    </label>
+                    <p className="text-xs text-slate-600 leading-relaxed mb-3">
+                      Khách hàng nhận lương chuyển khoản qua tài khoản ngân hàng từ <strong>5 triệu VNĐ/tháng</strong> được hỗ trợ phê duyệt hạn mức tối đa lên tới <strong>5 lần thu nhập</strong> (tối đa đến 500 triệu VNĐ) mà không cần tài sản đảm bảo.
+                    </p>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs text-slate-700">
+                      <div className="flex items-center gap-1.5 font-medium">
+                        <span className="text-[#006633] font-bold">✓</span> Duyệt nhanh trong 24 giờ làm việc
+                      </div>
+                      <div className="flex items-center gap-1.5 font-medium">
+                        <span className="text-[#006633] font-bold">✓</span> Thủ tục sao kê đơn giản, minh bạch
+                      </div>
+                    </div>
                   </div>
                 </div>
               </>
