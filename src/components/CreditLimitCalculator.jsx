@@ -507,26 +507,7 @@ export default function CreditLimitCalculator() {
               </>
             )}
 
-            {/* General Underwriting Conditions Checklist */}
-            <div className="pt-4 border-t border-slate-100">
-              <span className="block text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">
-                Điều kiện thẩm định tiêu chuẩn OCB:
-              </span>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs text-slate-600">
-                <div className="flex items-center gap-2">
-                  <span className="text-[#006633] font-bold">✓</span> Độ tuổi từ 20 đến 65 tuổi
-                </div>
-                <div className="flex items-center gap-2">
-                  <span className="text-[#006633] font-bold">✓</span> Lịch sử tín dụng CIC tốt (không nợ xấu)
-                </div>
-                <div className="flex items-center gap-2">
-                  <span className="text-[#006633] font-bold">✓</span> Không có dư nợ Công ty Tài chính
-                </div>
-                <div className="flex items-center gap-2">
-                  <span className="text-[#006633] font-bold">✓</span> Thẻ tham chiếu hoạt động từ 6 tháng
-                </div>
-              </div>
-            </div>
+
           </div>
 
           {/* RIGHT COLUMN: Live Result Card & Recommended Card (5 cols) */}
