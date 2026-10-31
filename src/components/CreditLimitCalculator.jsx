@@ -6,9 +6,9 @@ import imgWorld from '../assets/images/world.png';
 import imgPlatinum from '../assets/images/platinum.png';
 import { bankLogos } from '../assets/images/banks/index.js';
 
-// Format currency in VND
+// Format currency in VND with non-breaking space before 'đ'
 const formatVND = (val) => {
-  return new Intl.NumberFormat('vi-VN').format(Math.round(val)) + ' đ';
+  return new Intl.NumberFormat('vi-VN').format(Math.round(val)) + '\u00A0đ';
 };
 
 const formatShortVND = (val) => {
@@ -307,11 +307,11 @@ export default function CreditLimitCalculator() {
               <>
                 {/* Salary Input Block */}
                 <div>
-                  <div className="flex justify-between items-end mb-3">
-                    <label className="text-sm font-bold text-slate-700 uppercase tracking-wide">
+                  <div className="flex justify-between items-baseline gap-2 mb-3">
+                    <label className="text-xs sm:text-sm font-bold text-slate-700 uppercase tracking-wide">
                       Mức lương chuyển khoản thực nhận:
                     </label>
-                    <span className="text-2xl md:text-3xl font-black text-[#006633] tracking-tight">
+                    <span className="text-xl sm:text-2xl md:text-3xl font-black text-[#006633] tracking-tight whitespace-nowrap flex-shrink-0">
                       {formatVND(salary)}
                     </span>
                   </div>
@@ -393,11 +393,11 @@ export default function CreditLimitCalculator() {
 
                 {/* Current Card Limit Slider */}
                 <div className="pt-2 border-t border-slate-100">
-                  <div className="flex justify-between items-end mb-3">
-                    <label className="text-sm font-bold text-slate-700 uppercase tracking-wide">
+                  <div className="flex justify-between items-baseline gap-2 mb-3">
+                    <label className="text-xs sm:text-sm font-bold text-slate-700 uppercase tracking-wide">
                       Hạn mức thẻ tham chiếu hiện có:
                     </label>
-                    <span className="text-2xl md:text-3xl font-black text-[#006633] tracking-tight">
+                    <span className="text-xl sm:text-2xl md:text-3xl font-black text-[#006633] tracking-tight whitespace-nowrap flex-shrink-0">
                       {formatVND(cardLimit)}
                     </span>
                   </div>
@@ -491,7 +491,7 @@ export default function CreditLimitCalculator() {
                 </div>
 
                 {/* Big Animated Currency */}
-                <div className="text-3xl md:text-4xl font-display font-black text-white tracking-tight mb-6">
+                <div className="text-3xl sm:text-4xl font-display font-black text-white tracking-tight mb-6 whitespace-nowrap">
                   {formatVND(displayLimit)}
                 </div>
 
