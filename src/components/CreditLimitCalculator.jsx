@@ -490,7 +490,7 @@ export default function CreditLimitCalculator() {
                         </span>
                       </div>
                       <p className="text-xs text-slate-600 mt-1">
-                        Áp dụng nếu bạn có đóng Bảo hiểm Xã hội (ứng dụng VssID $\ge$ 3 tháng) hoặc có Giấy phép ĐKKD $\ge$ 12 tháng.
+                        Áp dụng nếu bạn có đóng Bảo hiểm xã hội hoặc có Giấy phép kinh doanh.
                       </p>
                     </div>
                     <label className="relative inline-flex items-center cursor-pointer flex-shrink-0">
