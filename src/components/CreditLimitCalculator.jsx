@@ -11,16 +11,6 @@ const formatVND = (val) => {
   return new Intl.NumberFormat('vi-VN').format(Math.round(val)) + '\u00A0đ';
 };
 
-const formatShortVND = (val) => {
-  if (val >= 1000000000) {
-    return (val / 1000000000).toFixed(1).replace('.0', '') + ' tỷ';
-  }
-  if (val >= 1000000) {
-    return (val / 1000000).toFixed(0) + ' triệu';
-  }
-  return formatVND(val);
-};
-
 // Bank grouping according to OCB Policy (Decision 439.01 & 431.01)
 const GROUP_1_BANKS = [
   "Vietcombank",
@@ -334,24 +324,6 @@ export default function CreditLimitCalculator() {
                       <span>100 triệu</span>
                     </div>
                   </div>
-
-                  {/* Quick Select Buttons */}
-                  <div className="flex flex-wrap gap-2 mt-4">
-                    {[7000000, 12000000, 18000000, 25000000, 35000000, 50000000, 70000000].map((val) => (
-                      <button
-                        key={val}
-                        type="button"
-                        onClick={() => setSalary(val)}
-                        className={`text-xs px-3 py-1.5 rounded-lg border font-medium transition-all ${
-                          salary === val
-                            ? 'bg-[#006633] text-white border-[#006633]'
-                            : 'bg-slate-50 text-slate-600 border-slate-200 hover:bg-slate-100'
-                        }`}
-                      >
-                        {formatShortVND(val)}
-                      </button>
-                    ))}
-                  </div>
                 </div>
 
 
@@ -418,24 +390,6 @@ export default function CreditLimitCalculator() {
                       <span>100 triệu</span>
                       <span>200 triệu+</span>
                     </div>
-                  </div>
-
-                  {/* Quick Select Buttons */}
-                  <div className="flex flex-wrap gap-2 mt-4">
-                    {[30000000, 50000000, 80000000, 100000000, 150000000, 200000000].map((val) => (
-                      <button
-                        key={val}
-                        type="button"
-                        onClick={() => setCardLimit(val)}
-                        className={`text-xs px-3 py-1.5 rounded-lg border font-medium transition-all ${
-                          cardLimit === val
-                            ? 'bg-[#006633] text-white border-[#006633]'
-                            : 'bg-slate-50 text-slate-600 border-slate-200 hover:bg-slate-100'
-                        }`}
-                      >
-                        {formatShortVND(val)}
-                      </button>
-                    ))}
                   </div>
                 </div>
 
