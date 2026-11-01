@@ -426,63 +426,50 @@ export default function CreditLimitCalculator() {
 
           {/* RIGHT COLUMN: Live Result Card & Recommended Card (5 cols) */}
           <div className="lg:col-span-5 sticky top-28">
-            <div className="rounded-3xl bg-[#0B1B3D] text-white p-7 md:p-8 shadow-xl shadow-slate-900/10 border border-slate-800 relative overflow-hidden">
+            <div className="rounded-3xl bg-white text-ink p-7 md:p-8 shadow-xl shadow-slate-200/50 border border-slate-200/80 relative">
               
-              {/* Subtle metallic lighting background */}
-              <div className="absolute top-0 right-0 w-64 h-64 bg-emerald-500/15 rounded-full blur-3xl pointer-events-none"></div>
-              <div className="absolute bottom-0 left-0 w-64 h-64 bg-blue-500/10 rounded-full blur-3xl pointer-events-none"></div>
-
               {/* Header result */}
-              <div className="relative z-10">
-                <div className="flex items-center justify-between mb-2">
-                  <span className="text-xs font-bold uppercase tracking-widest text-slate-300">
+              <div>
+                <div className="flex items-center justify-between mb-3">
+                  <span className="text-xs font-bold uppercase tracking-wider text-slate-400">
                     Hạn mức OCB dự kiến
                   </span>
-                  <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[11px] font-bold bg-[#006633]/80 text-emerald-200 border border-emerald-500/30">
-                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-300 animate-ping"></span>
+                  <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-emerald-50 text-[#006633] border border-emerald-200/60">
+                    <span className="w-1.5 h-1.5 rounded-full bg-[#006633]"></span>
                     {calculationResult.multiplierLabel}
                   </span>
                 </div>
 
                 {/* Big Animated Currency */}
-                <div className="text-3xl sm:text-4xl font-display font-black text-white tracking-tight mb-6 whitespace-nowrap">
+                <div className="text-3xl sm:text-4xl font-display font-black text-[#006633] tracking-tight mb-6 whitespace-nowrap">
                   {formatVND(displayLimit)}
                 </div>
 
-                {/* Recommended Card Box */}
-                <div className="bg-white/10 backdrop-blur-md rounded-2xl p-5 border border-white/15 mb-6 relative group">
-                  <div className="flex items-center justify-between mb-3">
-                    <span className="text-[10px] font-bold uppercase tracking-wider text-emerald-400">
-                      Dòng thẻ đề xuất tối ưu
-                    </span>
-                    <span className="text-[10px] font-semibold text-slate-300 bg-white/10 px-2 py-0.5 rounded">
-                      {recommendedCard.badge}
-                    </span>
-                  </div>
-
+                {/* Recommended Card Info */}
+                <div className="pt-6 border-t border-slate-100 mb-6">
                   <div className="flex items-center gap-4 mb-4">
-                    <div className="w-24 md:w-28 flex-shrink-0 relative group-hover:scale-105 transition-transform duration-300">
+                    <div className="w-24 md:w-28 flex-shrink-0 group-hover:scale-105 transition-transform duration-300">
                       <img 
                         src={recommendedCard.image} 
                         alt={recommendedCard.name}
-                        className="w-full h-auto object-contain drop-shadow-md rounded-lg"
+                        className="w-full h-auto object-contain drop-shadow-md rounded-xl"
                       />
                     </div>
-                    <div>
-                      <h4 className="font-display font-bold text-base md:text-lg text-white leading-snug">
+                    <div className="min-w-0">
+                      <h4 className="font-display font-bold text-base md:text-lg text-ink leading-snug">
                         {recommendedCard.name}
                       </h4>
-                      <p className="text-xs text-slate-300 mt-1">
+                      <p className="text-xs text-slate-500 mt-1">
                         {recommendedCard.tier}
                       </p>
                     </div>
                   </div>
 
                   {/* Top privileges */}
-                  <div className="space-y-1.5 pt-3 border-t border-white/10 text-xs text-slate-200">
-                    {recommendedCard.benefits.map((b, i) => (
+                  <div className="space-y-2 bg-slate-50/80 rounded-2xl p-4 border border-slate-100 text-xs text-slate-600">
+                    {recommendedCard.benefits.slice(0, 3).map((b, i) => (
                       <div key={i} className="flex items-start gap-2">
-                        <span className="text-emerald-400 font-bold mt-0.5">•</span>
+                        <span className="text-[#006633] font-bold mt-0.5">•</span>
                         <span className="leading-relaxed">{b}</span>
                       </div>
                     ))}
@@ -493,7 +480,7 @@ export default function CreditLimitCalculator() {
                 <button
                   type="button"
                   onClick={handleApplyNow}
-                  className="w-full py-4 px-6 rounded-2xl bg-gradient-to-r from-[#008855] via-[#006633] to-[#0055FF] text-white font-display font-bold text-base md:text-lg flex items-center justify-center gap-3 shadow-lg shadow-emerald-900/40 hover:brightness-110 active:scale-[0.98] transition-all cursor-pointer group"
+                  className="w-full py-4 px-6 rounded-2xl bg-[#006633] hover:bg-[#00552b] text-white font-display font-bold text-base md:text-lg flex items-center justify-center gap-2.5 shadow-md shadow-[#006633]/20 active:scale-[0.98] transition-all cursor-pointer group"
                 >
                   <span>Đăng ký nhận hạn mức này</span>
                   <svg className="w-5 h-5 transform group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -501,7 +488,7 @@ export default function CreditLimitCalculator() {
                   </svg>
                 </button>
 
-                <p className="text-[11px] text-slate-400 text-center mt-3 leading-relaxed">
+                <p className="text-[11px] text-slate-400 text-center mt-3.5 leading-relaxed">
                   * Hạn mức thực tế sẽ được OCB phê duyệt chính thức căn cứ vào hồ sơ thẩm định và điểm tín dụng CIC của bạn.
                 </p>
               </div>
