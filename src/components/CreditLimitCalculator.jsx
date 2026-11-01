@@ -241,10 +241,6 @@ export default function CreditLimitCalculator() {
       <div className="container mx-auto px-6 md:px-12 max-w-[1200px] relative z-10">
         <ScrollReveal direction="up" delay={0}>
           <div className="text-center max-w-3xl mx-auto mb-14 md:mb-16">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-50 border border-emerald-200 text-[#006633] text-xs font-bold uppercase tracking-wider mb-4 shadow-sm">
-              <span className="w-2 h-2 rounded-full bg-[#006633] animate-pulse"></span>
-              Công cụ thẩm định thông minh
-            </div>
             <h2 className="text-3xl md:text-5xl font-display font-black text-ink mb-4 tracking-tight">
               Tính hạn mức thẻ tín dụng OCB
             </h2>
