@@ -152,6 +152,8 @@ export default function ConsultationForm() {
               name="Họ và tên"
               required 
               placeholder="Nguyễn Văn A" 
+              onInvalid={(e) => e.target.setCustomValidity('Vui lòng nhập họ và tên của bạn')}
+              onInput={(e) => e.target.setCustomValidity('')}
               className="w-full bg-transparent outline-none font-body text-ink placeholder-steel/50"
             />
           </div>
@@ -165,6 +167,8 @@ export default function ConsultationForm() {
               name="Số điện thoại"
               required 
               placeholder="0912345678" 
+              onInvalid={(e) => e.target.setCustomValidity('Vui lòng nhập số điện thoại của bạn')}
+              onInput={(e) => e.target.setCustomValidity('')}
               className="w-full bg-transparent outline-none font-body text-ink placeholder-steel/50"
             />
           </div>
@@ -178,6 +182,14 @@ export default function ConsultationForm() {
               name="Email"
               required 
               placeholder="nguyenvana@gmail.com" 
+              onInvalid={(e) => {
+                if (e.target.validity.valueMissing) {
+                  e.target.setCustomValidity('Vui lòng nhập địa chỉ email của bạn');
+                } else if (e.target.validity.typeMismatch) {
+                  e.target.setCustomValidity('Vui lòng nhập đúng định dạng email (ví dụ: nguyenvana@gmail.com)');
+                }
+              }}
+              onInput={(e) => e.target.setCustomValidity('')}
               className="w-full bg-transparent outline-none font-body text-ink placeholder-steel/50"
             />
           </div>
