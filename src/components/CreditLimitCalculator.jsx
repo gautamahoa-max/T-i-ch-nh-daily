@@ -169,6 +169,13 @@ export default function CreditLimitCalculator() {
     }
   };
 
+  // Action: Open Card Details Modal
+  const handleOpenCardDetails = () => {
+    window.dispatchEvent(new CustomEvent('ocb-open-card-modal', {
+      detail: { cardId: recommendedCard.id }
+    }));
+  };
+
   return (
     <section id="calculator" className="bg-[#F8FAFC] py-20 md:py-28 relative overflow-hidden border-t border-whisper">
       {/* Decorative background glows */}
@@ -347,7 +354,14 @@ export default function CreditLimitCalculator() {
 
                 {/* Recommended Card Info */}
                 <div className="pt-6 border-t border-slate-100 mb-6">
-                  <div className="flex items-center gap-4 mb-4">
+                  <div 
+                    onClick={handleOpenCardDetails}
+                    role="button"
+                    tabIndex={0}
+                    onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') handleOpenCardDetails(); }}
+                    className="flex items-center gap-4 mb-4 cursor-pointer group focus:outline-none"
+                    title={`Nhấp để xem chi tiết thẻ ${recommendedCard.name}`}
+                  >
                     <div className="w-24 md:w-28 flex-shrink-0 group-hover:scale-105 transition-transform duration-300">
                       <img 
                         src={recommendedCard.image} 
@@ -356,8 +370,11 @@ export default function CreditLimitCalculator() {
                       />
                     </div>
                     <div className="min-w-0">
-                      <h4 className="font-display font-bold text-base md:text-lg text-ink leading-snug">
-                        {recommendedCard.name}
+                      <h4 className="font-display font-bold text-base md:text-lg text-ink leading-snug group-hover:text-[#006633] transition-colors flex items-center gap-1.5">
+                        <span>{recommendedCard.name}</span>
+                        <svg className="w-4 h-4 text-slate-400 group-hover:text-[#006633] group-hover:translate-x-0.5 transition-all flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                        </svg>
                       </h4>
                       <p className="text-xs text-slate-500 mt-1">
                         {recommendedCard.tier}

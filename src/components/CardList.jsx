@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import imgLifestyle from '../assets/images/lifestyle.png';
 import imgNatural from '../assets/images/natural.jpg';
 import imgWorld from '../assets/images/world.png';
@@ -45,7 +45,7 @@ export default function CardList() {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const handleOpenModal = (card, e) => {
-    e.preventDefault();
+    if (e && e.preventDefault) e.preventDefault();
     setSelectedCard(card);
     setIsModalOpen(true);
   };
@@ -54,6 +54,21 @@ export default function CardList() {
     setIsModalOpen(false);
     setTimeout(() => setSelectedCard(null), 300);
   };
+
+  // Listen to open card modal events from other components (e.g. CreditLimitCalculator)
+  useEffect(() => {
+    const handleOpenCardEvent = (e) => {
+      const cardId = e.detail?.cardId;
+      const foundCard = cards.find(c => c.id === cardId);
+      if (foundCard) {
+        setSelectedCard(foundCard);
+        setIsModalOpen(true);
+      }
+    };
+
+    window.addEventListener('ocb-open-card-modal', handleOpenCardEvent);
+    return () => window.removeEventListener('ocb-open-card-modal', handleOpenCardEvent);
+  }, []);
 
   return (
     <>
@@ -82,7 +97,14 @@ export default function CardList() {
                     
                     {/* Image Block */}
                     <div className="w-full md:w-1/2 flex justify-center relative">
-                      <div className="relative group perspective-1000">
+                      <div 
+                        onClick={(e) => handleOpenModal(card, e)}
+                        role="button"
+                        tabIndex={0}
+                        onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') handleOpenModal(card, e); }}
+                        className="relative group perspective-1000 cursor-pointer focus:outline-none"
+                        title={`Xem chi tiết thẻ ${card.name}`}
+                      >
                         <img 
                           src={card.image} 
                           alt={card.name} 
@@ -99,7 +121,11 @@ export default function CardList() {
                         {card.metrics}
                       </div>
                       
-                      <h3 className="text-3xl md:text-4xl font-display font-bold mb-4 flex items-center gap-3 flex-wrap leading-tight">
+                      <h3 
+                        onClick={(e) => handleOpenModal(card, e)}
+                        className="text-3xl md:text-4xl font-display font-bold mb-4 flex items-center gap-3 flex-wrap leading-tight cursor-pointer hover:text-[#006633] transition-colors"
+                        title={`Xem chi tiết thẻ ${card.name}`}
+                      >
                         <span>{card.name.toUpperCase()}</span>
                         {card.isHot && (
                           <span className="inline-flex items-center justify-center px-2.5 py-1 bg-[#FF3B30] text-white text-xs md:text-sm font-bold rounded shadow-sm align-middle tracking-wider transform -translate-y-0.5 animate-pulse">
