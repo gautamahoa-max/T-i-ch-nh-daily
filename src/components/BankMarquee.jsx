@@ -41,17 +41,17 @@ const BankLogo = ({ bank }) => {
 
   if (imgError || !localSrc) {
     return (
-      <div className="group flex-shrink-0 flex items-center justify-center h-32 w-48 mx-2 rounded-2xl transition-all duration-300 hover:bg-white/60 hover:shadow-[0_8px_30px_rgb(0,0,0,0.04)] cursor-pointer">
-        <div className="flex items-center justify-center h-20 w-40 bg-white border border-gray-100 rounded-xl shadow-sm transition-transform duration-500 ease-[cubic-bezier(0.175,0.885,0.32,1.275)] group-hover:scale-110">
-          <span className="font-bold text-gray-700 text-sm text-center uppercase tracking-wider px-2">{bank.name}</span>
+      <div className="group flex-shrink-0 flex items-center justify-center h-20 w-36 md:w-44 mx-1.5 rounded-xl transition-all duration-300 hover:bg-white/60 cursor-pointer">
+        <div className="flex items-center justify-center h-14 w-32 md:h-16 md:w-40 bg-white border border-gray-100 rounded-xl shadow-sm transition-transform duration-300 group-hover:scale-105">
+          <span className="font-bold text-gray-700 text-xs md:text-sm text-center uppercase tracking-wider px-2">{bank.name}</span>
         </div>
       </div>
     );
   }
 
   return (
-    <div className="group flex-shrink-0 flex items-center justify-center h-32 w-48 mx-2 rounded-2xl transition-all duration-300 hover:bg-white/60 hover:shadow-[0_8px_30px_rgb(0,0,0,0.04)] cursor-pointer">
-      <div className="flex items-center justify-center h-20 w-40 bg-white border border-gray-100 rounded-xl shadow-sm p-3 transition-transform duration-500 ease-[cubic-bezier(0.175,0.885,0.32,1.275)] group-hover:scale-110">
+    <div className="group flex-shrink-0 flex items-center justify-center h-20 w-36 md:w-44 mx-1.5 rounded-xl transition-all duration-300 hover:bg-white/60 cursor-pointer">
+      <div className="flex items-center justify-center h-14 w-32 md:h-16 md:w-40 bg-white border border-gray-100 rounded-xl shadow-sm p-2.5 transition-transform duration-300 group-hover:scale-105">
         <img
           src={localSrc}
           alt={bank.name}
@@ -135,17 +135,17 @@ export default function BankMarquee() {
   };
 
   return (
-    <section className="w-full py-16 bg-[#F6F4EB]">
+    <section className="w-full py-8 md:py-10 bg-[#F6F4EB]">
       <ScrollReveal direction="up" delay={0}>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-10 text-center flex flex-col items-center">
-          <h2 className="text-3xl md:text-5xl font-extrabold text-[#006633] uppercase tracking-wide leading-tight">
-            DANH SÁCH <br/> CÁC NGÂN HÀNG
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-6 text-center flex flex-col items-center">
+          <h2 className="text-2xl md:text-3xl font-extrabold text-[#006633] uppercase tracking-wide leading-tight">
+            DANH SÁCH CÁC NGÂN HÀNG
           </h2>
-          <h3 className="text-xl md:text-3xl font-bold text-[#9D7639] uppercase mt-3">
+          <h3 className="text-base md:text-xl font-bold text-[#9D7639] uppercase mt-1">
             MÀ OCB CHẤP NHẬN
           </h3>
-          <div className="mt-4">
-            <span className="inline-block bg-[#006633] text-white text-lg md:text-2xl font-bold uppercase py-2 px-10 rounded-full shadow-md">
+          <div className="mt-2.5">
+            <span className="inline-block bg-[#006633] text-white text-xs md:text-sm font-bold uppercase py-1 px-6 rounded-full shadow-sm">
               ĐỂ SANG THẺ
             </span>
           </div>
@@ -153,7 +153,7 @@ export default function BankMarquee() {
       </ScrollReveal>
       
       {/* Scroll container */}
-      <div className="relative w-full py-6">
+      <div className="relative w-full py-2">
         <div 
           ref={scrollRef}
           className="flex overflow-x-auto no-scrollbar [&::-webkit-scrollbar]:hidden px-4 md:px-12 items-center"
@@ -170,22 +170,22 @@ export default function BankMarquee() {
       </div>
 
       {/* Navigation Buttons */}
-      <div className="flex justify-center items-center gap-4 mt-8">
+      <div className="flex justify-center items-center gap-3 mt-4 md:mt-5">
         <button 
           onClick={() => scroll('left')}
-          className="w-10 h-10 flex items-center justify-center rounded-full bg-white text-[#006633] shadow-md hover:bg-[#006633] hover:text-white transition-colors"
+          className="w-8 h-8 md:w-9 md:h-9 flex items-center justify-center rounded-full bg-white text-[#006633] shadow-sm hover:bg-[#006633] hover:text-white transition-colors"
           aria-label="Cuộn trái"
         >
-          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
             <path d="m15 18-6-6 6-6"/>
           </svg>
         </button>
         <button 
           onClick={() => scroll('right')}
-          className="w-10 h-10 flex items-center justify-center rounded-full bg-white text-[#006633] shadow-md hover:bg-[#006633] hover:text-white transition-colors"
+          className="w-8 h-8 md:w-9 md:h-9 flex items-center justify-center rounded-full bg-white text-[#006633] shadow-sm hover:bg-[#006633] hover:text-white transition-colors"
           aria-label="Cuộn phải"
         >
-          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
             <path d="m9 18 6-6-6-6"/>
           </svg>
         </button>
