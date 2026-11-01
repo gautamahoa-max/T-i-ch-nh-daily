@@ -4,58 +4,11 @@ import imgLifestyle from '../assets/images/lifestyle.png';
 import imgNatural from '../assets/images/natural.jpg';
 import imgWorld from '../assets/images/world.png';
 import imgPlatinum from '../assets/images/platinum.png';
-import { bankLogos } from '../assets/images/banks/index.js';
 
 // Format currency in VND with non-breaking space before 'đ'
 const formatVND = (val) => {
   return new Intl.NumberFormat('vi-VN').format(Math.round(val)) + '\u00A0đ';
 };
-
-// Bank grouping according to OCB Policy (Decision 439.01 & 431.01)
-const GROUP_1_BANKS = [
-  "Vietcombank",
-  "Techcombank",
-  "ACB",
-  "BIDV",
-  "Sacombank",
-  "MBBank",
-  "MSB",
-  "HSBC",
-  "Standard Chartered",
-  "UOB"
-];
-
-const GROUP_2_BANKS = [
-  "VPBank",
-  "VIB",
-  "TPBank",
-  "VietinBank",
-  "Shinhan Bank",
-  "HDBank",
-  "Agribank",
-  "KBank",
-  "Indovina Bank"
-];
-
-const GROUP_3_BANKS = [
-  "LPBank",
-  "Eximbank",
-  "Nam A Bank",
-  "SHB",
-  "ABBank",
-  "Vikki",
-  "Vietbank",
-  "BaoViet Bank",
-  "Viet A Bank",
-  "PGBank",
-  "SCB"
-];
-
-const ALL_BANKS = [
-  ...GROUP_1_BANKS,
-  ...GROUP_2_BANKS,
-  ...GROUP_3_BANKS
-];
 
 export default function CreditLimitCalculator() {
   const [activeTab, setActiveTab] = useState('salary'); // 'salary' | 'card'
@@ -63,8 +16,7 @@ export default function CreditLimitCalculator() {
   // Tab 1: Salary inputs (always uses maximum x5 multiplier per user instruction)
   const [salary, setSalary] = useState(20000000);
 
-  // Tab 2: Card-to-Card inputs
-  const [selectedBank, setSelectedBank] = useState('Vietcombank');
+  // Tab 2: Card-to-Card inputs (default 100% of existing card limit)
   const [cardLimit, setCardLimit] = useState(60000000);
   const [hasBhxhOrGpkd, setHasBhxhOrGpkd] = useState(true);
 
@@ -85,24 +37,9 @@ export default function CreditLimitCalculator() {
         method: 'Lương chuyển khoản (Tối đa x5)'
       };
     } else {
-      // Card-to-card
-      let baseRate = 0.6;
-      let maxCap = 200000000;
-      let groupName = 'Nhóm 3 (Tỷ lệ 60%)';
-
-      if (GROUP_1_BANKS.includes(selectedBank)) {
-        baseRate = 1.0;
-        maxCap = 500000000;
-        groupName = 'Nhóm 1 (Tỷ lệ 100%)';
-      } else if (GROUP_2_BANKS.includes(selectedBank)) {
-        baseRate = 0.8;
-        maxCap = 200000000;
-        groupName = 'Nhóm 2 (Tỷ lệ 80%)';
-      } else {
-        baseRate = 0.6;
-        maxCap = 200000000;
-        groupName = 'Nhóm 3 (Tỷ lệ 60%)';
-      }
+      // Card-to-card: Default 100% of existing card limit (up to 500M)
+      const baseRate = 1.0;
+      const maxCap = 500000000;
 
       const bonusRate = hasBhxhOrGpkd ? 0.2 : 0;
       const totalRate = baseRate + bonusRate;
@@ -112,11 +49,11 @@ export default function CreditLimitCalculator() {
       return {
         limit: finalLimit,
         multiplierLabel: `${Math.round(totalRate * 100)}% hạn mức cũ`,
-        detailNote: `${groupName}${hasBhxhOrGpkd ? ' + Thưởng 20% BHXH/ĐKKD' : ''}`,
-        method: `Sang ngang thẻ ${selectedBank}`
+        detailNote: hasBhxhOrGpkd ? 'Tỷ lệ 100% + Thưởng 20% BHXH/ĐKKD' : 'Tỷ lệ 100% hạn mức thẻ cũ',
+        method: 'Sang ngang thẻ tín dụng khác'
       };
     }
-  }, [activeTab, salary, selectedBank, cardLimit, hasBhxhOrGpkd]);
+  }, [activeTab, salary, cardLimit, hasBhxhOrGpkd]);
 
   // Card recommendation logic
   const recommendedCard = useMemo(() => {
@@ -326,41 +263,8 @@ export default function CreditLimitCalculator() {
               </>
             ) : (
               <>
-                {/* Card-to-Card Input Block */}
-                <div>
-                  <label className="block text-sm font-bold text-slate-700 uppercase tracking-wide mb-2">
-                    Ngân hàng phát hành thẻ tín dụng hiện tại:
-                  </label>
-                  <div className="relative">
-                    <select
-                      value={selectedBank}
-                      onChange={(e) => setSelectedBank(e.target.value)}
-                      className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3.5 text-ink font-semibold text-base appearance-none focus:outline-none focus:border-[#006633] focus:bg-white transition-all cursor-pointer pl-12"
-                    >
-                      {ALL_BANKS.map((b) => (
-                        <option key={b} value={b}>{b}</option>
-                      ))}
-                    </select>
-
-                    {/* Bank Logo Preview inside select */}
-                    <div className="absolute left-3.5 top-1/2 -translate-y-1/2 pointer-events-none flex items-center justify-center w-7 h-7 bg-white rounded-md border border-slate-200 p-0.5">
-                      {bankLogos[selectedBank] ? (
-                        <img src={bankLogos[selectedBank]} alt={selectedBank} className="max-w-full max-h-full object-contain" />
-                      ) : (
-                        <span className="text-xs font-bold text-slate-500">🏦</span>
-                      )}
-                    </div>
-
-                    <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-slate-400">
-                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="m6 9 6 6 6-6"/></svg>
-                    </div>
-                  </div>
-
-
-                </div>
-
                 {/* Current Card Limit Slider */}
-                <div className="pt-2 border-t border-slate-100">
+                <div>
                   <div className="flex justify-between items-baseline gap-2 mb-3">
                     <label className="text-xs sm:text-sm font-bold text-slate-700 uppercase tracking-wide">
                       Hạn mức thẻ tham chiếu hiện có:
